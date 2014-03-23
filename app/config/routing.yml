@@ -1,0 +1,4 @@
+test_hello:
+    resource: "@TestHelloBundle/Resources/config/routing.yml"
+    prefix:   /
+
