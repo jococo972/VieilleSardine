@@ -8,6 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction($name)
     {
+        /*Use of index Twig*/
         return $this->render('TestHelloBundle:Default:index.html.twig', array('name' => $name));
     }
 }
