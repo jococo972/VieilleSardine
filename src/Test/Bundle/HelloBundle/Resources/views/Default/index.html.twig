@@ -1,0 +1,12 @@
+{% extends "::principal_layout.html.twig" %}
+
+{% block body %}
+{# On définit un sous-titre commun à toutes les pages du bundle,
+par exemple #}
+    <h1>Blog</h1> Hello {{ name }}!
+    <hr>
+    Modif
+{# On définit un nouveau block, que les vues du bundle pourront
+remplir #}    
+{% endblock %}
+
