@@ -1,0 +1,10 @@
+{% extends "::principal_layout.html.twig" %}
+
+{% block title %}TestHelloBundle:Client:getClients{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Clients page</h1>
+    {% for client in liste_clients %}
+        <li>{{ client.name }} {{ client.dateCreate|date('d-m-y h:m:s') }}</li>
+    {% endfor %}
+{% endblock %}

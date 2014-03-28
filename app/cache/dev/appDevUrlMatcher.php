@@ -138,6 +138,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'test_hello_homepage')), array (  '_controller' => 'Test\\Bundle\\HelloBundle\\Controller\\DefaultController::indexAction',));
         }
 
+        // get_clients
+        if ($pathinfo === '/clients') {
+            return array (  '_controller' => 'Test\\Bundle\\HelloBundle\\Controller\\ClientController::getClientsAction',  '_route' => 'get_clients',);
+        }
+
         // _welcome
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
