@@ -5,3 +5,7 @@ test_hello_homepage:
 get_clients:
     pattern: /clients
     defaults: { _controller: TestHelloBundle:Client:getClients }
+    
+add_client:
+    pattern: /registry
+    defaults: { _controller: TestHelloBundle:Client:addClient }

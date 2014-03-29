@@ -7,49 +7,47 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Client
  *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="Test\Bundle\HelloBundle\Entity\ClientRepository")
+ * @ORM\Table(name="client")
+ * @ORM\Entity
  */
-class Client
-{
+class Client {
+
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=40)
+     * @ORM\Column(name="name", type="string", length=20, nullable=false)
      */
     private $name;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_create", type="datetime")
+     * @ORM\Column(name="date_create", type="datetime", nullable=false)
      */
     private $dateCreate;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="blob")
+     * @ORM\Column(name="password", type="blob", nullable=false)
      */
     private $password;
-
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,10 +57,9 @@ class Client
      * @param string $name
      * @return Client
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -71,8 +68,7 @@ class Client
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -82,10 +78,9 @@ class Client
      * @param \DateTime $dateCreate
      * @return Client
      */
-    public function setDateCreate($dateCreate)
-    {
+    public function setDateCreate($dateCreate) {
         $this->dateCreate = $dateCreate;
-    
+
         return $this;
     }
 
@@ -94,8 +89,7 @@ class Client
      *
      * @return \DateTime 
      */
-    public function getDateCreate()
-    {
+    public function getDateCreate() {
         return $this->dateCreate;
     }
 
@@ -105,10 +99,9 @@ class Client
      * @param string $password
      * @return Client
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
-    
+
         return $this;
     }
 
@@ -117,8 +110,12 @@ class Client
      *
      * @return string 
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
+
+    public function __construct() {
+        $this->dateCreate = new \Datetime();
+    }
+
 }

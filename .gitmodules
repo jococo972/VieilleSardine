@@ -1,0 +1,9 @@
+[submodule "vendor/bundles/Admingenerator/GeneratorBundle"]
+	path = vendor/bundles/Admingenerator/GeneratorBundle
+	url = git://github.com/symfony2admingenerator/AdmingeneratorGeneratorBundle.git
+[submodule "vendor/bundles/Knp/MenuBundle"]
+	path = vendor/bundles/Knp/MenuBundle
+	url = https://github.com/KnpLabs/KnpMenuBundle.git
+[submodule "vendor/KnpMenu"]
+	path = vendor/KnpMenu
+	url = https://github.com/KnpLabs/KnpMenu.git
