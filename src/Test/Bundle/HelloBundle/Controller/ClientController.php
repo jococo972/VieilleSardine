@@ -18,6 +18,7 @@ class ClientController extends Controller {
         $em->flush();
 
         return $this->getClientsAction();
+        //hello
     }
 
     public function getClientsAction() {
