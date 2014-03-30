@@ -65,3 +65,14 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+  
+#Paramètre de configuration pour les deux bundles : KnpMenu & AdminGenerator
+#knp_menu:
+#    twig: true
+#admingenerator_generator:
+#    base_admin_template: AdmingeneratorActiveAdminThemeBundle::base_admin_assetic_less.html.twig
+##    knp_menu_class: Admingenerator\DemoBundle\Menu\AdminMenu
+#    use_doctrine_orm: true
+##    use_doctrine_odm: true
+#    use_propel: true
+#    templates_dirs: [ %kernel.root_dir%/../vendor/cedriclombardot/admingenerator-oldtheme-bundle/Admingenerator/OldThemeBundle/Resources/templates ]
