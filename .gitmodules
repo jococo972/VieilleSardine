@@ -6,4 +6,52 @@
 	url = https://github.com/KnpLabs/KnpMenuBundle.git
 [submodule "vendor/KnpMenu"]
 	path = vendor/KnpMenu
-	url = https://github.com/KnpLabs/KnpMenu.git
+	url = http://github.com/KnpLabs/KnpMenu.git
+[submodule "vendor/bundles/Knp/Bundle/MenuBundle"]
+	path = vendor/bundles/Knp/Bundle/MenuBundle
+	url = https://github.com/KnpLabs/KnpMenuBundle.git
+[submodule "vendor/twig-generator"]
+	path = vendor/twig-generator
+	url = git://github.com/cedriclombardot/TwigGenerator.git
+[submodule "vendor/twig-extensions"]
+	path = vendor/twig-extensions
+	url = git://github.com/fabpot/Twig-extensions.git
+[submodule "vendor/bundles/WhiteOctober/PagerfantaBundle"]
+	path = vendor/bundles/WhiteOctober/PagerfantaBundle
+	url = git://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git
+[submodule "vendor/bundles/Propel/PropelBundle"]
+	path = vendor/bundles/Propel/PropelBundle
+	url = git://github.com/propelorm/PropelBundle.git
+[submodule "vendor/phing"]
+	path = vendor/phing
+	url = git://github.com/Xosofox/phing.git
+[submodule "vendor/propel"]
+	path = vendor/propel
+	url = git://github.com/propelorm/Propel.git
+[submodule "vendor/doctrine-common"]
+	path = vendor/doctrine-common
+	url = git://github.com/doctrine/common.git
+[submodule "vendor/doctrine-dbal"]
+	path = vendor/doctrine-dbal
+	url = git://github.com/doctrine/dbal.git
+[submodule "vendor/doctrine-fixtures"]
+	path = vendor/doctrine-fixtures
+	url = git://github.com/doctrine/data-fixtures.git
+[submodule "vendor/bundles/Doctrine/Bundle/FixturesBundle"]
+	path = vendor/bundles/Doctrine/Bundle/FixturesBundle
+	url = git://github.com/doctrine/DoctrineFixturesBundle.git
+[submodule "vendor/bundles/Doctrine/Bundle/DoctrineBundle"]
+	path = vendor/bundles/Doctrine/Bundle/DoctrineBundle
+	url = git://github.com/doctrine/DoctrineBundle.git
+[submodule "vendor/doctrine-mongodb"]
+	path = vendor/doctrine-mongodb
+	url = git://github.com/doctrine/mongodb.git
+[submodule "vendor/doctrine-mongodb-odm"]
+	path = vendor/doctrine-mongodb-odm
+	url = git://github.com/doctrine/mongodb-odm.git
+[submodule "vendor/bundles/Symfony/Bundle/AsseticBundle"]
+	path = vendor/bundles/Symfony/Bundle/AsseticBundle
+	url = git://github.com/symfony/AsseticBundle.git
+[submodule "vendor/assetic"]
+	path = vendor/assetic
+	url = git://github.com/symfony/AsseticBundle.git
