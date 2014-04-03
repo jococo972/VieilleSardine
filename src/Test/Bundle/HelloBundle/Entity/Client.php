@@ -1,5 +1,5 @@
 <?php
-/*HELLO TOUT LE MONDE 8888
+
 namespace Test\Bundle\HelloBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
