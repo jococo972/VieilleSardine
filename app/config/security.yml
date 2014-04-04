@@ -1,12 +1,17 @@
 security:
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        Test\HelloBundle\Entity\User: sha512
+        FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
+        #Utilisation du fournisseur de FOSUserBundle
+        main:
+            id: fos_user.user_provider.username
         in_memory:
             memory:
                 users:
@@ -14,13 +19,25 @@ security:
                     admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
+        main:
+            pattern:        ^/
+            anonymous:      true
+            provider:       main
+            form_login:
+                login_path: fos_user_security_login
+                check_path: fos_user_security_check
+            logout:
+                path:       fos_user_security_logout
+                target:     /blog
+            remember_me:
+                key:        %secret% # %secret% est un paramètre de parameters.yml
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        login:
-            pattern:  ^/demo/secured/login$
-            security: false
+#        login:
+#            pattern:  ^/demo/secured/login$
+#            security: false
 
         secured_area:
             pattern:    ^/demo/secured/
@@ -33,6 +50,11 @@ security:
             #anonymous: ~
             #http_basic:
             #    realm: "Secured Demo Area"
+            
+            #---- Configuration de l'option se souvenir de moi à la connexion
+            # %secret% est un paramètre de parameters.yml
+            remember_me:
+                key:        %secret% 
 
     access_control:
         - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }

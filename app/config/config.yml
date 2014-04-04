@@ -76,3 +76,15 @@ swiftmailer:
 ##    use_doctrine_odm: true
 #    use_propel: true
 #    templates_dirs: [ %kernel.root_dir%/../vendor/cedriclombardot/admingenerator-oldtheme-bundle/Admingenerator/OldThemeBundle/Resources/templates ]
+
+#------ Configuration de FOSUserBundle --------------#
+
+# Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
+# La classe de l'entité User que nous utilisons
+# Le nom du firewall derrière lequel on utilisera ces utilisateurs
+
+fos_user:
+    db_driver:     orm                        
+    firewall_name: main                       
+    user_class:    Test\HelloBundle\Entity\Client 
+    
