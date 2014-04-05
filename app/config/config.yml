@@ -60,11 +60,18 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+#    transport: "%mailer_transport%"
+#    host:      "%mailer_host%"
+#    username:  "%mailer_user%"
+#    password:  "%mailer_password%"
+    transport:  smtp
+    encryption: ssl
+#    auth_mode:  login
+    host:       smtp.gmail.com
+    username:   "%mailer_user%"
+    password:   "%mailer_password%"
+#    delivery_address:  m.anes@hotmail.fr
+#    spool:     { type: memory }
   
 #Paramètre de configuration pour les deux bundles : KnpMenu & AdminGenerator
 #knp_menu:
@@ -86,5 +93,5 @@ swiftmailer:
 fos_user:
     db_driver:     orm                        
     firewall_name: main                       
-    user_class:    Test\HelloBundle\Entity\Client 
+    user_class:    Client\UserBundle\Entity\Client 
     

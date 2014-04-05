@@ -1,4 +1,4 @@
-Test\HelloBundle\Entity\Produit:
+Client\UserBundle\Entity\Produit:
     type: entity
     table: produit
     fields:

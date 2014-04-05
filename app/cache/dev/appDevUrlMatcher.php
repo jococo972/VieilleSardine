@@ -133,14 +133,23 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // get_clients
-        if ($pathinfo === '/clients') {
-            return array (  '_controller' => 'Test\\HelloBundle\\Controller\\ClientController::getClientsAction',  '_route' => 'get_clients',);
+        // accueil
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'accueil');
+            }
+
+            return array (  '_controller' => 'Client\\UserBundle\\Controller\\UserController::getUsersAction',  '_route' => 'accueil',);
         }
 
-        // add_client
-        if ($pathinfo === '/registry') {
-            return array (  '_controller' => 'Test\\HelloBundle\\Controller\\ClientController::addClientAction',  '_route' => 'add_client',);
+        // get_clients
+        if ($pathinfo === '/clients') {
+            return array (  '_controller' => 'Client\\UserBundle\\Controller\\UserController::getUsersAction',  '_route' => 'get_clients',);
+        }
+
+        // send_mail
+        if (0 === strpos($pathinfo, '/send_mail') && preg_match('#^/send_mail/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'send_mail')), array (  '_controller' => 'Client\\UserBundle\\Controller\\MailController::sendMailAction',));
         }
 
         if (0 === strpos($pathinfo, '/log')) {

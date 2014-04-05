@@ -1,5 +1,5 @@
 test_hello:
-    resource: "@TestHelloBundle/Resources/config/routing.yml"
+    resource: "@ClientUserBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user_security:

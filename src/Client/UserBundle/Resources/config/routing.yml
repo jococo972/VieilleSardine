@@ -1,0 +1,12 @@
+# A remplacer par le controleur de la page d'accueil
+accueil:
+    pattern: /
+    defaults: { _controller: ClientUserBundle:User:getUsers  }
+
+get_clients:
+    pattern: /clients
+    defaults: { _controller: ClientUserBundle:User:getUsers }
+    
+send_mail:
+    pattern: /send_mail/{name}
+    defaults: { _controller: ClientUserBundle:Mail:sendMail }
