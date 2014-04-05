@@ -1,5 +1,5 @@
-test_hello:
-    resource: "@ClientUserBundle/Resources/config/routing.yml"
+vieille_sardine_catalogue:
+    resource: "@VieilleSardineCatalogueBundle/Resources/config/routing.yml"
     prefix:   /
 
 fos_user_security:

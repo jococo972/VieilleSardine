@@ -8,75 +8,60 @@
         {% endblock %}
     </head>
 
-    <body>
-        <header>
-            <h1>A REMPLACER PAR LA BANIERE HEADER DU SITE</h1>
-            <nav class="navbar" role="banner">
-                <table>
-                    <tr>
-                        <td><a href="">Catalogue</a></td>
-                        <td><a href="">Commande rapide</a></td>
-                        <td>
-                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                Bonjour {{ app.user.username }} - <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-                                <a href="{{ path('fos_user_profile_show') }}">Afficher compte</a>
-                                <a href="{{ path('fos_user_profile_edit') }}">Modifier compte</a>
-                            {% else %}
-                                <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-                            {% endif %}
-                        </td>
-                        <td><a href="">Mon panier</a></td>
-                    </tr>
-                </table>
-            </nav>
-        </header>
+    <header>
+        <h1>A REMPLACER PAR LA BANIERE HEADER DU SITE</h1>
+    </header>
+    <nav class="navbar" role="banner">
+        <table>
+            <tr>
+                <td><a href="{{ path('vieille_sardine_catalogue_homepage') }}">Catalogue</a></td>
+                <td><a href="">Commande rapide</a></td>
+                <td>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <span style="color: white">Bonjour {{ app.user.username }} </span> 
+                        <a href="{{ path('fos_user_profile_show') }}">Afficher compte</a>
+                        <a href="{{ path('fos_user_profile_edit') }}">Modifier compte</a>
+                        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                    {% endif %}
+                </td>
+                <td><a href="">Mon panier</a></td>
+            </tr>
+        </table>
+    </nav>
 
-        {#<div class="row">
-            <div style="float:left;">
-                <div style="border:solid">
-                    {{ render(controller("VideoMovieBundle:Movie:lastItems")) }}
-                </div>
+    {#<div class="row">
+        <div style="float:left;">
+            <div style="border:solid">
+                {{ render(controller("VideoMovieBundle:Movie:lastItems")) }}
             </div>
-            
-            <div id="content" class="span9 menu_content">
-                {% block body %}
-                {% endblock %}
-            </div>
-        </div>#}
-
+        </div>
+        
+        <div id="content" class="span9 menu_content">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </div>#}
+    <div style="min-height:700px; border:solid">
         {% block body %}
 
         {% endblock %}
+    </div>
 
-        <footer>
-            {#<div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-inline">
-                            <li><i class="icon-facebook icon-2x"></i></li>
-                            <li><i class="icon-twitter icon-2x"></i></li>
-                            <li><i class="icon-google-plus icon-2x"></i></li>
-                            <li><i class="icon-pinterest icon-2x"></i></li>
-                        </ul>
 
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="pull-right">Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a></p>      
-                    </div>
-                </div>
-            </div>#}
-            <div>
-                <h1>A REMPLACER PAR LA BANIERE FOOTER DU SITE</h1>
-            </div>
-        </footer>
+    <footer>
+        <div>
+            <h1>A REMPLACER PAR LA BANIERE FOOTER DU SITE</h1>
+        </div>
+    </footer>
 
-        {% block javascripts %}
-            {# Ajoutez ces javascripts si vous comptez vous servir des
-            fonctionnalités du bootstrap Twitter #}
-            <script
-            src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-            <script type="text/javascript" src="{{ asset('js/bootstrap.js')
-            }}"></script>
-        {% endblock %}
-    </body>
+    {% block javascripts %}
+        {# Ajoutez ces javascripts si vous comptez vous servir des
+        fonctionnalités du bootstrap Twitter #}
+        <script
+        src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('js/bootstrap.js')
+        }}"></script>
+    {% endblock %}
 </html>

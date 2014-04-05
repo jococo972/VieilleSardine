@@ -1,0 +1,16 @@
+VieilleSardine\UserBundle\Entity\Client:
+    type: entity
+    table: client
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        dateCreate:
+            type: datetime
+            nullable: false
+            column: date_create
+    lifecycleCallbacks: {  }

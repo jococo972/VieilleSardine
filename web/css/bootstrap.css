@@ -20,7 +20,7 @@ and open the template in the editor.
 @import url('http://fonts.googleapis.com/css?family=Open+Sans:300,400');
 
 header {
-	min-height:180px;
+	min-height:100px;
   	margin-bottom:5px;
 }
 
@@ -94,6 +94,8 @@ h3.highlight  {
 .navbar {
 	background-color:#000000;
   	border-radius:0;
+        min-height: 35px;
+        margin-bottom: 15px;
 }
 .navbar > a {
   	/*color:#fff;*/

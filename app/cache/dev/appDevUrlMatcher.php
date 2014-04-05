@@ -133,50 +133,34 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // accueil
+        // vieille_sardine_catalogue_homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'accueil');
+                return $this->redirect($pathinfo.'/', 'vieille_sardine_catalogue_homepage');
             }
 
-            return array (  '_controller' => 'Client\\UserBundle\\Controller\\UserController::getUsersAction',  '_route' => 'accueil',);
+            return array (  '_controller' => 'VieilleSardine\\CatalogueBundle\\Controller\\CatalogueController::indexAction',  '_route' => 'vieille_sardine_catalogue_homepage',);
         }
 
-        // get_clients
-        if ($pathinfo === '/clients') {
-            return array (  '_controller' => 'Client\\UserBundle\\Controller\\UserController::getUsersAction',  '_route' => 'get_clients',);
+        // fos_user_security_login
+        if ($pathinfo === '/connexion') {
+            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
         }
 
-        // send_mail
-        if (0 === strpos($pathinfo, '/send_mail') && preg_match('#^/send_mail/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'send_mail')), array (  '_controller' => 'Client\\UserBundle\\Controller\\MailController::sendMailAction',));
-        }
-
-        if (0 === strpos($pathinfo, '/log')) {
-            if (0 === strpos($pathinfo, '/login')) {
-                // fos_user_security_login
-                if ($pathinfo === '/login') {
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
-                }
-
-                // fos_user_security_check
-                if ($pathinfo === '/login_check') {
-                    if ($this->context->getMethod() != 'POST') {
-                        $allow[] = 'POST';
-                        goto not_fos_user_security_check;
-                    }
-
-                    return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
-                }
-                not_fos_user_security_check:
-
+        // fos_user_security_check
+        if ($pathinfo === '/login_check') {
+            if ($this->context->getMethod() != 'POST') {
+                $allow[] = 'POST';
+                goto not_fos_user_security_check;
             }
 
-            // fos_user_security_logout
-            if ($pathinfo === '/logout') {
-                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
-            }
+            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::checkAction',  '_route' => 'fos_user_security_check',);
+        }
+        not_fos_user_security_check:
 
+        // fos_user_security_logout
+        if ($pathinfo === '/deconnexion') {
+            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::logoutAction',  '_route' => 'fos_user_security_logout',);
         }
 
         if (0 === strpos($pathinfo, '/profile')) {

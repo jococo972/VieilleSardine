@@ -1,0 +1,7 @@
+get_clients:
+    pattern: /clients
+    defaults: { _controller: VieilleSardineUserBundle:User:getUsers }
+    
+send_mail:
+    pattern: /send_mail/{name}
+    defaults: { _controller: VieilleSardineUserBundle:Mail:sendMail }
