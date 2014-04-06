@@ -1,6 +1,6 @@
 <?php
 
-namespace Client\UserBundle\Controller;
+namespace VieilleSardine\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -11,10 +11,10 @@ class MailController extends Controller {
                 ->setSubject('Hello Email')
                 ->setFrom('anes.mahi@gmail.com')
                 ->setTo('m.anes@hotmail.fr')
-                ->setBody($this->renderView('ClientUserBundle:Mail:mailBody.html.twig', array('name' => $name)));
+                ->setBody($this->renderView('VieilleSardineUserBundle:Mail:mailBody.html.twig', array('name' => $name)));
         $this->get('mailer')->send($message);
 
-        return $this->render('ClientUserBundle:Mail:sendConfirmation.html.twig');
+        return $this->render('VieilleSardineUserBundle:Mail:sendConfirmation.html.twig');
     }
 
 }

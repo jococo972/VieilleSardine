@@ -30,13 +30,6 @@ class Client extends BaseUser{
     private $dateCreate;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="blob", nullable=false)
-     */
-//    protected $password;
-
-    /**
      * Get id
      *
      * @return integer 
@@ -64,27 +57,6 @@ class Client extends BaseUser{
      */
     public function getDateCreate() {
         return $this->dateCreate;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     * @return Client
-     */
-    public function setPassword($password) {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword() {
-        return $this->password;
     }
 
     public function __construct() {

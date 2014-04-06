@@ -10,4 +10,4 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/clients/, role: ROLE_ADMIN }
+#        - { path: ^/a_definir, role: ROLE_ADMIN }

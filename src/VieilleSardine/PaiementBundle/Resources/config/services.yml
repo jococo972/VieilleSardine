@@ -1,0 +1,7 @@
+parameters:
+#    vieille_sardine_paiement.example.class: VieilleSardine\PaiementBundle\Example
+
+services:
+#    vieille_sardine_paiement.example:
+#        class: %vieille_sardine_paiement.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

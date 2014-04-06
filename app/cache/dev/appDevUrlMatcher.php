@@ -133,13 +133,51 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // vieille_sardine_catalogue_homepage
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'vieille_sardine_catalogue_homepage');
+        if (0 === strpos($pathinfo, '/hello')) {
+            // vieille_sardine_retour_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'vieille_sardine_retour_homepage')), array (  '_controller' => 'VieilleSardine\\RetourBundle\\Controller\\RetourController::indexAction',));
             }
 
-            return array (  '_controller' => 'VieilleSardine\\CatalogueBundle\\Controller\\CatalogueController::indexAction',  '_route' => 'vieille_sardine_catalogue_homepage',);
+            // vieille_sardine_stock_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'vieille_sardine_stock_homepage')), array (  '_controller' => 'VieilleSardine\\StockBundle\\Controller\\StockController::indexAction',));
+            }
+
+            // vieille_sardine_paiement_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'vieille_sardine_paiement_homepage')), array (  '_controller' => 'VieilleSardinePaiementBundle:Default:index',));
+            }
+
+            // vieille_sardine_produit_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'vieille_sardine_produit_homepage')), array (  '_controller' => 'VieilleSardine\\ProduitBundle\\Controller\\ProduitController::indexAction',));
+            }
+
+            // vieille_sardine_livraison_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'vieille_sardine_livraison_homepage')), array (  '_controller' => 'VieilleSardine\\LivraisonBundle\\Controller\\LivraisonController::indexAction',));
+            }
+
+            // vieille_sardine_panier_homepage
+            if (preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'vieille_sardine_panier_homepage')), array (  '_controller' => 'VieilleSardine\\PanierBundle\\Controller\\PanierController::indexAction',));
+            }
+
+        }
+
+        // send_mail
+        if (0 === strpos($pathinfo, '/send_mail') && preg_match('#^/send_mail/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'send_mail')), array (  '_controller' => 'VieilleSardine\\UserBundle\\Controller\\MailController::sendMailAction',));
+        }
+
+        // vieille_sardine_commande_homepage
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'vieille_sardine_commande_homepage');
+            }
+
+            return array (  '_controller' => 'VieilleSardine\\CommandeBundle\\Controller\\CommandeController::indexAction',  '_route' => 'vieille_sardine_commande_homepage',);
         }
 
         // fos_user_security_login

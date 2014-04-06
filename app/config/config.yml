@@ -60,17 +60,10 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-#    transport: "%mailer_transport%"
-#    host:      "%mailer_host%"
-#    username:  "%mailer_user%"
-#    password:  "%mailer_password%"
-    transport:  smtp
-    encryption: ssl
-#    auth_mode:  login
-    host:       smtp.gmail.com
-    username:   "%mailer_user%"
-    password:   "%mailer_password%"
-#    delivery_address:  m.anes@hotmail.fr
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
 #    spool:     { type: memory }
   
 #Paramètre de configuration pour les deux bundles : KnpMenu & AdminGenerator
@@ -84,14 +77,17 @@ swiftmailer:
 #    use_propel: true
 #    templates_dirs: [ %kernel.root_dir%/../vendor/cedriclombardot/admingenerator-oldtheme-bundle/Admingenerator/OldThemeBundle/Resources/templates ]
 
-#------ Configuration de FOSUserBundle --------------#
-
-# Le type de BDD à utiliser, nous utilisons l'ORM Doctrine depuis le début
-# La classe de l'entité User que nous utilisons
-# Le nom du firewall derrière lequel on utilisera ces utilisateurs
-
+#~~~~~~ FOSUserBundle Configuration ~~~~~~~~~~~~~~~~~#
 fos_user:
     db_driver:     orm                        
     firewall_name: main                       
     user_class:    VieilleSardine\UserBundle\Entity\Client 
-    
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+#~~~~~~ BazingaFakerBundle Configuration~~~~~~~~~~#
+bazinga_faker:
+    orm: doctrine
+    entities:
+        VieilleSardine\UserBundle\Entity\Produit:
+            number: 5
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#

@@ -1,0 +1,7 @@
+vieille_sardine_commande_homepage:
+    pattern:  /
+    defaults: { _controller: VieilleSardineCommandeBundle:Commande:index }
+
+#clients_list:
+#    pattern: /clients
+#    defaults: { _controller: VieilleSardineUserBundle:User:getUsers }

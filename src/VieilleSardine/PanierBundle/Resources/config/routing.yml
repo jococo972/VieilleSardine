@@ -1,0 +1,3 @@
+vieille_sardine_panier_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: VieilleSardinePanierBundle:Panier:index }

@@ -27,5 +27,12 @@ monolog:
 assetic:
     use_controller: true
 
-#swiftmailer:
-#    delivery_address: me@example.com
+swiftmailer:
+    transport: gmail
+    username:  anes.mahi@gmail.com
+    password:  13081991
+#    delivery_address: m.anes@hotmail.fr
+
+
+#BazingaFakerBundle
+bazinga_faker: ~

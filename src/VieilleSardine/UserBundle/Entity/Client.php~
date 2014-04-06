@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Bundle\HelloBundle\Entity;
+namespace VieilleSardine\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="client")
  * @ORM\Entity
  */
-class Client {
-
+class Client
+{
     /**
      * @var integer
      *
@@ -20,13 +20,6 @@ class Client {
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=20, nullable=false)
-     */
-    private $name;
 
     /**
      * @var \DateTime
@@ -38,84 +31,114 @@ class Client {
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="blob", nullable=false)
+     * @ORM\Column(name="password", type="string", length=255, nullable=false)
      */
     private $password;
 
     /**
-     * Get id
+     * @var string
      *
-     * @return integer 
+     * @ORM\Column(name="username", type="string", length=255, nullable=false)
      */
-    public function getId() {
-        return $this->id;
-    }
+    private $username;
 
     /**
-     * Set name
+     * @var string
      *
-     * @param string $name
-     * @return Client
+     * @ORM\Column(name="username_canonical", type="string", length=255, nullable=false)
      */
-    public function setName($name) {
-        $this->name = $name;
-
-        return $this;
-    }
+    private $usernameCanonical;
 
     /**
-     * Get name
+     * @var string
      *
-     * @return string 
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    public function getName() {
-        return $this->name;
-    }
+    private $email;
 
     /**
-     * Set dateCreate
+     * @var string
      *
-     * @param \DateTime $dateCreate
-     * @return Client
+     * @ORM\Column(name="email_canonical", type="string", length=255, nullable=false)
      */
-    public function setDateCreate($dateCreate) {
-        $this->dateCreate = $dateCreate;
-
-        return $this;
-    }
+    private $emailCanonical;
 
     /**
-     * Get dateCreate
+     * @var boolean
      *
-     * @return \DateTime 
+     * @ORM\Column(name="enabled", type="boolean", nullable=false)
      */
-    public function getDateCreate() {
-        return $this->dateCreate;
-    }
+    private $enabled;
 
     /**
-     * Set password
+     * @var string
      *
-     * @param string $password
-     * @return Client
+     * @ORM\Column(name="salt", type="string", length=255, nullable=false)
      */
-    public function setPassword($password) {
-        $this->password = $password;
-
-        return $this;
-    }
+    private $salt;
 
     /**
-     * Get password
+     * @var \DateTime
      *
-     * @return string 
+     * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
-    public function getPassword() {
-        return $this->password;
-    }
+    private $lastLogin;
 
-    public function __construct() {
-        $this->dateCreate = new \Datetime();
-    }
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="locked", type="boolean", nullable=false)
+     */
+    private $locked;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="expired", type="boolean", nullable=false)
+     */
+    private $expired;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="expires_at", type="datetime", nullable=true)
+     */
+    private $expiresAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="confirmation_token", type="string", length=255, nullable=true)
+     */
+    private $confirmationToken;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="password_requested_at", type="datetime", nullable=true)
+     */
+    private $passwordRequestedAt;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array", nullable=false)
+     */
+    private $roles;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="credentials_expired", type="boolean", nullable=false)
+     */
+    private $credentialsExpired;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="credentials_expire_at", type="datetime", nullable=true)
+     */
+    private $credentialsExpireAt;
+
 
 }

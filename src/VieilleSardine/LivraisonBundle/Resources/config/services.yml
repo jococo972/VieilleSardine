@@ -1,0 +1,7 @@
+parameters:
+#    vieille_sardine_livraison.example.class: VieilleSardine\LivraisonBundle\Example
+
+services:
+#    vieille_sardine_livraison.example:
+#        class: %vieille_sardine_livraison.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
