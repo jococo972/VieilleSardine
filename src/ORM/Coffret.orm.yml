@@ -1,0 +1,35 @@
+Coffret:
+    type: entity
+    table: coffret
+    fields:
+        idCoffret:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_coffret
+            generator:
+                strategy: IDENTITY
+        nbProduit:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: nb_produit
+    manyToMany:
+        idProduit:
+            targetEntity: Produit
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idCoffret
+            joinTable:
+                name: composition_coffret
+                joinColumns:
+                    -
+                        name: id_coffret
+                        referencedColumnName: id_coffret
+                inverseJoinColumns:
+                    -
+                        name: id_produit
+                        referencedColumnName: id_produit
+            orderBy: null
+    lifecycleCallbacks: {  }

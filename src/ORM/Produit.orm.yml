@@ -1,0 +1,49 @@
+Produit:
+    type: entity
+    table: produit
+    fields:
+        idProduit:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_produit
+            generator:
+                strategy: IDENTITY
+        prixHt:
+            type: float
+            nullable: false
+            column: prix_ht
+        prixTtc:
+            type: float
+            nullable: false
+            column: prix_ttc
+        tva:
+            type: float
+            nullable: false
+        poids:
+            type: float
+            nullable: false
+        hauteur:
+            type: float
+            nullable: false
+        largeur:
+            type: float
+            nullable: false
+        longueur:
+            type: float
+            nullable: false
+        reference:
+            type: string
+            length: 10
+            fixed: false
+            nullable: false
+    manyToMany:
+        idCoffret:
+            targetEntity: Coffret
+            cascade: {  }
+            mappedBy: idProduit
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

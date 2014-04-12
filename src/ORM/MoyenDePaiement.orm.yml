@@ -1,0 +1,18 @@
+MoyenDePaiement:
+    type: entity
+    table: moyen_de_paiement
+    fields:
+        idPaiement:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_paiement
+            generator:
+                strategy: IDENTITY
+        idCommande:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_commande
+    lifecycleCallbacks: {  }

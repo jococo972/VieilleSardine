@@ -2,16 +2,16 @@
 
 namespace VieilleSardine\UserBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Client
  *
  * @ORM\Table(name="client")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="VieilleSardine\UserBundle\Entity\ClientRepository")
  */
-class Client extends BaseUser{
+class Client
+{
     /**
      * @var integer
      *
@@ -106,18 +106,47 @@ class Client extends BaseUser{
     private $clientALivrer;
 
     /**
-     * @var \DateTime
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="date_create", type="datetime", nullable=false)
+     * @ORM\ManyToMany(targetEntity="Commande", inversedBy="idClient")
+     * @ORM\JoinTable(name="commande_passee_livree",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
+     *   }
+     * )
      */
-    private $dateCreate;
+    private $idCommande;
 
-    public function __construct() {
-        parent::__construct();
-        //OUR OWN LOGIC 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Retour", mappedBy="idClient")
+     */
+    private $idRetour;
+
+    /**
+     * @var \CompteClient
+     *
+     * @ORM\ManyToOne(targetEntity="CompteClient")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_compte_client", referencedColumnName="id_compte_client")
+     * })
+     */
+    private $idCompteClient;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idRetour = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-    
+
     /**
      * Get idClient
      *
@@ -405,318 +434,91 @@ class Client extends BaseUser{
     }
 
     /**
-     * Set dateCreate
+     * Add idCommande
      *
-     * @param \DateTime $dateCreate
+     * @param \VieilleSardine\UserBundle\Entity\Commande $idCommande
      * @return Client
      */
-    public function setDateCreate($dateCreate)
+    public function addIdCommande(\VieilleSardine\UserBundle\Entity\Commande $idCommande)
     {
-        $this->dateCreate = $dateCreate;
+        $this->idCommande[] = $idCommande;
     
         return $this;
     }
 
     /**
-     * Get dateCreate
+     * Remove idCommande
      *
-     * @return \DateTime 
+     * @param \VieilleSardine\UserBundle\Entity\Commande $idCommande
      */
-    public function getDateCreate()
+    public function removeIdCommande(\VieilleSardine\UserBundle\Entity\Commande $idCommande)
     {
-        return $this->dateCreate;
-    }
-
-  
-    /**
-     * Get password
-     *
-     * @return string 
-     */
-    public function getPassword()
-    {
-        return $this->password;
+        $this->idCommande->removeElement($idCommande);
     }
 
     /**
-     * Set username
+     * Get idCommande
      *
-     * @param string $username
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdCommande()
+    {
+        return $this->idCommande;
+    }
+
+    /**
+     * Add idRetour
+     *
+     * @param \VieilleSardine\UserBundle\Entity\Retour $idRetour
      * @return Client
      */
-    public function setUsername($username)
+    public function addIdRetour(\VieilleSardine\UserBundle\Entity\Retour $idRetour)
     {
-        $this->username = $username;
+        $this->idRetour[] = $idRetour;
     
         return $this;
     }
 
     /**
-     * Get username
+     * Remove idRetour
      *
-     * @return string 
+     * @param \VieilleSardine\UserBundle\Entity\Retour $idRetour
      */
-    public function getUsername()
+    public function removeIdRetour(\VieilleSardine\UserBundle\Entity\Retour $idRetour)
     {
-        return $this->username;
+        $this->idRetour->removeElement($idRetour);
     }
 
     /**
-     * Set usernameCanonical
+     * Get idRetour
      *
-     * @param string $usernameCanonical
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdRetour()
+    {
+        return $this->idRetour;
+    }
+
+    /**
+     * Set idCompteClient
+     *
+     * @param \VieilleSardine\UserBundle\Entity\CompteClient $idCompteClient
      * @return Client
      */
-    public function setUsernameCanonical($usernameCanonical)
+    public function setIdCompteClient(\VieilleSardine\UserBundle\Entity\CompteClient $idCompteClient = null)
     {
-        $this->usernameCanonical = $usernameCanonical;
+        $this->idCompteClient = $idCompteClient;
     
         return $this;
     }
 
     /**
-     * Get usernameCanonical
+     * Get idCompteClient
      *
-     * @return string 
+     * @return \VieilleSardine\UserBundle\Entity\CompteClient 
      */
-    public function getUsernameCanonical()
+    public function getIdCompteClient()
     {
-        return $this->usernameCanonical;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return Client
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set emailCanonical
-     *
-     * @param string $emailCanonical
-     * @return Client
-     */
-    public function setEmailCanonical($emailCanonical)
-    {
-        $this->emailCanonical = $emailCanonical;
-    
-        return $this;
-    }
-
-    /**
-     * Get emailCanonical
-     *
-     * @return string 
-     */
-    public function getEmailCanonical()
-    {
-        return $this->emailCanonical;
-    }
-
-    /**
-     * Set enabled
-     *
-     * @param boolean $enabled
-     * @return Client
-     */
-    public function setEnabled($enabled)
-    {
-        $this->enabled = $enabled;
-    
-        return $this;
-    }
-
-    /**
-     * Get enabled
-     *
-     * @return boolean 
-     */
-    public function getEnabled()
-    {
-        return $this->enabled;
-    }
-
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     * @return Client
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-    
-        return $this;
-    }
-
-    /**
-     * Get salt
-     *
-     * @return string 
-     */
-    public function getSalt()
-    {
-        return $this->salt;
-    }
-
-    /**
-     * Get lastLogin
-     *
-     * @return \DateTime 
-     */
-    public function getLastLogin()
-    {
-        return $this->lastLogin;
-    }
-
-    /**
-     * Set locked
-     *
-     * @param boolean $locked
-     * @return Client
-     */
-    public function setLocked($locked)
-    {
-        $this->locked = $locked;
-    
-        return $this;
-    }
-
-    /**
-     * Get locked
-     *
-     * @return boolean 
-     */
-    public function getLocked()
-    {
-        return $this->locked;
-    }
-
-    /**
-     * Set expired
-     *
-     * @param boolean $expired
-     * @return Client
-     */
-    public function setExpired($expired)
-    {
-        $this->expired = $expired;
-    
-        return $this;
-    }
-
-    /**
-     * Get expired
-     *
-     * @return boolean 
-     */
-    public function getExpired()
-    {
-        return $this->expired;
-    }
-
-    /**
-     * Get expiresAt
-     *
-     * @return \DateTime 
-     */
-    public function getExpiresAt()
-    {
-        return $this->expiresAt;
-    }
-
-    /**
-     * Set confirmationToken
-     *
-     * @param string $confirmationToken
-     * @return Client
-     */
-    public function setConfirmationToken($confirmationToken)
-    {
-        $this->confirmationToken = $confirmationToken;
-    
-        return $this;
-    }
-
-    /**
-     * Get confirmationToken
-     *
-     * @return string 
-     */
-    public function getConfirmationToken()
-    {
-        return $this->confirmationToken;
-    }
-
-    /**
-     * Get passwordRequestedAt
-     *
-     * @return \DateTime 
-     */
-    public function getPasswordRequestedAt()
-    {
-        return $this->passwordRequestedAt;
-    }
-
-
-    /**
-     * Get roles
-     *
-     * @return array 
-     */
-    public function getRoles()
-    {
-        return $this->roles;
-    }
-
-    /**
-     * Set credentialsExpired
-     *
-     * @param boolean $credentialsExpired
-     * @return Client
-     */
-    public function setCredentialsExpired($credentialsExpired)
-    {
-        $this->credentialsExpired = $credentialsExpired;
-    
-        return $this;
-    }
-
-    /**
-     * Get credentialsExpired
-     *
-     * @return boolean 
-     */
-    public function getCredentialsExpired()
-    {
-        return $this->credentialsExpired;
-    }
-
-
-    /**
-     * Get credentialsExpireAt
-     *
-     * @return \DateTime 
-     */
-    public function getCredentialsExpireAt()
-    {
-        return $this->credentialsExpireAt;
+        return $this->idCompteClient;
     }
 }

@@ -1,0 +1,37 @@
+Remise:
+    type: entity
+    table: remise
+    fields:
+        idRemise:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_remise
+            generator:
+                strategy: IDENTITY
+        pourcentage:
+            type: float
+            nullable: false
+        montantRemise:
+            type: float
+            nullable: false
+            column: montant_remise
+    manyToMany:
+        idCommande:
+            targetEntity: Commande
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idRemise
+            joinTable:
+                name: liaison_commande_remise
+                joinColumns:
+                    -
+                        name: id_remise
+                        referencedColumnName: id_remise
+                inverseJoinColumns:
+                    -
+                        name: id_commande
+                        referencedColumnName: id_commande
+            orderBy: null
+    lifecycleCallbacks: {  }

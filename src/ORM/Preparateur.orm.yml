@@ -1,0 +1,28 @@
+Preparateur:
+    type: entity
+    table: preparateur
+    fields:
+        idPreparateur:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_preparateur
+            generator:
+                strategy: IDENTITY
+        login:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        password:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        numcouloir:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: NumCouloir
+    lifecycleCallbacks: {  }

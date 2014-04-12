@@ -538,7 +538,7 @@ class appDevDebugProjectContainer extends Container
         $c = new \Symfony\Bridge\Doctrine\ContainerAwareEventManager($this);
         $c->addEventSubscriber(new \FOS\UserBundle\Doctrine\Orm\UserListener($this));
 
-        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => NULL, 'dbname' => 'testVieilleSardine', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array()), $b, $c, array('enum' => 'string'));
+        return $this->services['doctrine.dbal.default_connection'] = $this->get('doctrine.dbal.connection_factory')->createConnection(array('driver' => 'pdo_mysql', 'host' => '127.0.0.1', 'port' => NULL, 'dbname' => 'la_vieille_sardine', 'user' => 'root', 'password' => NULL, 'charset' => 'UTF8', 'driverOptions' => array()), $b, $c, array('enum' => 'string'));
     }
 
     /**
@@ -565,16 +565,22 @@ class appDevDebugProjectContainer extends Container
         $e = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array('C:\\wamp\\www\\VieilleSardine\\vendor\\friendsofsymfony\\user-bundle\\FOS\\UserBundle\\Resources\\config\\doctrine' => 'FOS\\UserBundle\\Entity'));
         $e->setGlobalBasename('mapping');
 
-        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\UserBundle\\Entity', 1 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\CommandeBundle\\Entity'));
+        $f = new \Doctrine\ORM\Mapping\Driver\AnnotationDriver($a, array(0 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\UserBundle\\Entity', 1 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\CommandeBundle\\Entity', 2 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\PanierBundle\\Entity', 3 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\LivraisonBundle\\Entity', 4 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\ProduitBundle\\Entity', 5 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\PaiementBundle\\Entity', 6 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\StockBundle\\Entity', 7 => 'C:\\wamp\\www\\VieilleSardine\\src\\VieilleSardine\\RetourBundle\\Entity'));
 
         $g = new \Doctrine\ORM\Mapping\Driver\DriverChain();
         $g->addDriver($e, 'FOS\\UserBundle\\Entity');
         $g->addDriver($f, 'VieilleSardine\\UserBundle\\Entity');
         $g->addDriver($f, 'VieilleSardine\\CommandeBundle\\Entity');
+        $g->addDriver($f, 'VieilleSardine\\PanierBundle\\Entity');
+        $g->addDriver($f, 'VieilleSardine\\LivraisonBundle\\Entity');
+        $g->addDriver($f, 'VieilleSardine\\ProduitBundle\\Entity');
+        $g->addDriver($f, 'VieilleSardine\\PaiementBundle\\Entity');
+        $g->addDriver($f, 'VieilleSardine\\StockBundle\\Entity');
+        $g->addDriver($f, 'VieilleSardine\\RetourBundle\\Entity');
         $g->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array('C:\\wamp\\www\\VieilleSardine\\vendor\\friendsofsymfony\\user-bundle\\FOS\\UserBundle\\Resources\\config\\doctrine\\model' => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
 
         $h = new \Doctrine\ORM\Configuration();
-        $h->setEntityNamespaces(array('FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'VieilleSardineUserBundle' => 'VieilleSardine\\UserBundle\\Entity', 'VieilleSardineCommandeBundle' => 'VieilleSardine\\CommandeBundle\\Entity'));
+        $h->setEntityNamespaces(array('FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'VieilleSardineUserBundle' => 'VieilleSardine\\UserBundle\\Entity', 'VieilleSardineCommandeBundle' => 'VieilleSardine\\CommandeBundle\\Entity', 'VieilleSardinePanierBundle' => 'VieilleSardine\\PanierBundle\\Entity', 'VieilleSardineLivraisonBundle' => 'VieilleSardine\\LivraisonBundle\\Entity', 'VieilleSardineProduitBundle' => 'VieilleSardine\\ProduitBundle\\Entity', 'VieilleSardinePaiementBundle' => 'VieilleSardine\\PaiementBundle\\Entity', 'VieilleSardineStockBundle' => 'VieilleSardine\\StockBundle\\Entity', 'VieilleSardineRetourBundle' => 'VieilleSardine\\RetourBundle\\Entity'));
         $h->setMetadataCacheImpl($b);
         $h->setQueryCacheImpl($c);
         $h->setResultCacheImpl($d);
@@ -726,7 +732,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['faker.generator'] = $instance = call_user_func(array('Faker\\Factory', 'create'), 'en_US');
 
-        $instance->seed(10243);
+        $instance->seed(27269);
 
         return $instance;
     }
@@ -1343,7 +1349,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_ChangePassword_Form_TypeService()
     {
-        return $this->services['fos_user.change_password.form.type'] = new \FOS\UserBundle\Form\Type\ChangePasswordFormType('VieilleSardine\\UserBundle\\Entity\\Client');
+        return $this->services['fos_user.change_password.form.type'] = new \FOS\UserBundle\Form\Type\ChangePasswordFormType('VieilleSardine\\UserBundle\\Entity\\CompteClient');
     }
 
     /**
@@ -1421,7 +1427,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_Profile_Form_TypeService()
     {
-        return $this->services['fos_user.profile.form.type'] = new \FOS\UserBundle\Form\Type\ProfileFormType('VieilleSardine\\UserBundle\\Entity\\Client');
+        return $this->services['fos_user.profile.form.type'] = new \FOS\UserBundle\Form\Type\ProfileFormType('VieilleSardine\\UserBundle\\Entity\\CompteClient');
     }
 
     /**
@@ -1447,7 +1453,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_Registration_Form_TypeService()
     {
-        return $this->services['fos_user.registration.form.type'] = new \FOS\UserBundle\Form\Type\RegistrationFormType('VieilleSardine\\UserBundle\\Entity\\Client');
+        return $this->services['fos_user.registration.form.type'] = new \FOS\UserBundle\Form\Type\RegistrationFormType('VieilleSardine\\UserBundle\\Entity\\CompteClient');
     }
 
     /**
@@ -1473,7 +1479,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFosUser_Resetting_Form_TypeService()
     {
-        return $this->services['fos_user.resetting.form.type'] = new \FOS\UserBundle\Form\Type\ResettingFormType('VieilleSardine\\UserBundle\\Entity\\Client');
+        return $this->services['fos_user.resetting.form.type'] = new \FOS\UserBundle\Form\Type\ResettingFormType('VieilleSardine\\UserBundle\\Entity\\CompteClient');
     }
 
     /**
@@ -1514,7 +1520,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('fos_user.util.email_canonicalizer');
 
-        return $this->services['fos_user.user_manager'] = new \FOS\UserBundle\Doctrine\UserManager($this->get('security.encoder_factory'), $a, $a, $this->get('doctrine')->getManager(NULL), 'VieilleSardine\\UserBundle\\Entity\\Client');
+        return $this->services['fos_user.user_manager'] = new \FOS\UserBundle\Doctrine\UserManager($this->get('security.encoder_factory'), $a, $a, $this->get('doctrine')->getManager(NULL), 'VieilleSardine\\UserBundle\\Entity\\CompteClient');
     }
 
     /**
@@ -2176,7 +2182,7 @@ class appDevDebugProjectContainer extends Container
         $p = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, $this->get('security.authentication.session_strategy'), $l, 'main', $o, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $l, array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d, $this->get('form.csrf_provider'));
         $p->setRememberMeServices($m);
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $n, 3 => $p, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $m, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '53416ccc50085', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $l, 'fos_user_security_login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $n, 3 => $p, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $m, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '53491bf4d6296', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $l, 'fos_user_security_login', false), NULL, NULL, $a));
     }
 
     /**
@@ -3647,7 +3653,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('security.user_checker');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('53416ccc50085')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('53491bf4d6296')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -3824,7 +3830,7 @@ class appDevDebugProjectContainer extends Container
             'database_driver' => 'pdo_mysql',
             'database_host' => '127.0.0.1',
             'database_port' => NULL,
-            'database_name' => 'testVieilleSardine',
+            'database_name' => 'la_vieille_sardine',
             'database_user' => 'root',
             'database_password' => NULL,
             'mailer_transport' => 'smtp',
@@ -4298,7 +4304,7 @@ class appDevDebugProjectContainer extends Container
             'fos_user.storage' => 'orm',
             'fos_user.firewall_name' => 'main',
             'fos_user.model_manager_name' => NULL,
-            'fos_user.model.user.class' => 'VieilleSardine\\UserBundle\\Entity\\Client',
+            'fos_user.model.user.class' => 'VieilleSardine\\UserBundle\\Entity\\CompteClient',
             'fos_user.template.engine' => 'twig',
             'fos_user.profile.form.type' => 'fos_user_profile',
             'fos_user.profile.form.name' => 'fos_user_profile_form',
