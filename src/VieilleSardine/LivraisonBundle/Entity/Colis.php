@@ -52,7 +52,7 @@ class Colis
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lignes", inversedBy="idColis")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Lignes", inversedBy="idColis")
      * @ORM\JoinTable(name="colis_contient_lignes",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_colis", referencedColumnName="id_colis")
@@ -67,7 +67,7 @@ class Colis
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Commande", mappedBy="idColis")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Commande", mappedBy="idColis")
      */
     private $idCommande;
 

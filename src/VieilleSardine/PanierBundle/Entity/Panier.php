@@ -24,7 +24,7 @@ class Panier
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lignes", inversedBy="idPanier")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Lignes", inversedBy="idPanier")
      * @ORM\JoinTable(name="panier_contient_ligne",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_panier", referencedColumnName="id_panier")
@@ -39,7 +39,7 @@ class Panier
     /**
      * @var \Client
      *
-     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\UserBundle\Entity\Client")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
      * })

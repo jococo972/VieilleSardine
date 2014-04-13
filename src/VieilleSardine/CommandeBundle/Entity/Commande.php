@@ -52,7 +52,7 @@ class Commande
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Colis", inversedBy="idCommande")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\LivraisonBundle\Entity\Colis", inversedBy="idCommande")
      * @ORM\JoinTable(name="commande_constituee_colis",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
@@ -82,7 +82,7 @@ class Commande
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Client", mappedBy="idCommande")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\UserBundle\Entity\Client", mappedBy="idCommande")
      */
     private $idClient;
 

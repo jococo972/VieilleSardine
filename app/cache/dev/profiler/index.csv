@@ -1,1 +1,7 @@
-952d47,127.0.0.1,GET,http://localhost/VieilleSardine/web/app_dev.php/,1397303515,
+df75c0,127.0.0.1,GET,http://localhost/VieilleSardine/web/app_dev.php/,1397388769,
+f873e5,127.0.0.1,GET,http://localhost/VieilleSardine/web/app_dev.php/connexion,1397388771,
+b28f50,127.0.0.1,POST,http://localhost/VieilleSardine/web/app_dev.php/login_check,1397388777,
+22632e,127.0.0.1,GET,http://localhost/VieilleSardine/web/app_dev.php/,1397388778,
+ae4539,127.0.0.1,GET,http://localhost/VieilleSardine/web/app_dev.php/,1397388785,
+85e2b2,127.0.0.1,GET,http://localhost/VieilleSardine/web/app_dev.php/deconnexion,1397388789,
+de98d3,127.0.0.1,GET,http://localhost/VieilleSardine/web/app_dev.php/,1397388789,

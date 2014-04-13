@@ -36,9 +36,12 @@ class StockPhysique
     private $stockReserve;
 
     /**
-     * @var integer
+     * @var \Produit
      *
-     * @ORM\Column(name="id_produit", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\ProduitBundle\Entity\Produit")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     * })
      */
     private $idProduit;
 
@@ -103,10 +106,10 @@ class StockPhysique
     /**
      * Set idProduit
      *
-     * @param integer $idProduit
+     * @param \VieilleSardine\StockBundle\Entity\Produit $idProduit
      * @return StockPhysique
      */
-    public function setIdProduit($idProduit)
+    public function setIdProduit(\VieilleSardine\StockBundle\Entity\Produit $idProduit = null)
     {
         $this->idProduit = $idProduit;
     
@@ -116,7 +119,7 @@ class StockPhysique
     /**
      * Get idProduit
      *
-     * @return integer 
+     * @return \VieilleSardine\StockBundle\Entity\Produit 
      */
     public function getIdProduit()
     {

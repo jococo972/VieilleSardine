@@ -61,8 +61,6 @@ class appDevDebugProjectContainer extends Container
             'doctrine.orm.validator.unique' => 'getDoctrine_Orm_Validator_UniqueService',
             'doctrine.orm.validator_initializer' => 'getDoctrine_Orm_ValidatorInitializerService',
             'event_dispatcher' => 'getEventDispatcherService',
-            'faker.entities.0' => 'getFaker_Entities_0Service',
-            'faker.entities.0.metadata' => 'getFaker_Entities_0_MetadataService',
             'faker.formatter_factory' => 'getFaker_FormatterFactoryService',
             'faker.generator' => 'getFaker_GeneratorService',
             'faker.populator' => 'getFaker_PopulatorService',
@@ -682,32 +680,6 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the 'faker.entities.0' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Faker\ORM\Doctrine\EntityPopulator A Faker\ORM\Doctrine\EntityPopulator instance.
-     */
-    protected function getFaker_Entities_0Service()
-    {
-        return $this->services['faker.entities.0'] = new \Faker\ORM\Doctrine\EntityPopulator($this->get('faker.entities.0.metadata'));
-    }
-
-    /**
-     * Gets the 'faker.entities.0.metadata' service.
-     *
-     * This service is shared.
-     * This method always returns the same instance of the service.
-     *
-     * @return Doctrine\ORM\Mapping\ClassMetadata A Doctrine\ORM\Mapping\ClassMetadata instance.
-     */
-    protected function getFaker_Entities_0_MetadataService()
-    {
-        return $this->services['faker.entities.0.metadata'] = $this->get('doctrine.orm.default_entity_manager')->getClassMetadata('VieilleSardine\\UserBundle\\Entity\\Produit');
-    }
-
-    /**
      * Gets the 'faker.formatter_factory' service.
      *
      * This service is shared.
@@ -732,7 +704,7 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['faker.generator'] = $instance = call_user_func(array('Faker\\Factory', 'create'), 'en_US');
 
-        $instance->seed(27269);
+        $instance->seed(777);
 
         return $instance;
     }
@@ -747,11 +719,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFaker_PopulatorService()
     {
-        $this->services['faker.populator'] = $instance = new \Faker\ORM\Doctrine\Populator($this->get('faker.generator'), $this->get('doctrine.orm.default_entity_manager'));
-
-        $instance->addEntity($this->get('faker.entities.0'), 5, array(), array(), false);
-
-        return $instance;
+        return $this->services['faker.populator'] = new \Faker\ORM\Doctrine\Populator($this->get('faker.generator'), $this->get('doctrine.orm.default_entity_manager'));
     }
 
     /**
@@ -2182,7 +2150,7 @@ class appDevDebugProjectContainer extends Container
         $p = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, $this->get('security.authentication.session_strategy'), $l, 'main', $o, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $l, array('login_path' => 'fos_user_security_login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => 'fos_user_security_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d, $this->get('form.csrf_provider'));
         $p->setRememberMeServices($m);
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $n, 3 => $p, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $m, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '53491bf4d6296', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $l, 'fos_user_security_login', false), NULL, NULL, $a));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $n, 3 => $p, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $m, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '534a75df1b2ad', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $l, 'fos_user_security_login', false), NULL, NULL, $a));
     }
 
     /**
@@ -3653,7 +3621,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('security.user_checker');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('53491bf4d6296')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username_email'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('534a75df1b2ad')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 

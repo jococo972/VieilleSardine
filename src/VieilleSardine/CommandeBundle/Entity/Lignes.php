@@ -31,7 +31,7 @@ class Lignes
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Colis", mappedBy="idLignes")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\LivraisonBundle\Entity\Colis", mappedBy="idLignes")
      */
     private $idColis;
 
@@ -45,7 +45,7 @@ class Lignes
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Panier", mappedBy="idLigne")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\PanierBundle\Entity\Panier", mappedBy="idLigne")
      */
     private $idPanier;
 

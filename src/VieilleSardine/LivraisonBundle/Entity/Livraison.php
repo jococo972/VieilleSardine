@@ -88,11 +88,11 @@ class Livraison
     private $idBonPreparation;
 
     /**
-     * @var \Livraison
+     * @var \Commande
      *
-     * @ORM\ManyToOne(targetEntity="Livraison")
+     * @ORM\ManyToOne(targetEntity="Commande")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_livraison")
+     *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
      * })
      */
     private $idCommande;
@@ -289,10 +289,10 @@ class Livraison
     /**
      * Set idCommande
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Livraison $idCommande
+     * @param \VieilleSardine\LivraisonBundle\Entity\Commande $idCommande
      * @return Livraison
      */
-    public function setIdCommande(\VieilleSardine\LivraisonBundle\Entity\Livraison $idCommande = null)
+    public function setIdCommande(\VieilleSardine\LivraisonBundle\Entity\Commande $idCommande = null)
     {
         $this->idCommande = $idCommande;
     
@@ -302,7 +302,7 @@ class Livraison
     /**
      * Get idCommande
      *
-     * @return \VieilleSardine\LivraisonBundle\Entity\Livraison 
+     * @return \VieilleSardine\LivraisonBundle\Entity\Commande 
      */
     public function getIdCommande()
     {

@@ -2829,7 +2829,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>53491bf4d6296</argument>
+            <argument>534a75df1b2ad</argument>
           </service>
         </argument>
       </argument>
@@ -3160,7 +3160,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>53491bf4d6296</argument>
+            <argument>534a75df1b2ad</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -4030,27 +4030,14 @@
     <service id="faker.generator" class="Faker\Factory" factory-method="create">
       <argument>en_US</argument>
       <call method="seed">
-        <argument>27269</argument>
+        <argument>777</argument>
       </call>
     </service>
     <service id="faker.populator" class="Faker\ORM\Doctrine\Populator">
       <argument type="service" id="faker.generator"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
-      <call method="addEntity">
-        <argument type="service" id="faker.entities.0"/>
-        <argument>5</argument>
-        <argument type="collection"/>
-        <argument type="collection"/>
-        <argument>false</argument>
-      </call>
     </service>
     <service id="faker.formatter_factory" class="Bazinga\Bundle\FakerBundle\Factory\FormatterFactory"/>
-    <service id="faker.entities.0.metadata" class="Doctrine\ORM\Mapping\ClassMetadata" factory-method="getClassMetadata" factory-service="doctrine.orm.entity_manager">
-      <argument>VieilleSardine\UserBundle\Entity\Produit</argument>
-    </service>
-    <service id="faker.entities.0" class="Faker\ORM\Doctrine\EntityPopulator">
-      <argument type="service" id="faker.entities.0.metadata"/>
-    </service>
     <service id="monolog.logger.request" class="Symfony\Bridge\Monolog\Logger">
       <argument>request</argument>
       <call method="pushHandler">

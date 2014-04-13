@@ -75,12 +75,12 @@ Livraison:
             orderBy: null
     manyToOne:
         idCommande:
-            targetEntity: Livraison
+            targetEntity: Commande
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
                 id_commande:
-                    referencedColumnName: id_livraison
+                    referencedColumnName: id_commande
             orphanRemoval: false
     lifecycleCallbacks: {  }

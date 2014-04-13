@@ -88,6 +88,6 @@ fos_user:
 bazinga_faker:
     orm: doctrine
     entities:
-        VieilleSardine\UserBundle\Entity\Produit:
-            number: 5
+#        VieilleSardine\CommandeBundle\Entity\Commande:
+#            number: 5
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#

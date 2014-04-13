@@ -108,7 +108,7 @@ class Client
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Commande", inversedBy="idClient")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Commande", inversedBy="idClient")
      * @ORM\JoinTable(name="commande_passee_livree",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
@@ -123,7 +123,7 @@ class Client
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Retour", mappedBy="idClient")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\RetourBundle\Entity\Retour", mappedBy="idClient")
      */
     private $idRetour;
 

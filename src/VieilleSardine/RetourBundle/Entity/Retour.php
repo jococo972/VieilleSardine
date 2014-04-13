@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Retour
  *
  * @ORM\Table(name="retour")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="VieilleSardine\RetourBundle\Entity\RetourRepository")
  */
 class Retour
 {

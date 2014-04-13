@@ -10,9 +10,14 @@ MoyenDePaiement:
             column: id_paiement
             generator:
                 strategy: IDENTITY
+    manyToOne:
         idCommande:
-            type: integer
-            unsigned: false
-            nullable: false
-            column: id_commande
+            targetEntity: Commande
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_commande:
+                    referencedColumnName: id_commande
+            orphanRemoval: false
     lifecycleCallbacks: {  }

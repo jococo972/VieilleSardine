@@ -22,9 +22,12 @@ class MoyenDePaiement
     private $idPaiement;
 
     /**
-     * @var integer
+     * @var \Commande
      *
-     * @ORM\Column(name="id_commande", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Commande")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
+     * })
      */
     private $idCommande;
 
@@ -43,10 +46,10 @@ class MoyenDePaiement
     /**
      * Set idCommande
      *
-     * @param integer $idCommande
+     * @param \VieilleSardine\PaiementBundle\Entity\Commande $idCommande
      * @return MoyenDePaiement
      */
-    public function setIdCommande($idCommande)
+    public function setIdCommande(\VieilleSardine\PaiementBundle\Entity\Commande $idCommande = null)
     {
         $this->idCommande = $idCommande;
     
@@ -56,7 +59,7 @@ class MoyenDePaiement
     /**
      * Get idCommande
      *
-     * @return integer 
+     * @return \VieilleSardine\PaiementBundle\Entity\Commande 
      */
     public function getIdCommande()
     {
