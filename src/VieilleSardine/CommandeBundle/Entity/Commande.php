@@ -210,10 +210,10 @@ class Commande
     /**
      * Add idColis
      *
-     * @param \VieilleSardine\CommandeBundle\Entity\Colis $idColis
+     * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
      * @return Commande
      */
-    public function addIdColi(\VieilleSardine\CommandeBundle\Entity\Colis $idColis)
+    public function addIdColi(\VieilleSardine\LivraisonBundle\Entity\Colis $idColis)
     {
         $this->idColis[] = $idColis;
     
@@ -223,9 +223,9 @@ class Commande
     /**
      * Remove idColis
      *
-     * @param \VieilleSardine\CommandeBundle\Entity\Colis $idColis
+     * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
      */
-    public function removeIdColi(\VieilleSardine\CommandeBundle\Entity\Colis $idColis)
+    public function removeIdColi(\VieilleSardine\LivraisonBundle\Entity\Colis $idColis)
     {
         $this->idColis->removeElement($idColis);
     }
@@ -276,10 +276,10 @@ class Commande
     /**
      * Add idClient
      *
-     * @param \VieilleSardine\CommandeBundle\Entity\Client $idClient
+     * @param \VieilleSardine\UserBundle\Entity\Client $idClient
      * @return Commande
      */
-    public function addIdClient(\VieilleSardine\CommandeBundle\Entity\Client $idClient)
+    public function addIdClient(\VieilleSardine\UserBundle\Entity\Client $idClient)
     {
         $this->idClient[] = $idClient;
     
@@ -289,9 +289,9 @@ class Commande
     /**
      * Remove idClient
      *
-     * @param \VieilleSardine\CommandeBundle\Entity\Client $idClient
+     * @param \VieilleSardine\UserBundle\Entity\Client $idClient
      */
-    public function removeIdClient(\VieilleSardine\CommandeBundle\Entity\Client $idClient)
+    public function removeIdClient(\VieilleSardine\UserBundle\Entity\Client $idClient)
     {
         $this->idClient->removeElement($idClient);
     }

@@ -106,10 +106,10 @@ class Lignes
     /**
      * Add idColis
      *
-     * @param \VieilleSardine\CommandeBundle\Entity\Colis $idColis
+     * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
      * @return Lignes
      */
-    public function addIdColi(\VieilleSardine\CommandeBundle\Entity\Colis $idColis)
+    public function addIdColi(\VieilleSardine\LivraisonBundle\Entity\Colis $idColis)
     {
         $this->idColis[] = $idColis;
     
@@ -119,9 +119,9 @@ class Lignes
     /**
      * Remove idColis
      *
-     * @param \VieilleSardine\CommandeBundle\Entity\Colis $idColis
+     * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
      */
-    public function removeIdColi(\VieilleSardine\CommandeBundle\Entity\Colis $idColis)
+    public function removeIdColi(\VieilleSardine\LivraisonBundle\Entity\Colis $idColis)
     {
         $this->idColis->removeElement($idColis);
     }
@@ -172,10 +172,10 @@ class Lignes
     /**
      * Add idPanier
      *
-     * @param \VieilleSardine\CommandeBundle\Entity\Panier $idPanier
+     * @param \VieilleSardine\PanierBundle\Entity\Panier $idPanier
      * @return Lignes
      */
-    public function addIdPanier(\VieilleSardine\CommandeBundle\Entity\Panier $idPanier)
+    public function addIdPanier(\VieilleSardine\PanierBundle\Entity\Panier $idPanier)
     {
         $this->idPanier[] = $idPanier;
     
@@ -185,9 +185,9 @@ class Lignes
     /**
      * Remove idPanier
      *
-     * @param \VieilleSardine\CommandeBundle\Entity\Panier $idPanier
+     * @param \VieilleSardine\PanierBundle\Entity\Panier $idPanier
      */
-    public function removeIdPanier(\VieilleSardine\CommandeBundle\Entity\Panier $idPanier)
+    public function removeIdPanier(\VieilleSardine\PanierBundle\Entity\Panier $idPanier)
     {
         $this->idPanier->removeElement($idPanier);
     }
