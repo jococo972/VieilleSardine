@@ -68,10 +68,10 @@ class Panier
     /**
      * Add idLigne
      *
-     * @param \VieilleSardine\PanierBundle\Entity\Lignes $idLigne
+     * @param \VieilleSardine\CommandeBundle\Entity\Lignes $idLigne
      * @return Panier
      */
-    public function addIdLigne(\VieilleSardine\PanierBundle\Entity\Lignes $idLigne)
+    public function addIdLigne(\VieilleSardine\CommandeBundle\Entity\Lignes $idLigne)
     {
         $this->idLigne[] = $idLigne;
     
@@ -81,9 +81,9 @@ class Panier
     /**
      * Remove idLigne
      *
-     * @param \VieilleSardine\PanierBundle\Entity\Lignes $idLigne
+     * @param \VieilleSardine\CommandeBundle\Entity\Lignes $idLigne
      */
-    public function removeIdLigne(\VieilleSardine\PanierBundle\Entity\Lignes $idLigne)
+    public function removeIdLigne(\VieilleSardine\CommandeBundle\Entity\Lignes $idLigne)
     {
         $this->idLigne->removeElement($idLigne);
     }
@@ -101,10 +101,10 @@ class Panier
     /**
      * Set idClient
      *
-     * @param \VieilleSardine\PanierBundle\Entity\Client $idClient
+     * @param \VieilleSardine\UserBundle\Entity\Client $idClient
      * @return Panier
      */
-    public function setIdClient(\VieilleSardine\PanierBundle\Entity\Client $idClient = null)
+    public function setIdClient(\VieilleSardine\UserBundle\Entity\Client $idClient = null)
     {
         $this->idClient = $idClient;
     
@@ -114,7 +114,7 @@ class Panier
     /**
      * Get idClient
      *
-     * @return \VieilleSardine\PanierBundle\Entity\Client 
+     * @return \VieilleSardine\UserBundle\Entity\Client 
      */
     public function getIdClient()
     {
