@@ -202,10 +202,10 @@ class Colis
     /**
      * Add idLignes
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Lignes $idLignes
+     * @param \VieilleSardine\CommandeBundle\Entity\Lignes $idLignes
      * @return Colis
      */
-    public function addIdLigne(\VieilleSardine\LivraisonBundle\Entity\Lignes $idLignes)
+    public function addIdLigne(\VieilleSardine\CommandeBundle\Entity\Lignes $idLignes)
     {
         $this->idLignes[] = $idLignes;
     
@@ -215,9 +215,9 @@ class Colis
     /**
      * Remove idLignes
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Lignes $idLignes
+     * @param \VieilleSardine\CommandeBundle\Entity\Lignes $idLignes
      */
-    public function removeIdLigne(\VieilleSardine\LivraisonBundle\Entity\Lignes $idLignes)
+    public function removeIdLigne(\VieilleSardine\CommandeBundle\Entity\Lignes $idLignes)
     {
         $this->idLignes->removeElement($idLignes);
     }
@@ -235,10 +235,10 @@ class Colis
     /**
      * Add idCommande
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Commande $idCommande
+     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCommande
      * @return Colis
      */
-    public function addIdCommande(\VieilleSardine\LivraisonBundle\Entity\Commande $idCommande)
+    public function addIdCommande(\VieilleSardine\CommandeBundle\Entity\Commande $idCommande)
     {
         $this->idCommande[] = $idCommande;
     
@@ -248,9 +248,9 @@ class Colis
     /**
      * Remove idCommande
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Commande $idCommande
+     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCommande
      */
-    public function removeIdCommande(\VieilleSardine\LivraisonBundle\Entity\Commande $idCommande)
+    public function removeIdCommande(\VieilleSardine\CommandeBundle\Entity\Commande $idCommande)
     {
         $this->idCommande->removeElement($idCommande);
     }
