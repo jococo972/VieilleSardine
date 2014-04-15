@@ -436,10 +436,10 @@ class Client
     /**
      * Add idCommande
      *
-     * @param \VieilleSardine\UserBundle\Entity\Commande $idCommande
+     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCommande
      * @return Client
      */
-    public function addIdCommande(\VieilleSardine\UserBundle\Entity\Commande $idCommande)
+    public function addIdCommande(\VieilleSardine\CommandeBundle\Entity\Commande $idCommande)
     {
         $this->idCommande[] = $idCommande;
     
@@ -449,9 +449,9 @@ class Client
     /**
      * Remove idCommande
      *
-     * @param \VieilleSardine\UserBundle\Entity\Commande $idCommande
+     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCommande
      */
-    public function removeIdCommande(\VieilleSardine\UserBundle\Entity\Commande $idCommande)
+    public function removeIdCommande(\VieilleSardine\CommandeBundle\Entity\Commande $idCommande)
     {
         $this->idCommande->removeElement($idCommande);
     }
@@ -469,10 +469,10 @@ class Client
     /**
      * Add idRetour
      *
-     * @param \VieilleSardine\UserBundle\Entity\Retour $idRetour
+     * @param \VieilleSardine\RetourBundle\Entity\Retour $idRetour
      * @return Client
      */
-    public function addIdRetour(\VieilleSardine\UserBundle\Entity\Retour $idRetour)
+    public function addIdRetour(\VieilleSardine\RetourBundle\Entity\Retour $idRetour)
     {
         $this->idRetour[] = $idRetour;
     
@@ -482,9 +482,9 @@ class Client
     /**
      * Remove idRetour
      *
-     * @param \VieilleSardine\UserBundle\Entity\Retour $idRetour
+     * @param \VieilleSardine\RetourBundle\Entity\Retour $idRetour
      */
-    public function removeIdRetour(\VieilleSardine\UserBundle\Entity\Retour $idRetour)
+    public function removeIdRetour(\VieilleSardine\RetourBundle\Entity\Retour $idRetour)
     {
         $this->idRetour->removeElement($idRetour);
     }

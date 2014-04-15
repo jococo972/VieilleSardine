@@ -54,7 +54,7 @@ class CompteClient extends BaseUser
     public function setDateCreate($dateCreate)
     {
         $this->dateCreate = $dateCreate;
-    
+
         return $this;
     }
 
@@ -76,5 +76,5 @@ class CompteClient extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
+}
 }
