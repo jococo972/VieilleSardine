@@ -185,9 +185,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'VieilleSardine\\CommandeBundle\\Controller\\CommandeController::indexAction',  '_route' => 'vieille_sardine_commande_homepage',);
         }
 
-        // fos_user_security_login
-        if ($pathinfo === '/connexion') {
-            return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
+        // ajout_produit_commande_vpc
+        if ($pathinfo === '/ajoutProduit') {
+            return array (  '_controller' => 'VieilleSardine\\CommandeBundle\\Controller\\CommandeController::CreerFormVPCAction',  '_route' => 'ajout_produit_commande_vpc',);
+        }
+
+        if (0 === strpos($pathinfo, '/co')) {
+            // commande_groupee
+            if ($pathinfo === '/commandeGroupe') {
+                return array (  '_controller' => 'VieilleSardine\\CommandeBundle\\Controller\\CommandeGroupeController::indexAction',  '_route' => 'commande_groupee',);
+            }
+
+            // fos_user_security_login
+            if ($pathinfo === '/connexion') {
+                return array (  '_controller' => 'FOS\\UserBundle\\Controller\\SecurityController::loginAction',  '_route' => 'fos_user_security_login',);
+            }
+
         }
 
         // fos_user_security_check

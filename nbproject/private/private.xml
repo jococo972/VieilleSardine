@@ -11,6 +11,13 @@
             <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Resources/config/routing.yml</file>
             <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Controller/UserController.php</file>
             <file>file:/C:/wamp/www/VieilleSardine/app/config/config_dev.yml</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/CommandeBundle/Controller/CommandeController.php</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/CommandeBundle/Controller/CommandeGroupeController.php</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/CommandeBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/CommandeBundle/Resources/views/IHMCommandeGroupe</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Entity/ClientRepository.php</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Entity/Client.php</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Entity/CompteClient.php</file>
         </group>
     </open-files>
 </project-private>
