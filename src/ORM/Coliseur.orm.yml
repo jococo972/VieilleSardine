@@ -1,13 +1,13 @@
-Preparateur:
+Coliseur:
     type: entity
-    table: preparateur
+    table: coliseur
     fields:
-        idPreparateur:
+        idColiseur:
             id: true
             type: integer
             unsigned: false
             nullable: false
-            column: id_preparateur
+            column: id_coliseur
             generator:
                 strategy: IDENTITY
         login:
@@ -20,14 +20,4 @@ Preparateur:
             length: 30
             fixed: false
             nullable: false
-    manyToOne:
-        numcouloir:
-            targetEntity: Couloir
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                NumCouloir:
-                    referencedColumnName: id_couloir
-            orphanRemoval: false
     lifecycleCallbacks: {  }

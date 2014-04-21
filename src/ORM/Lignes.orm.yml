@@ -1,0 +1,49 @@
+Lignes:
+    type: entity
+    table: lignes
+    fields:
+        idLigne:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_ligne
+            generator:
+                strategy: IDENTITY
+        quantite:
+            type: integer
+            unsigned: false
+            nullable: false
+    manyToMany:
+        idColis:
+            targetEntity: Colis
+            cascade: {  }
+            mappedBy: idLignes
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        idCommande:
+            targetEntity: Commande
+            cascade: {  }
+            mappedBy: idLigne
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        idPanier:
+            targetEntity: Panier
+            cascade: {  }
+            mappedBy: idLigne
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    manyToOne:
+        idProduit:
+            targetEntity: Produit
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_produit:
+                    referencedColumnName: id_produit
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,33 @@
+ConfirmationInscription:
+    type: entity
+    table: confirmation_inscription
+    fields:
+        idConfirmation:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_confirmation
+            generator:
+                strategy: IDENTITY
+        objet:
+            type: string
+            length: 140
+            fixed: false
+            nullable: false
+        destinataire:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+    manyToOne:
+        idClient:
+            targetEntity: Client
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_client:
+                    referencedColumnName: id_client
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

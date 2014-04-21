@@ -1,0 +1,12 @@
+PayumSecurityToken:
+    type: entity
+    table: payum_security_token
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+    lifecycleCallbacks: {  }

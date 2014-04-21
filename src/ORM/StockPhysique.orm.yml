@@ -1,0 +1,33 @@
+StockPhysique:
+    type: entity
+    table: stock_physique
+    fields:
+        idStock:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_stock
+            generator:
+                strategy: IDENTITY
+        stockDisponible:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: stock_disponible
+        stockReserve:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: stock_reserve
+    manyToOne:
+        idProduit:
+            targetEntity: Produit
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_produit:
+                    referencedColumnName: id_produit
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,37 @@
+CommandeGroupee:
+    type: entity
+    table: commande_groupee
+    fields:
+        nbCmdSimple:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: nb_cmd_simple
+    manyToMany:
+        idCmdSimple:
+            targetEntity: CommandeSimple
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idCmdGroupee
+            joinTable:
+                name: composition_cmd_groupee
+                joinColumns:
+                    -
+                        name: id_cmd_groupee
+                        referencedColumnName: id_cmd_groupee
+                inverseJoinColumns:
+                    -
+                        name: id_cmd_simple
+                        referencedColumnName: id_cmd_simple
+            orderBy: null
+    oneToOne:
+        idCmdGroupee:
+            targetEntity: Commande
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_cmd_groupee:
+                    referencedColumnName: id_commande
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
