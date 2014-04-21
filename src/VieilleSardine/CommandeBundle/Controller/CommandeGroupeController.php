@@ -19,6 +19,12 @@ class CommandeGroupeController extends Controller
     {
         return $this->render('VieilleSardineCommandeBundle:Commande:IHMCommandeGroupeVPC.html.twig');
     }
+    // Méthode qui récupère toutes les infos de la commande groupée
+    public function GetInfoCommandeGroupe()
+    {
+        
+    }
+    
     /*
     // Méthode qui créer le formulaire utilisé pour ajouter un produit à la commande
     public function CreerFormVPCAction(Request $request)
