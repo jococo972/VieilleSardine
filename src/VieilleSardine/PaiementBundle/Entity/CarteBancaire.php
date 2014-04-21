@@ -45,7 +45,7 @@ class CarteBancaire
     /**
      * @var \Client
      *
-     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\UserBundle\Entity\Client")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
      * })

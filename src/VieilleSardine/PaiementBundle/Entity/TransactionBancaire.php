@@ -57,16 +57,6 @@ class TransactionBancaire
     private $remboursement;
 
     /**
-     * @var \MoyenDePaiement
-     *
-     * @ORM\ManyToOne(targetEntity="MoyenDePaiement")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_paiement", referencedColumnName="id_paiement")
-     * })
-     */
-    private $idPaiement;
-
-    /**
      * @var \CarteBancaire
      *
      * @ORM\ManyToOne(targetEntity="CarteBancaire")
@@ -75,6 +65,16 @@ class TransactionBancaire
      * })
      */
     private $numCarte;
+
+    /**
+     * @var \MoyenDePaiement
+     *
+     * @ORM\ManyToOne(targetEntity="MoyenDePaiement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_paiement", referencedColumnName="id_paiement")
+     * })
+     */
+    private $idPaiement;
 
 
 
@@ -204,29 +204,6 @@ class TransactionBancaire
     }
 
     /**
-     * Set idPaiement
-     *
-     * @param \VieilleSardine\PaiementBundle\Entity\MoyenDePaiement $idPaiement
-     * @return TransactionBancaire
-     */
-    public function setIdPaiement(\VieilleSardine\PaiementBundle\Entity\MoyenDePaiement $idPaiement = null)
-    {
-        $this->idPaiement = $idPaiement;
-    
-        return $this;
-    }
-
-    /**
-     * Get idPaiement
-     *
-     * @return \VieilleSardine\PaiementBundle\Entity\MoyenDePaiement 
-     */
-    public function getIdPaiement()
-    {
-        return $this->idPaiement;
-    }
-
-    /**
      * Set numCarte
      *
      * @param \VieilleSardine\PaiementBundle\Entity\CarteBancaire $numCarte
@@ -247,5 +224,28 @@ class TransactionBancaire
     public function getNumCarte()
     {
         return $this->numCarte;
+    }
+
+    /**
+     * Set idPaiement
+     *
+     * @param \VieilleSardine\PaiementBundle\Entity\MoyenDePaiement $idPaiement
+     * @return TransactionBancaire
+     */
+    public function setIdPaiement(\VieilleSardine\PaiementBundle\Entity\MoyenDePaiement $idPaiement = null)
+    {
+        $this->idPaiement = $idPaiement;
+    
+        return $this;
+    }
+
+    /**
+     * Get idPaiement
+     *
+     * @return \VieilleSardine\PaiementBundle\Entity\MoyenDePaiement 
+     */
+    public function getIdPaiement()
+    {
+        return $this->idPaiement;
     }
 }

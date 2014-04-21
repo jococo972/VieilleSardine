@@ -24,7 +24,7 @@ class MoyenDePaiement
     /**
      * @var \Commande
      *
-     * @ORM\ManyToOne(targetEntity="Commande")
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\CommandeBundle\Entity\Commande")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
      * })
