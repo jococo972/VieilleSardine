@@ -45,7 +45,7 @@ class Retour
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Colis", inversedBy="idRetour")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\LivraisonBundle\Entity\Colis", inversedBy="idRetour")
      * @ORM\JoinTable(name="retour_concerne_colis",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_retour", referencedColumnName="id_retour")
@@ -60,7 +60,7 @@ class Retour
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Client", inversedBy="idRetour")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\UserBundle\Entity\Client", inversedBy="idRetour")
      * @ORM\JoinTable(name="retour_par_client",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_retour", referencedColumnName="id_retour")
@@ -75,7 +75,7 @@ class Retour
     /**
      * @var \Commande
      *
-     * @ORM\ManyToOne(targetEntity="Commande")
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\CommandeBundle\Entity\Commande")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
      * })
@@ -174,10 +174,10 @@ class Retour
     /**
      * Add idColis
      *
-     * @param \VieilleSardine\RetourBundle\Entity\Colis $idColis
+     * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
      * @return Retour
      */
-    public function addIdColi(\VieilleSardine\RetourBundle\Entity\Colis $idColis)
+    public function addIdColi(\VieilleSardine\LivraisonBundle\Entity\Colis $idColis)
     {
         $this->idColis[] = $idColis;
     
@@ -187,9 +187,9 @@ class Retour
     /**
      * Remove idColis
      *
-     * @param \VieilleSardine\RetourBundle\Entity\Colis $idColis
+     * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
      */
-    public function removeIdColi(\VieilleSardine\RetourBundle\Entity\Colis $idColis)
+    public function removeIdColi(\VieilleSardine\LivraisonBundle\Entity\Colis $idColis)
     {
         $this->idColis->removeElement($idColis);
     }
@@ -207,10 +207,10 @@ class Retour
     /**
      * Add idClient
      *
-     * @param \VieilleSardine\RetourBundle\Entity\Client $idClient
+     * @param \VieilleSardine\UserBundle\Entity\Client $idClient
      * @return Retour
      */
-    public function addIdClient(\VieilleSardine\RetourBundle\Entity\Client $idClient)
+    public function addIdClient(\VieilleSardine\UserBundle\Entity\Client $idClient)
     {
         $this->idClient[] = $idClient;
     
@@ -220,9 +220,9 @@ class Retour
     /**
      * Remove idClient
      *
-     * @param \VieilleSardine\RetourBundle\Entity\Client $idClient
+     * @param \VieilleSardine\UserBundle\Entity\Client $idClient
      */
-    public function removeIdClient(\VieilleSardine\RetourBundle\Entity\Client $idClient)
+    public function removeIdClient(\VieilleSardine\UserBundle\Entity\Client $idClient)
     {
         $this->idClient->removeElement($idClient);
     }
