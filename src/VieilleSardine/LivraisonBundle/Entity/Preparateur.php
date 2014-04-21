@@ -36,9 +36,12 @@ class Preparateur
     private $password;
 
     /**
-     * @var integer
+     * @var \Couloir
      *
-     * @ORM\Column(name="NumCouloir", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\StockBundle\Entity\Couloir")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="NumCouloir", referencedColumnName="id_couloir")
+     * })
      */
     private $numcouloir;
 
@@ -103,10 +106,10 @@ class Preparateur
     /**
      * Set numcouloir
      *
-     * @param integer $numcouloir
+     * @param \VieilleSardine\LivraisonBundle\Entity\Couloir $numcouloir
      * @return Preparateur
      */
-    public function setNumcouloir($numcouloir)
+    public function setNumcouloir(\VieilleSardine\LivraisonBundle\Entity\Couloir $numcouloir = null)
     {
         $this->numcouloir = $numcouloir;
     
@@ -116,7 +119,7 @@ class Preparateur
     /**
      * Get numcouloir
      *
-     * @return integer 
+     * @return \VieilleSardine\LivraisonBundle\Entity\Couloir 
      */
     public function getNumcouloir()
     {

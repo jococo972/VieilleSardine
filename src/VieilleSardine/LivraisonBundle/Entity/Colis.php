@@ -81,7 +81,7 @@ class Colis
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Retour", mappedBy="idColis")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\RetourBundle\Entity\Retour", mappedBy="idColis")
      */
     private $idRetour;
 

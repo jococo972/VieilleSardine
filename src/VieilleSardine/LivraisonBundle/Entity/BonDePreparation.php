@@ -31,13 +31,6 @@ class BonDePreparation
     /**
      * @var integer
      *
-     * @ORM\Column(name="emplacement", type="integer", nullable=false)
-     */
-    private $emplacement;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="quantite_produit", type="integer", nullable=false)
      */
     private $quantiteProduit;
@@ -55,6 +48,16 @@ class BonDePreparation
      * @ORM\ManyToMany(targetEntity="Livraison", mappedBy="idBonPreparation")
      */
     private $idLivraison;
+
+    /**
+     * @var \Emplacement
+     *
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\StockBundle\Entity\Emplacement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="emplacement", referencedColumnName="id_emplacement")
+     * })
+     */
+    private $emplacement;
 
     /**
      * Constructor
@@ -96,29 +99,6 @@ class BonDePreparation
     public function getRedProduit()
     {
         return $this->redProduit;
-    }
-
-    /**
-     * Set emplacement
-     *
-     * @param integer $emplacement
-     * @return BonDePreparation
-     */
-    public function setEmplacement($emplacement)
-    {
-        $this->emplacement = $emplacement;
-    
-        return $this;
-    }
-
-    /**
-     * Get emplacement
-     *
-     * @return integer 
-     */
-    public function getEmplacement()
-    {
-        return $this->emplacement;
     }
 
     /**
@@ -198,5 +178,28 @@ class BonDePreparation
     public function getIdLivraison()
     {
         return $this->idLivraison;
+    }
+
+    /**
+     * Set emplacement
+     *
+     * @param \VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement
+     * @return BonDePreparation
+     */
+    public function setEmplacement(\VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement = null)
+    {
+        $this->emplacement = $emplacement;
+    
+        return $this;
+    }
+
+    /**
+     * Get emplacement
+     *
+     * @return \VieilleSardine\LivraisonBundle\Entity\Emplacement 
+     */
+    public function getEmplacement()
+    {
+        return $this->emplacement;
     }
 }

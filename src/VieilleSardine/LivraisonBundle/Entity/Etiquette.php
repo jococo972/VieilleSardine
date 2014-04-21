@@ -24,6 +24,13 @@ class Etiquette
     /**
      * @var string
      *
+     * @ORM\Column(name="contenu", type="text", nullable=false)
+     */
+    private $contenu;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adresse_livraison", type="text", nullable=false)
      */
     private $adresseLivraison;
@@ -48,6 +55,29 @@ class Etiquette
     public function getIdEtiquette()
     {
         return $this->idEtiquette;
+    }
+
+    /**
+     * Set contenu
+     *
+     * @param string $contenu
+     * @return Etiquette
+     */
+    public function setContenu($contenu)
+    {
+        $this->contenu = $contenu;
+    
+        return $this;
+    }
+
+    /**
+     * Get contenu
+     *
+     * @return string 
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
     }
 
     /**
