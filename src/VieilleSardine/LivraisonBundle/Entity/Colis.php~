@@ -1,0 +1,99 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Colis
+ *
+ * @ORM\Table(name="colis")
+ * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\ColisRepository")
+ */
+class Colis
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_colis", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idColis;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="poids_colis", type="float", nullable=false)
+     */
+    private $poidsColis;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_preparation", type="date", nullable=false)
+     */
+    private $datePreparation;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_colis", type="integer", nullable=false)
+     */
+    private $nbColis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", nullable=true)
+     */
+    private $type;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Lignes", inversedBy="idColis")
+     * @ORM\JoinTable(name="colis_contient_lignes",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_colis", referencedColumnName="id_colis")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_lignes", referencedColumnName="id_ligne")
+     *   }
+     * )
+     */
+    private $idLignes;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Commande", mappedBy="idColis")
+     */
+    private $idCommande;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Livraison", mappedBy="idColis")
+     */
+    private $idLivraison;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Retour", mappedBy="idColis")
+     */
+    private $idRetour;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idLignes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idLivraison = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idRetour = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

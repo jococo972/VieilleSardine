@@ -1,0 +1,46 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Evenement
+ *
+ * @ORM\Table(name="evenement")
+ * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\EvenementRepository")
+ */
+class Evenement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_evenement", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idEvenement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_evenement", type="string", nullable=false)
+     */
+    private $typeEvenement;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Livraison", mappedBy="idEvenement")
+     */
+    private $idLivraison;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idLivraison = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

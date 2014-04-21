@@ -35,61 +35,66 @@ class __TwigTemplate_da1d5c952d1ca0ef29e19b3ce4a682ec9c86b4b8377c63f31e246a55c75
         echo "    </head>
 
     <header>
-        <h1>A REMPLACER PAR LA BANIERE HEADER DU SITE</h1>
+        <div class=\"logo\"></div>  
     </header>
     <nav class=\"navbar\" role=\"banner\">
-        <table>
-            <tr>
-                <td><a href=\"";
-        // line 17
+        
+        <div class=\"search_form\">
+            <form method=\"POST\">
+                <input class=\"input-search-query\" type=\"text\" placeholder=\"Recherche...\">
+            </form>
+        </div>
+        <div class=\"menu\">
+            <table>
+                <tr>
+                    <td><a href=\"";
+        // line 24
         echo $this->env->getExtension('routing')->getPath("vieille_sardine_commande_homepage");
         echo "\">Catalogue</a></td>
-                <td><a href=\"\">Commande rapide</a></td>
-                <td>
-                    ";
-        // line 20
+                    <td><a href=\"\">Commande rapide</a></td>
+                    <td>
+                        ";
+        // line 27
         if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 21
-            echo "                        <span style=\"color: white\">Bonjour ";
+            // line 28
+            echo "                            <span style=\"color: white\">Bonjour ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "username"), "html", null, true);
             echo " </span> 
-                        <a href=\"";
-            // line 22
+                            <a href=\"";
+            // line 29
             echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
             echo "\">Afficher compte</a>
-                        <a href=\"";
-            // line 23
+                            <a href=\"";
+            // line 30
             echo $this->env->getExtension('routing')->getPath("fos_user_profile_edit");
             echo "\">Modifier compte</a>
-                        <a href=\"";
-            // line 24
+                            <a href=\"";
+            // line 31
             echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
             echo "\">Déconnexion</a>
-                    ";
+                        ";
         } else {
-            // line 26
-            echo "                        <a href=\"";
+            // line 33
+            echo "                            <a href=\"";
             echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
             echo "\">Connexion</a>
-                    ";
+                        ";
         }
-        // line 28
-        echo "                </td>
-                <td><a href=\"\">Mon panier</a></td>
-            </tr>
-        </table>
+        // line 35
+        echo "                    </td>
+                    <td><a href=\"\">Mon panier</a></td>
+                </tr>
+            </table>
+        </div>
     </nav>
 
-    ";
-        // line 46
-        echo "    <div style=\"min-height:700px; border:solid\">
+    <div style=\"min-height:700px; border:solid\">
         ";
-        // line 47
+        // line 43
         $this->displayBlock('body', $context, $blocks);
-        // line 50
+        // line 46
         echo "    </div>
-
-
+    
     <footer>
         <div>
             <h1>A REMPLACER PAR LA BANIERE FOOTER DU SITE</h1>
@@ -97,9 +102,9 @@ class __TwigTemplate_da1d5c952d1ca0ef29e19b3ce4a682ec9c86b4b8377c63f31e246a55c75
     </footer>
 
     ";
-        // line 59
+        // line 54
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 67
+        // line 62
         echo "</html>";
     }
 
@@ -119,26 +124,26 @@ class __TwigTemplate_da1d5c952d1ca0ef29e19b3ce4a682ec9c86b4b8377c63f31e246a55c75
         ";
     }
 
-    // line 47
+    // line 43
     public function block_body($context, array $blocks = array())
     {
-        // line 48
+        // line 44
         echo "
         ";
     }
 
-    // line 59
+    // line 54
     public function block_javascripts($context, array $blocks = array())
     {
-        // line 60
+        // line 55
         echo "        ";
-        // line 62
+        // line 57
         echo "        <script
         src=\"//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js\"></script>
         <script type=\"text/javascript\" src=\"";
-        // line 64
+        // line 59
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/bootstrap.js"), "html", null, true);
-        // line 65
+        // line 60
         echo "\"></script>
     ";
     }
@@ -155,6 +160,6 @@ class __TwigTemplate_da1d5c952d1ca0ef29e19b3ce4a682ec9c86b4b8377c63f31e246a55c75
 
     public function getDebugInfo()
     {
-        return array (  142 => 65,  140 => 64,  136 => 62,  134 => 60,  131 => 59,  126 => 48,  123 => 47,  116 => 7,  113 => 6,  107 => 5,  103 => 67,  101 => 59,  90 => 50,  88 => 47,  85 => 46,  77 => 28,  71 => 26,  66 => 24,  62 => 23,  58 => 22,  53 => 21,  45 => 17,  35 => 9,  23 => 1,  32 => 4,  29 => 5,  72 => 22,  67 => 20,  60 => 16,  55 => 14,  51 => 20,  46 => 11,  42 => 10,  39 => 5,  33 => 6,  31 => 6,  28 => 5,);
+        return array (  147 => 60,  145 => 59,  141 => 57,  139 => 55,  136 => 54,  131 => 44,  128 => 43,  121 => 7,  118 => 6,  112 => 5,  108 => 62,  106 => 54,  96 => 46,  94 => 43,  84 => 35,  78 => 33,  73 => 31,  69 => 30,  65 => 29,  60 => 28,  58 => 27,  52 => 24,  35 => 9,  33 => 6,  29 => 5,  23 => 1,  31 => 4,  28 => 3,);
     }
 }

@@ -1,0 +1,61 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Remise
+ *
+ * @ORM\Table(name="remise")
+ * @ORM\Entity
+ */
+class Remise
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_remise", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRemise;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="pourcentage", type="float", nullable=false)
+     */
+    private $pourcentage;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="montant_remise", type="float", nullable=false)
+     */
+    private $montantRemise;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Commande", inversedBy="idRemise")
+     * @ORM\JoinTable(name="liaison_commande_remise",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_remise", referencedColumnName="id_remise")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
+     *   }
+     * )
+     */
+    private $idCommande;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

@@ -15,10 +15,6 @@ BonDePreparation:
             unsigned: false
             nullable: false
             column: red_produit
-        emplacement:
-            type: integer
-            unsigned: false
-            nullable: false
         quantiteProduit:
             type: integer
             unsigned: false
@@ -37,4 +33,14 @@ BonDePreparation:
             inversedBy: null
             joinTable: null
             orderBy: null
+    manyToOne:
+        emplacement:
+            targetEntity: Emplacement
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                emplacement:
+                    referencedColumnName: id_emplacement
+            orphanRemoval: false
     lifecycleCallbacks: {  }

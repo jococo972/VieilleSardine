@@ -35,7 +35,7 @@
     <parameter key="database_driver">pdo_mysql</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
     <parameter key="database_port">null</parameter>
-    <parameter key="database_name">la_vieille_sardine</parameter>
+    <parameter key="database_name">vieille_sardine</parameter>
     <parameter key="database_user">root</parameter>
     <parameter key="database_password">null</parameter>
     <parameter key="mailer_transport">smtp</parameter>
@@ -360,12 +360,12 @@
     <parameter key="swiftmailer.data_collector.class">Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">smtp</parameter>
     <parameter key="swiftmailer.mailer.default.delivery.enabled">true</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">ssl</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.port">465</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.gmail.com</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.username">anes.mahi@gmail.com</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">13081991</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">login</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.encryption">null</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.port">25</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.host">127.0.0.1</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.username">null</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password">null</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">false</parameter>
@@ -2829,7 +2829,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>534a75df1b2ad</argument>
+            <argument>535522eaec377</argument>
           </service>
         </argument>
       </argument>
@@ -3160,7 +3160,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>534a75df1b2ad</argument>
+            <argument>535522eaec377</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3516,7 +3516,7 @@
         <argument key="driver">pdo_mysql</argument>
         <argument key="host">127.0.0.1</argument>
         <argument key="port">null</argument>
-        <argument key="dbname">la_vieille_sardine</argument>
+        <argument key="dbname">vieille_sardine</argument>
         <argument key="user">root</argument>
         <argument key="password">null</argument>
         <argument key="charset">UTF8</argument>
@@ -4030,7 +4030,7 @@
     <service id="faker.generator" class="Faker\Factory" factory-method="create">
       <argument>en_US</argument>
       <call method="seed">
-        <argument>777</argument>
+        <argument>19353</argument>
       </call>
     </service>
     <service id="faker.populator" class="Faker\ORM\Doctrine\Populator">
@@ -4374,13 +4374,13 @@
               </argument>
             </argument>
             <call method="setUsername">
-              <argument>anes.mahi@gmail.com</argument>
+              <argument>null</argument>
             </call>
             <call method="setPassword">
-              <argument>13081991</argument>
+              <argument>null</argument>
             </call>
             <call method="setAuthMode">
-              <argument>login</argument>
+              <argument>null</argument>
             </call>
           </service>
         </argument>
@@ -4389,13 +4389,13 @@
         <service class="Swift_Events_SimpleEventDispatcher" public="false"/>
       </argument>
       <call method="setHost">
-        <argument>smtp.gmail.com</argument>
+        <argument>127.0.0.1</argument>
       </call>
       <call method="setPort">
-        <argument>465</argument>
+        <argument>25</argument>
       </call>
       <call method="setEncryption">
-        <argument>ssl</argument>
+        <argument>null</argument>
       </call>
       <call method="setTimeout">
         <argument>30</argument>

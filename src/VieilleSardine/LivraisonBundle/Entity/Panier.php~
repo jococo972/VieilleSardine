@@ -1,0 +1,57 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Panier
+ *
+ * @ORM\Table(name="panier")
+ * @ORM\Entity
+ */
+class Panier
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_panier", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idPanier;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Lignes", inversedBy="idPanier")
+     * @ORM\JoinTable(name="panier_contient_ligne",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_panier", referencedColumnName="id_panier")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_ligne", referencedColumnName="id_ligne")
+     *   }
+     * )
+     */
+    private $idLigne;
+
+    /**
+     * @var \Client
+     *
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
+     * })
+     */
+    private $idClient;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idLigne = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

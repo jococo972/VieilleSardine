@@ -1,0 +1,94 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Retour
+ *
+ * @ORM\Table(name="retour")
+ * @ORM\Entity
+ */
+class Retour
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_retour", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRetour;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=20, nullable=false)
+     */
+    private $statut;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="est_valide", type="boolean", nullable=false)
+     */
+    private $estValide;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="est_clos", type="boolean", nullable=false)
+     */
+    private $estClos;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Colis", inversedBy="idRetour")
+     * @ORM\JoinTable(name="retour_concerne_colis",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_retour", referencedColumnName="id_retour")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_colis", referencedColumnName="id_colis")
+     *   }
+     * )
+     */
+    private $idColis;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Client", inversedBy="idRetour")
+     * @ORM\JoinTable(name="retour_par_client",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_retour", referencedColumnName="id_retour")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
+     *   }
+     * )
+     */
+    private $idClient;
+
+    /**
+     * @var \Commande
+     *
+     * @ORM\ManyToOne(targetEntity="Commande")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
+     * })
+     */
+    private $idCommande;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idColis = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idClient = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

@@ -1,0 +1,54 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Coffret
+ *
+ * @ORM\Table(name="coffret")
+ * @ORM\Entity
+ */
+class Coffret
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_coffret", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCoffret;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nb_produit", type="integer", nullable=false)
+     */
+    private $nbProduit;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Produit", inversedBy="idCoffret")
+     * @ORM\JoinTable(name="composition_coffret",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_coffret", referencedColumnName="id_coffret")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     *   }
+     * )
+     */
+    private $idProduit;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idProduit = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

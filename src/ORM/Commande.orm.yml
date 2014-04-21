@@ -23,6 +23,12 @@ Commande:
             fixed: false
             nullable: false
             column: etat_commande
+        pourcentageRemise:
+            type: string
+            length: null
+            fixed: false
+            nullable: false
+            column: pourcentage_remise
         estGroupee:
             type: boolean
             nullable: false
@@ -62,13 +68,6 @@ Commande:
             orderBy: null
         idClient:
             targetEntity: Client
-            cascade: {  }
-            mappedBy: idCommande
-            inversedBy: null
-            joinTable: null
-            orderBy: null
-        idRemise:
-            targetEntity: Remise
             cascade: {  }
             mappedBy: idCommande
             inversedBy: null

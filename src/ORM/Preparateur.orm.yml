@@ -20,9 +20,14 @@ Preparateur:
             length: 30
             fixed: false
             nullable: false
+    manyToOne:
         numcouloir:
-            type: integer
-            unsigned: false
-            nullable: false
-            column: NumCouloir
+            targetEntity: Couloir
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                NumCouloir:
+                    referencedColumnName: id_couloir
+            orphanRemoval: false
     lifecycleCallbacks: {  }

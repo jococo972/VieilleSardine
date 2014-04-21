@@ -1,0 +1,49 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Etiquette
+ *
+ * @ORM\Table(name="etiquette")
+ * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\EtiquetteRepository")
+ */
+class Etiquette
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_etiquette", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idEtiquette;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="contenu", type="text", nullable=false)
+     */
+    private $contenu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adresse_livraison", type="text", nullable=false)
+     */
+    private $adresseLivraison;
+
+    /**
+     * @var \Colis
+     *
+     * @ORM\ManyToOne(targetEntity="Colis")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_colis", referencedColumnName="id_colis")
+     * })
+     */
+    private $idColis;
+
+
+}

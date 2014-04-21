@@ -171,6 +171,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'send_mail')), array (  '_controller' => 'VieilleSardine\\UserBundle\\Controller\\MailController::sendMailAction',));
         }
 
+        // inscription
+        if ($pathinfo === '/inscription') {
+            return array (  '_controller' => 'VieilleSardine\\UserBundle\\Controller\\UserController::inscriptionAction',  '_route' => 'inscription',);
+        }
+
         // vieille_sardine_commande_homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {

@@ -32,15 +32,6 @@ TransactionBancaire:
             type: boolean
             nullable: false
     manyToOne:
-        idPaiement:
-            targetEntity: MoyenDePaiement
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                id_paiement:
-                    referencedColumnName: id_paiement
-            orphanRemoval: false
         numCarte:
             targetEntity: CarteBancaire
             cascade: {  }
@@ -49,5 +40,14 @@ TransactionBancaire:
             joinColumns:
                 num_carte:
                     referencedColumnName: num_carte
+            orphanRemoval: false
+        idPaiement:
+            targetEntity: MoyenDePaiement
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_paiement:
+                    referencedColumnName: id_paiement
             orphanRemoval: false
     lifecycleCallbacks: {  }

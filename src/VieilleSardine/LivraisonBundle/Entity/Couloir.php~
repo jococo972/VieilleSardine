@@ -1,0 +1,52 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Couloir
+ *
+ * @ORM\Table(name="couloir")
+ * @ORM\Entity
+ */
+class Couloir
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_couloir", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCouloir;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_couloir", type="integer", nullable=false)
+     */
+    private $numCouloir;
+
+    /**
+     * @var \Emplacement
+     *
+     * @ORM\ManyToOne(targetEntity="Emplacement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_emplacement", referencedColumnName="id_emplacement")
+     * })
+     */
+    private $idEmplacement;
+
+    /**
+     * @var \StockPhysique
+     *
+     * @ORM\ManyToOne(targetEntity="StockPhysique")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_stock", referencedColumnName="id_stock")
+     * })
+     */
+    private $idStock;
+
+
+}

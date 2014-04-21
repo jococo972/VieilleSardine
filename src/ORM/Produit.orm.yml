@@ -10,6 +10,14 @@ Produit:
             column: id_produit
             generator:
                 strategy: IDENTITY
+        titre:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        description:
+            type: text
+            nullable: false
         prixHt:
             type: float
             nullable: false
@@ -18,6 +26,9 @@ Produit:
             type: float
             nullable: false
             column: prix_ttc
+        statut:
+            type: boolean
+            nullable: false
         tva:
             type: float
             nullable: false

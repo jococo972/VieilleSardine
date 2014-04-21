@@ -1,0 +1,35 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MoyenDePaiement
+ *
+ * @ORM\Table(name="moyen_de_paiement")
+ * @ORM\Entity
+ */
+class MoyenDePaiement
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_paiement", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idPaiement;
+
+    /**
+     * @var \Commande
+     *
+     * @ORM\ManyToOne(targetEntity="Commande")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
+     * })
+     */
+    private $idCommande;
+
+
+}

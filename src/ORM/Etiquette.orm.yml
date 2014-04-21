@@ -10,6 +10,9 @@ Etiquette:
             column: id_etiquette
             generator:
                 strategy: IDENTITY
+        contenu:
+            type: text
+            nullable: false
         adresseLivraison:
             type: text
             nullable: false

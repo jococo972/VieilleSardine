@@ -10,6 +10,14 @@ Coffret:
             column: id_coffret
             generator:
                 strategy: IDENTITY
+        titre:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+        description:
+            type: text
+            nullable: false
         nbProduit:
             type: integer
             unsigned: false

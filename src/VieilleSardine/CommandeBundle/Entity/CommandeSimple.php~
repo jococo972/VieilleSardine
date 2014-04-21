@@ -1,0 +1,42 @@
+<?php
+
+namespace VieilleSardine\CommandeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CommandeSimple
+ *
+ * @ORM\Table(name="commande_simple")
+ * @ORM\Entity(repositoryClass="VieilleSardine\CommandeBundle\Entity\CommandeSimpleRepository")
+ */
+class CommandeSimple
+{
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="CommandeGroupee", mappedBy="idCmdSimple")
+     */
+    private $idCmdGroupee;
+
+    /**
+     * @var \Commande
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\OneToOne(targetEntity="Commande")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_cmd_simple", referencedColumnName="id_commande")
+     * })
+     */
+    private $idCmdSimple;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idCmdGroupee = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

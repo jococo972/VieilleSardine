@@ -1,0 +1,110 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Livraison
+ *
+ * @ORM\Table(name="livraison")
+ * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\LivraisonRepository")
+ */
+class Livraison
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_livraison", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idLivraison;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_expedition", type="date", nullable=false)
+     */
+    private $dateExpedition;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_reception", type="date", nullable=false)
+     */
+    private $dateReception;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mode_livraison", type="string", nullable=false)
+     */
+    private $modeLivraison;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Colis", inversedBy="idLivraison")
+     * @ORM\JoinTable(name="livraison_colis",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_livraison", referencedColumnName="id_livraison")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_colis", referencedColumnName="id_colis")
+     *   }
+     * )
+     */
+    private $idColis;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Evenement", inversedBy="idLivraison")
+     * @ORM\JoinTable(name="livraison_concernepar_evenement",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_livraison", referencedColumnName="id_livraison")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_evenement", referencedColumnName="id_evenement")
+     *   }
+     * )
+     */
+    private $idEvenement;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="BonDePreparation", inversedBy="idLivraison")
+     * @ORM\JoinTable(name="livraison_possede_bondepreparation",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_livraison", referencedColumnName="id_livraison")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_bon_preparation", referencedColumnName="id_bon_preparation")
+     *   }
+     * )
+     */
+    private $idBonPreparation;
+
+    /**
+     * @var \Commande
+     *
+     * @ORM\ManyToOne(targetEntity="Commande")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
+     * })
+     */
+    private $idCommande;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idColis = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idEvenement = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idBonPreparation = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

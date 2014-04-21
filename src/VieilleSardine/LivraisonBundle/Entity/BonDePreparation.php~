@@ -1,0 +1,70 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * BonDePreparation
+ *
+ * @ORM\Table(name="bon_de_preparation")
+ * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\BonDePreparationRepository")
+ */
+class BonDePreparation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_bon_preparation", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idBonPreparation;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="red_produit", type="integer", nullable=false)
+     */
+    private $redProduit;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite_produit", type="integer", nullable=false)
+     */
+    private $quantiteProduit;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_commande", type="integer", nullable=false)
+     */
+    private $numCommande;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Livraison", mappedBy="idBonPreparation")
+     */
+    private $idLivraison;
+
+    /**
+     * @var \Emplacement
+     *
+     * @ORM\ManyToOne(targetEntity="Emplacement")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="emplacement", referencedColumnName="id_emplacement")
+     * })
+     */
+    private $emplacement;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idLivraison = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

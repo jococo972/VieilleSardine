@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/TestProject/app/AppKernel.php</file>
-            <file>file:/C:/wamp/www/TestProject/app/autoload.php</file>
-            <file>file:/C:/wamp/www/TestProject/composer.json</file>
-            <file>file:/C:/wamp/www/TestProject/app/config/config.yml</file>
+            <file>file:/C:/wamp/www/VieilleSardine/app/config/config.yml</file>
+            <file>file:/C:/wamp/www/VieilleSardine/app/config/parameters.yml</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Controller/MailController.php</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Resources/views/Mail/mailBody.html.twig</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Resources/views/Mail/sendConfirmation.html.twig</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/wamp/www/VieilleSardine/src/VieilleSardine/UserBundle/Controller/UserController.php</file>
+            <file>file:/C:/wamp/www/VieilleSardine/app/config/config_dev.yml</file>
         </group>
     </open-files>
 </project-private>

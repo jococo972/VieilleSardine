@@ -1,0 +1,56 @@
+<?php
+
+namespace VieilleSardine\PaiementBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CarteBancaire
+ *
+ * @ORM\Table(name="carte_bancaire")
+ * @ORM\Entity(repositoryClass="VieilleSardine\PaiementBundle\Entity\CarteBancaireRepository")
+ */
+class CarteBancaire
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="num_carte", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $numCarte;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="type_carte", type="integer", nullable=false)
+     */
+    private $typeCarte;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_expiration", type="date", nullable=false)
+     */
+    private $dateExpiration;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="cryptogramme", type="integer", nullable=false)
+     */
+    private $cryptogramme;
+
+    /**
+     * @var \Client
+     *
+     * @ORM\ManyToOne(targetEntity="Client")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
+     * })
+     */
+    private $idClient;
+
+
+}

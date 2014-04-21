@@ -1,0 +1,39 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Coliseur
+ *
+ * @ORM\Table(name="coliseur")
+ * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\ColiseurRepository")
+ */
+class Coliseur
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_coliseur", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idColiseur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="login", type="string", length=30, nullable=false)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=30, nullable=false)
+     */
+    private $password;
+
+
+}

@@ -1,0 +1,72 @@
+<?php
+
+namespace VieilleSardine\CommandeBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Lignes
+ *
+ * @ORM\Table(name="lignes")
+ * @ORM\Entity(repositoryClass="VieilleSardine\CommandeBundle\Entity\LignesRepository")
+ */
+class Lignes
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_ligne", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idLigne;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite", type="integer", nullable=false)
+     */
+    private $quantite;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\LivraisonBundle\Entity\Colis", mappedBy="idLignes")
+     */
+    private $idColis;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Commande", mappedBy="idLigne")
+     */
+    private $idCommande;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\PanierBundle\Entity\Panier", mappedBy="idLigne")
+     */
+    private $idPanier;
+
+    /**
+     * @var \Produit
+     *
+     * @ORM\ManyToOne(targetEntity="Produit")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     * })
+     */
+    private $idProduit;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idColis = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idPanier = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}

@@ -9,47 +9,42 @@
     </head>
 
     <header>
-        <h1>A REMPLACER PAR LA BANIERE HEADER DU SITE</h1>
+        <div class="logo"></div>  
     </header>
     <nav class="navbar" role="banner">
-        <table>
-            <tr>
-                <td><a href="{{ path('vieille_sardine_commande_homepage') }}">Catalogue</a></td>
-                <td><a href="">Commande rapide</a></td>
-                <td>
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        <span style="color: white">Bonjour {{ app.user.username }} </span> 
-                        <a href="{{ path('fos_user_profile_show') }}">Afficher compte</a>
-                        <a href="{{ path('fos_user_profile_edit') }}">Modifier compte</a>
-                        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
-                    {% else %}
-                        <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-                    {% endif %}
-                </td>
-                <td><a href="">Mon panier</a></td>
-            </tr>
-        </table>
+        
+        <div class="search_form">
+            <form method="POST">
+                <input class="input-search-query" type="text" placeholder="Recherche...">
+            </form>
+        </div>
+        <div class="menu">
+            <table>
+                <tr>
+                    <td><a href="{{ path('vieille_sardine_commande_homepage') }}">Catalogue</a></td>
+                    <td><a href="">Commande rapide</a></td>
+                    <td>
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <span style="color: white">Bonjour {{ app.user.username }} </span> 
+                            <a href="{{ path('fos_user_profile_show') }}">Afficher compte</a>
+                            <a href="{{ path('fos_user_profile_edit') }}">Modifier compte</a>
+                            <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                        {% else %}
+                            <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+                        {% endif %}
+                    </td>
+                    <td><a href="">Mon panier</a></td>
+                </tr>
+            </table>
+        </div>
     </nav>
 
-    {#<div class="row">
-        <div style="float:left;">
-            <div style="border:solid">
-                {{ render(controller("VideoMovieBundle:Movie:lastItems")) }}
-            </div>
-        </div>
-        
-        <div id="content" class="span9 menu_content">
-            {% block body %}
-            {% endblock %}
-        </div>
-    </div>#}
     <div style="min-height:700px; border:solid">
         {% block body %}
 
         {% endblock %}
     </div>
-
-
+    
     <footer>
         <div>
             <h1>A REMPLACER PAR LA BANIERE FOOTER DU SITE</h1>

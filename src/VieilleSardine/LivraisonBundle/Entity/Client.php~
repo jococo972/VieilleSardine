@@ -1,0 +1,149 @@
+<?php
+
+namespace VieilleSardine\LivraisonBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Client
+ *
+ * @ORM\Table(name="client")
+ * @ORM\Entity
+ */
+class Client
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_client", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idClient;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civilite", type="string", length=5, nullable=false)
+     */
+    private $civilite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=20, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=20, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel_principal", type="string", length=15, nullable=false)
+     */
+    private $telPrincipal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tel_secondaire", type="string", length=15, nullable=false)
+     */
+    private $telSecondaire;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="sexe", type="string", length=1, nullable=false)
+     */
+    private $sexe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numero_voie", type="string", length=5, nullable=false)
+     */
+    private $numeroVoie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type_voie", type="string", length=15, nullable=false)
+     */
+    private $typeVoie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code_postal", type="string", length=8, nullable=false)
+     */
+    private $codePostal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=15, nullable=false)
+     */
+    private $ville;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pays", type="string", length=15, nullable=false)
+     */
+    private $pays;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="client_a_livrer", type="integer", nullable=false)
+     */
+    private $clientALivrer;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Commande", inversedBy="idClient")
+     * @ORM\JoinTable(name="commande_passee_livree",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_client", referencedColumnName="id_client")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
+     *   }
+     * )
+     */
+    private $idCommande;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Retour", mappedBy="idClient")
+     */
+    private $idRetour;
+
+    /**
+     * @var \CompteClient
+     *
+     * @ORM\ManyToOne(targetEntity="CompteClient")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_compte_client", referencedColumnName="id_compte_client")
+     * })
+     */
+    private $idCompteClient;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idRetour = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+}
