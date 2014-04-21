@@ -1,5 +1,11 @@
 <?php
 
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 namespace VieilleSardine\CommandeBundle\Controller;
 
 use VieilleSardine\CommandeBundle\Entity\Lignes;
@@ -7,13 +13,19 @@ use VieilleSardine\ProduitBundle\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class CommandeController extends Controller
+class CommandeGroupeController extends Controller
 {
      public function indexAction()
     {
-        return $this->render('VieilleSardineCommandeBundle:Commande:IHMCommandeVPC.html.twig');
+        return $this->render('VieilleSardineCommandeBundle:Commande:IHMCommandeGroupeVPC.html.twig');
+    }
+    // Méthode qui récupère toutes les infos de la commande groupée
+    public function GetInfoCommandeGroupe()
+    {
+        
     }
     
+    /*
     // Méthode qui créer le formulaire utilisé pour ajouter un produit à la commande
     public function CreerFormVPCAction(Request $request)
     {
@@ -33,7 +45,8 @@ class CommandeController extends Controller
             
         
     }
-    
+    */
+    /*
     // Méthode pour retrouver les attributs d'un produit
     public function getInfoProduitAction($id)
     {
@@ -48,5 +61,5 @@ class CommandeController extends Controller
     }
 
     
-}
+}*/
 }

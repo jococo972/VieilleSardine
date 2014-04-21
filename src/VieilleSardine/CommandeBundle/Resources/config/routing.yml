@@ -5,3 +5,11 @@ vieille_sardine_commande_homepage:
 #clients_list:
 #    pattern: /clients
 #    defaults: { _controller: VieilleSardineUserBundle:User:getUsers }
+
+ajout_produit_commande_vpc:
+    pattern:  /ajoutProduit
+    defaults: { _controller: VieilleSardineCommandeBundle:Commande:CreerFormVPC }
+
+commande_groupee:
+    patterne: /commandeGroupe
+    defaults: { _controller: VieilleSardineCommandeBundle:CommandeGroupe:indexAction }
