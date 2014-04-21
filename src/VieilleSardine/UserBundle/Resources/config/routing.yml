@@ -1,9 +1,5 @@
 send_mail:
     pattern: /send_mail/{name}
     defaults: { _controller: VieilleSardineUserBundle:Mail:sendMail }
-    
-inscription:
-    pattern: /inscription
-    defaults: { _controller: VieilleSardineUserBundle:User:inscription }
 
     
