@@ -52,7 +52,7 @@ class Lignes
     /**
      * @var \Produit
      *
-     * @ORM\ManyToOne(targetEntity="Produit")
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\ProduitBundle\Entity\Produit")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
      * })

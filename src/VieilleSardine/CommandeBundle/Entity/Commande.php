@@ -43,6 +43,13 @@ class Commande
     private $etatCommande;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="pourcentage_remise", type="string", nullable=false)
+     */
+    private $pourcentageRemise;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="est_groupee", type="boolean", nullable=false)
@@ -87,13 +94,6 @@ class Commande
     private $idClient;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Remise", mappedBy="idCommande")
-     */
-    private $idRemise;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -101,7 +101,6 @@ class Commande
         $this->idColis = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idLigne = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idClient = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->idRemise = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
 
@@ -182,6 +181,29 @@ class Commande
     public function getEtatCommande()
     {
         return $this->etatCommande;
+    }
+
+    /**
+     * Set pourcentageRemise
+     *
+     * @param string $pourcentageRemise
+     * @return Commande
+     */
+    public function setPourcentageRemise($pourcentageRemise)
+    {
+        $this->pourcentageRemise = $pourcentageRemise;
+    
+        return $this;
+    }
+
+    /**
+     * Get pourcentageRemise
+     *
+     * @return string 
+     */
+    public function getPourcentageRemise()
+    {
+        return $this->pourcentageRemise;
     }
 
     /**
@@ -304,38 +326,5 @@ class Commande
     public function getIdClient()
     {
         return $this->idClient;
-    }
-
-    /**
-     * Add idRemise
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Remise $idRemise
-     * @return Commande
-     */
-    public function addIdRemise(\VieilleSardine\CommandeBundle\Entity\Remise $idRemise)
-    {
-        $this->idRemise[] = $idRemise;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idRemise
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Remise $idRemise
-     */
-    public function removeIdRemise(\VieilleSardine\CommandeBundle\Entity\Remise $idRemise)
-    {
-        $this->idRemise->removeElement($idRemise);
-    }
-
-    /**
-     * Get idRemise
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdRemise()
-    {
-        return $this->idRemise;
     }
 }
