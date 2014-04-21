@@ -22,6 +22,20 @@ class Produit
     private $idProduit;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=100, nullable=false)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
      * @var float
      *
      * @ORM\Column(name="prix_ht", type="float", nullable=false)
@@ -34,6 +48,13 @@ class Produit
      * @ORM\Column(name="prix_ttc", type="float", nullable=false)
      */
     private $prixTtc;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="statut", type="boolean", nullable=false)
+     */
+    private $statut;
 
     /**
      * @var float
@@ -104,6 +125,52 @@ class Produit
     }
 
     /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Produit
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Produit
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set prixHt
      *
      * @param float $prixHt
@@ -147,6 +214,29 @@ class Produit
     public function getPrixTtc()
     {
         return $this->prixTtc;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param boolean $statut
+     * @return Produit
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return boolean 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
     }
 
     /**

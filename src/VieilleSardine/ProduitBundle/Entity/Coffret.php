@@ -22,6 +22,20 @@ class Coffret
     private $idCoffret;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=100, nullable=false)
+     */
+    private $titre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", nullable=false)
+     */
+    private $description;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="nb_produit", type="integer", nullable=false)
@@ -60,6 +74,52 @@ class Coffret
     public function getIdCoffret()
     {
         return $this->idCoffret;
+    }
+
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Coffret
+     */
+    public function setTitre($titre)
+    {
+        $this->titre = $titre;
+    
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre()
+    {
+        return $this->titre;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Coffret
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**
