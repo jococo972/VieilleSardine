@@ -106,10 +106,10 @@ class Preparateur
     /**
      * Set numcouloir
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Couloir $numcouloir
+     * @param \VieilleSardine\StockBundle\Entity\Couloir $numcouloir
      * @return Preparateur
      */
-    public function setNumcouloir(\VieilleSardine\LivraisonBundle\Entity\Couloir $numcouloir = null)
+    public function setNumcouloir(\VieilleSardine\StockBundle\Entity\Couloir $numcouloir = null)
     {
         $this->numcouloir = $numcouloir;
     
@@ -119,7 +119,7 @@ class Preparateur
     /**
      * Get numcouloir
      *
-     * @return \VieilleSardine\LivraisonBundle\Entity\Couloir 
+     * @return \VieilleSardine\StockBundle\Entity\Couloir 
      */
     public function getNumcouloir()
     {

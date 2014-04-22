@@ -22,11 +22,25 @@ class Evenement
     private $idEvenement;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_evenement", type="date", nullable=false)
+     */
+    private $dateEvenement;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="type_evenement", type="string", nullable=false)
+     * @ORM\Column(name="plate_forme", type="string", length=50, nullable=false)
      */
-    private $typeEvenement;
+    private $plateForme;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=60, nullable=false)
+     */
+    private $statut;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -55,26 +69,72 @@ class Evenement
     }
 
     /**
-     * Set typeEvenement
+     * Set dateEvenement
      *
-     * @param string $typeEvenement
+     * @param \DateTime $dateEvenement
      * @return Evenement
      */
-    public function setTypeEvenement($typeEvenement)
+    public function setDateEvenement($dateEvenement)
     {
-        $this->typeEvenement = $typeEvenement;
+        $this->dateEvenement = $dateEvenement;
     
         return $this;
     }
 
     /**
-     * Get typeEvenement
+     * Get dateEvenement
+     *
+     * @return \DateTime 
+     */
+    public function getDateEvenement()
+    {
+        return $this->dateEvenement;
+    }
+
+    /**
+     * Set plateForme
+     *
+     * @param string $plateForme
+     * @return Evenement
+     */
+    public function setPlateForme($plateForme)
+    {
+        $this->plateForme = $plateForme;
+    
+        return $this;
+    }
+
+    /**
+     * Get plateForme
      *
      * @return string 
      */
-    public function getTypeEvenement()
+    public function getPlateForme()
     {
-        return $this->typeEvenement;
+        return $this->plateForme;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     * @return Evenement
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
     }
 
     /**

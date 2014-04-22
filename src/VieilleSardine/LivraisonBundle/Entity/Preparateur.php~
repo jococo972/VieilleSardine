@@ -38,7 +38,7 @@ class Preparateur
     /**
      * @var \Couloir
      *
-     * @ORM\ManyToOne(targetEntity="Couloir")
+     * @ORM\ManyToOne(targetEntity="VieilleSardine\StockBundle\Entity\Couloir")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="NumCouloir", referencedColumnName="id_couloir")
      * })
@@ -46,4 +46,83 @@ class Preparateur
     private $numcouloir;
 
 
+
+    /**
+     * Get idPreparateur
+     *
+     * @return integer 
+     */
+    public function getIdPreparateur()
+    {
+        return $this->idPreparateur;
+    }
+
+    /**
+     * Set login
+     *
+     * @param string $login
+     * @return Preparateur
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+    
+        return $this;
+    }
+
+    /**
+     * Get login
+     *
+     * @return string 
+     */
+    public function getLogin()
+    {
+        return $this->login;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return Preparateur
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set numcouloir
+     *
+     * @param \VieilleSardine\StockBundle\Entity\Couloir $numcouloir
+     * @return Preparateur
+     */
+    public function setNumcouloir(\VieilleSardine\StockBundle\Entity\Couloir $numcouloir = null)
+    {
+        $this->numcouloir = $numcouloir;
+    
+        return $this;
+    }
+
+    /**
+     * Get numcouloir
+     *
+     * @return \VieilleSardine\StockBundle\Entity\Couloir 
+     */
+    public function getNumcouloir()
+    {
+        return $this->numcouloir;
+    }
 }

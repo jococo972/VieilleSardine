@@ -183,10 +183,10 @@ class BonDePreparation
     /**
      * Set emplacement
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement
+     * @param \VieilleSardine\StockBundle\Entity\Emplacement $emplacement
      * @return BonDePreparation
      */
-    public function setEmplacement(\VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement = null)
+    public function setEmplacement(\VieilleSardine\StockBundle\Entity\Emplacement $emplacement = null)
     {
         $this->emplacement = $emplacement;
     
@@ -196,7 +196,7 @@ class BonDePreparation
     /**
      * Get emplacement
      *
-     * @return \VieilleSardine\LivraisonBundle\Entity\Emplacement 
+     * @return \VieilleSardine\StockBundle\Entity\Emplacement 
      */
     public function getEmplacement()
     {

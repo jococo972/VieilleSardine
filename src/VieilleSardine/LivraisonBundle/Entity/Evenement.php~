@@ -22,11 +22,25 @@ class Evenement
     private $idEvenement;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_evenement", type="date", nullable=false)
+     */
+    private $dateEvenement;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="type_evenement", type="string", nullable=false)
+     * @ORM\Column(name="plate_forme", type="string", length=50, nullable=false)
      */
-    private $typeEvenement;
+    private $plateForme;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=60, nullable=false)
+     */
+    private $statut;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -43,4 +57,116 @@ class Evenement
         $this->idLivraison = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+
+    /**
+     * Get idEvenement
+     *
+     * @return integer 
+     */
+    public function getIdEvenement()
+    {
+        return $this->idEvenement;
+    }
+
+    /**
+     * Set dateEvenement
+     *
+     * @param \DateTime $dateEvenement
+     * @return Evenement
+     */
+    public function setDateEvenement($dateEvenement)
+    {
+        $this->dateEvenement = $dateEvenement;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateEvenement
+     *
+     * @return \DateTime 
+     */
+    public function getDateEvenement()
+    {
+        return $this->dateEvenement;
+    }
+
+    /**
+     * Set plateForme
+     *
+     * @param string $plateForme
+     * @return Evenement
+     */
+    public function setPlateForme($plateForme)
+    {
+        $this->plateForme = $plateForme;
+    
+        return $this;
+    }
+
+    /**
+     * Get plateForme
+     *
+     * @return string 
+     */
+    public function getPlateForme()
+    {
+        return $this->plateForme;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     * @return Evenement
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Add idLivraison
+     *
+     * @param \VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison
+     * @return Evenement
+     */
+    public function addIdLivraison(\VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison)
+    {
+        $this->idLivraison[] = $idLivraison;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idLivraison
+     *
+     * @param \VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison
+     */
+    public function removeIdLivraison(\VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison)
+    {
+        $this->idLivraison->removeElement($idLivraison);
+    }
+
+    /**
+     * Get idLivraison
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdLivraison()
+    {
+        return $this->idLivraison;
+    }
 }

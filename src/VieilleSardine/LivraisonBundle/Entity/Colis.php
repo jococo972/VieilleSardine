@@ -301,10 +301,10 @@ class Colis
     /**
      * Add idRetour
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Retour $idRetour
+     * @param \VieilleSardine\RetourBundle\Entity\Retour $idRetour
      * @return Colis
      */
-    public function addIdRetour(\VieilleSardine\LivraisonBundle\Entity\Retour $idRetour)
+    public function addIdRetour(\VieilleSardine\RetourBundle\Entity\Retour $idRetour)
     {
         $this->idRetour[] = $idRetour;
     
@@ -314,9 +314,9 @@ class Colis
     /**
      * Remove idRetour
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Retour $idRetour
+     * @param \VieilleSardine\RetourBundle\Entity\Retour $idRetour
      */
-    public function removeIdRetour(\VieilleSardine\LivraisonBundle\Entity\Retour $idRetour)
+    public function removeIdRetour(\VieilleSardine\RetourBundle\Entity\Retour $idRetour)
     {
         $this->idRetour->removeElement($idRetour);
     }
