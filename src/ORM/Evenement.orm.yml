@@ -10,12 +10,21 @@ Evenement:
             column: id_evenement
             generator:
                 strategy: IDENTITY
-        typeEvenement:
+        dateEvenement:
+            type: date
+            nullable: false
+            column: date_evenement
+        plateForme:
             type: string
-            length: null
+            length: 50
             fixed: false
             nullable: false
-            column: type_evenement
+            column: plate_forme
+        statut:
+            type: string
+            length: 60
+            fixed: false
+            nullable: false
     manyToMany:
         idLivraison:
             targetEntity: Livraison

@@ -84,4 +84,14 @@ CompteClient:
             type: datetime
             nullable: true
             column: credentials_expire_at
+    manyToOne:
+        idClient:
+            targetEntity: Client
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_client:
+                    referencedColumnName: id_client
+            orphanRemoval: false
     lifecycleCallbacks: {  }
