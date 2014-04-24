@@ -1,0 +1,23 @@
+Coliseur:
+    type: entity
+    table: coliseur
+    fields:
+        idColiseur:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_coliseur
+            generator:
+                strategy: IDENTITY
+        login:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+        password:
+            type: string
+            length: 30
+            fixed: false
+            nullable: false
+    lifecycleCallbacks: {  }

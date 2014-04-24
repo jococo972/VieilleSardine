@@ -1,0 +1,41 @@
+Emplacement:
+    type: entity
+    table: emplacement
+    fields:
+        idEmplacement:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_emplacement
+            generator:
+                strategy: IDENTITY
+        numTravee:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: num_travee
+        numEtagere:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: num_etagere
+    manyToMany:
+        idCouloir:
+            targetEntity: Couloir
+            cascade: {  }
+            mappedBy: idEmplacement
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    manyToOne:
+        idStock:
+            targetEntity: StockPhysique
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_stock:
+                    referencedColumnName: id_stock
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
