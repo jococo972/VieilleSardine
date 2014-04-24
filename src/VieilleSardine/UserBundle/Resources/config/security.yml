@@ -19,10 +19,10 @@ security:
                 check_path:         fos_user_security_check
                 use_forward:        false
                 failure_path:      null
-                default_target_path:    /
+                default_target_path:    /catalogue
             logout:
                 path:                   fos_user_security_logout
-                target:                 /
+                target:                 /catalogue
                 invalidate_session:     false
             remember_me:
                 key:        %secret% # %secret% est un paramètre de parameters.yml

@@ -80,6 +80,13 @@ class Client
     /**
      * @var string
      *
+     * @ORM\Column(name="nom_voie", type="string", length=30, nullable=false)
+     */
+    private $nomVoie;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="code_postal", type="string", length=8, nullable=false)
      */
     private $codePostal;
@@ -339,6 +346,29 @@ class Client
     public function getTypeVoie()
     {
         return $this->typeVoie;
+    }
+
+    /**
+     * Set nomVoie
+     *
+     * @param string $nomVoie
+     * @return Client
+     */
+    public function setNomVoie($nomVoie)
+    {
+        $this->nomVoie = $nomVoie;
+    
+        return $this;
+    }
+
+    /**
+     * Get nomVoie
+     *
+     * @return string 
+     */
+    public function getNomVoie()
+    {
+        return $this->nomVoie;
     }
 
     /**
