@@ -43,6 +43,13 @@ class Livraison
     private $modeLivraison;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="etat_livraison", type="string", nullable=false)
+     */
+    private $etatLivraison;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Colis", inversedBy="idLivraison")
@@ -86,6 +93,16 @@ class Livraison
      * )
      */
     private $idBonPreparation;
+
+    /**
+     * @var \Coliseur
+     *
+     * @ORM\ManyToOne(targetEntity="Coliseur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_coliseur", referencedColumnName="id_coliseur")
+     * })
+     */
+    private $idColiseur;
 
     /**
      * @var \Commande
@@ -188,6 +205,29 @@ class Livraison
     }
 
     /**
+     * Set etatLivraison
+     *
+     * @param string $etatLivraison
+     * @return Livraison
+     */
+    public function setEtatLivraison($etatLivraison)
+    {
+        $this->etatLivraison = $etatLivraison;
+    
+        return $this;
+    }
+
+    /**
+     * Get etatLivraison
+     *
+     * @return string 
+     */
+    public function getEtatLivraison()
+    {
+        return $this->etatLivraison;
+    }
+
+    /**
      * Add idColis
      *
      * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
@@ -284,6 +324,29 @@ class Livraison
     public function getIdBonPreparation()
     {
         return $this->idBonPreparation;
+    }
+
+    /**
+     * Set idColiseur
+     *
+     * @param \VieilleSardine\LivraisonBundle\Entity\Coliseur $idColiseur
+     * @return Livraison
+     */
+    public function setIdColiseur(\VieilleSardine\LivraisonBundle\Entity\Coliseur $idColiseur = null)
+    {
+        $this->idColiseur = $idColiseur;
+    
+        return $this;
+    }
+
+    /**
+     * Get idColiseur
+     *
+     * @return \VieilleSardine\LivraisonBundle\Entity\Coliseur 
+     */
+    public function getIdColiseur()
+    {
+        return $this->idColiseur;
     }
 
     /**

@@ -40,10 +40,10 @@ class Preparateur
      *
      * @ORM\ManyToOne(targetEntity="VieilleSardine\StockBundle\Entity\Couloir")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="NumCouloir", referencedColumnName="id_couloir")
+     *   @ORM\JoinColumn(name="id_couloir", referencedColumnName="id_couloir")
      * })
      */
-    private $numcouloir;
+    private $idCouloir;
 
 
 
@@ -104,25 +104,25 @@ class Preparateur
     }
 
     /**
-     * Set numcouloir
+     * Set idCouloir
      *
-     * @param \VieilleSardine\StockBundle\Entity\Couloir $numcouloir
+     * @param \VieilleSardine\StockBundle\Entity\Couloir $idCouloir
      * @return Preparateur
      */
-    public function setNumcouloir(\VieilleSardine\StockBundle\Entity\Couloir $numcouloir = null)
+    public function setIdCouloir(\VieilleSardine\StockBundle\Entity\Couloir $idCouloir = null)
     {
-        $this->numcouloir = $numcouloir;
+        $this->idCouloir = $idCouloir;
     
         return $this;
     }
 
     /**
-     * Get numcouloir
+     * Get idCouloir
      *
      * @return \VieilleSardine\StockBundle\Entity\Couloir 
      */
-    public function getNumcouloir()
+    public function getIdCouloir()
     {
-        return $this->numcouloir;
+        return $this->idCouloir;
     }
 }

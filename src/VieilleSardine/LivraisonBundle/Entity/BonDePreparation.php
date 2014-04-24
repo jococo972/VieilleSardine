@@ -24,23 +24,31 @@ class BonDePreparation
     /**
      * @var integer
      *
-     * @ORM\Column(name="red_produit", type="integer", nullable=false)
-     */
-    private $redProduit;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="quantite_produit", type="integer", nullable=false)
-     */
-    private $quantiteProduit;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="num_commande", type="integer", nullable=false)
      */
     private $numCommande;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etat_bon_de_preparation", type="string", nullable=false)
+     */
+    private $etatBonDePreparation;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Lignes", inversedBy="idBonPreparation")
+     * @ORM\JoinTable(name="bon_de_preparation_contient_lignes",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_bon_preparation", referencedColumnName="id_bon_preparation")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_ligne", referencedColumnName="id_ligne")
+     *   }
+     * )
+     */
+    private $idLigne;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -48,6 +56,16 @@ class BonDePreparation
      * @ORM\ManyToMany(targetEntity="Livraison", mappedBy="idBonPreparation")
      */
     private $idLivraison;
+
+    /**
+     * @var \Preparateur
+     *
+     * @ORM\ManyToOne(targetEntity="Preparateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_preparateur", referencedColumnName="id_preparateur")
+     * })
+     */
+    private $idPreparateur;
 
     /**
      * @var \Emplacement
@@ -64,6 +82,7 @@ class BonDePreparation
      */
     public function __construct()
     {
+        $this->idLigne = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idLivraison = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -76,52 +95,6 @@ class BonDePreparation
     public function getIdBonPreparation()
     {
         return $this->idBonPreparation;
-    }
-
-    /**
-     * Set redProduit
-     *
-     * @param integer $redProduit
-     * @return BonDePreparation
-     */
-    public function setRedProduit($redProduit)
-    {
-        $this->redProduit = $redProduit;
-    
-        return $this;
-    }
-
-    /**
-     * Get redProduit
-     *
-     * @return integer 
-     */
-    public function getRedProduit()
-    {
-        return $this->redProduit;
-    }
-
-    /**
-     * Set quantiteProduit
-     *
-     * @param integer $quantiteProduit
-     * @return BonDePreparation
-     */
-    public function setQuantiteProduit($quantiteProduit)
-    {
-        $this->quantiteProduit = $quantiteProduit;
-    
-        return $this;
-    }
-
-    /**
-     * Get quantiteProduit
-     *
-     * @return integer 
-     */
-    public function getQuantiteProduit()
-    {
-        return $this->quantiteProduit;
     }
 
     /**
@@ -145,6 +118,62 @@ class BonDePreparation
     public function getNumCommande()
     {
         return $this->numCommande;
+    }
+
+    /**
+     * Set etatBonDePreparation
+     *
+     * @param string $etatBonDePreparation
+     * @return BonDePreparation
+     */
+    public function setEtatBonDePreparation($etatBonDePreparation)
+    {
+        $this->etatBonDePreparation = $etatBonDePreparation;
+    
+        return $this;
+    }
+
+    /**
+     * Get etatBonDePreparation
+     *
+     * @return string 
+     */
+    public function getEtatBonDePreparation()
+    {
+        return $this->etatBonDePreparation;
+    }
+
+    /**
+     * Add idLigne
+     *
+     * @param \VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne
+     * @return BonDePreparation
+     */
+    public function addIdLigne(\VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne)
+    {
+        $this->idLigne[] = $idLigne;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idLigne
+     *
+     * @param \VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne
+     */
+    public function removeIdLigne(\VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne)
+    {
+        $this->idLigne->removeElement($idLigne);
+    }
+
+    /**
+     * Get idLigne
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdLigne()
+    {
+        return $this->idLigne;
     }
 
     /**
@@ -181,12 +210,35 @@ class BonDePreparation
     }
 
     /**
-     * Set emplacement
+     * Set idPreparateur
      *
-     * @param \VieilleSardine\StockBundle\Entity\Emplacement $emplacement
+     * @param \VieilleSardine\LivraisonBundle\Entity\Preparateur $idPreparateur
      * @return BonDePreparation
      */
-    public function setEmplacement(\VieilleSardine\StockBundle\Entity\Emplacement $emplacement = null)
+    public function setIdPreparateur(\VieilleSardine\LivraisonBundle\Entity\Preparateur $idPreparateur = null)
+    {
+        $this->idPreparateur = $idPreparateur;
+    
+        return $this;
+    }
+
+    /**
+     * Get idPreparateur
+     *
+     * @return \VieilleSardine\LivraisonBundle\Entity\Preparateur 
+     */
+    public function getIdPreparateur()
+    {
+        return $this->idPreparateur;
+    }
+
+    /**
+     * Set emplacement
+     *
+     * @param \VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement
+     * @return BonDePreparation
+     */
+    public function setEmplacement(\VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement = null)
     {
         $this->emplacement = $emplacement;
     
@@ -196,7 +248,7 @@ class BonDePreparation
     /**
      * Get emplacement
      *
-     * @return \VieilleSardine\StockBundle\Entity\Emplacement 
+     * @return \VieilleSardine\LivraisonBundle\Entity\Emplacement 
      */
     public function getEmplacement()
     {
