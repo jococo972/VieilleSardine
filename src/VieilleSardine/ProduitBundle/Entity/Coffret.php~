@@ -29,6 +29,34 @@ class Coffret
     private $titre;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="poids", type="float", nullable=false)
+     */
+    private $poids;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="hauteur", type="float", nullable=false)
+     */
+    private $hauteur;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longueur", type="float", nullable=false)
+     */
+    private $longueur;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="largeur", type="float", nullable=false)
+     */
+    private $largeur;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=false)
