@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TransactionBancaire
  *
  * @ORM\Table(name="transaction_bancaire")
- * @ORM\Entity(repositoryClass="VieilleSardine\PaiementBundle\Entity\TransactionRepository")
+ * @ORM\Entity
  */
 class TransactionBancaire
 {

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * CarteBancaire
  *
  * @ORM\Table(name="carte_bancaire")
- * @ORM\Entity(repositoryClass="VieilleSardine\PaiementBundle\Entity\CarteBancaireRepository")
+ * @ORM\Entity
  */
 class CarteBancaire
 {
