@@ -1,0 +1,30 @@
+Couloir:
+    type: entity
+    table: couloir
+    fields:
+        idCouloir:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_couloir
+            generator:
+                strategy: IDENTITY
+    manyToMany:
+        idEmplacement:
+            targetEntity: Emplacement
+            cascade: {  }
+            mappedBy: null
+            inversedBy: idCouloir
+            joinTable:
+                name: couloir_contient_emplacements
+                joinColumns:
+                    -
+                        name: id_couloir
+                        referencedColumnName: id_couloir
+                inverseJoinColumns:
+                    -
+                        name: id_emplacement
+                        referencedColumnName: id_emplacement
+            orderBy: null
+    lifecycleCallbacks: {  }

@@ -1,0 +1,23 @@
+MoyenDePaiement:
+    type: entity
+    table: moyen_de_paiement
+    fields:
+        idPaiement:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            column: id_paiement
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        idCommande:
+            targetEntity: Commande
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                id_commande:
+                    referencedColumnName: id_commande
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
