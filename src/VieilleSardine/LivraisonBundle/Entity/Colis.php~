@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Colis
  *
  * @ORM\Table(name="colis")
- * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\ColisRepository")
+ * @ORM\Entity
  */
 class Colis
 {
@@ -52,7 +52,7 @@ class Colis
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Lignes", inversedBy="idColis")
+     * @ORM\ManyToMany(targetEntity="Lignes", inversedBy="idColis")
      * @ORM\JoinTable(name="colis_contient_lignes",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_colis", referencedColumnName="id_colis")
@@ -67,7 +67,7 @@ class Colis
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Commande", mappedBy="idColis")
+     * @ORM\ManyToMany(targetEntity="Commande", mappedBy="idColis")
      */
     private $idCommande;
 
@@ -81,7 +81,7 @@ class Colis
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="VieilleSardine\RetourBundle\Entity\Retour", mappedBy="idColis")
+     * @ORM\ManyToMany(targetEntity="Retour", mappedBy="idColis")
      */
     private $idRetour;
 
@@ -96,238 +96,4 @@ class Colis
         $this->idRetour = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-
-    /**
-     * Get idColis
-     *
-     * @return integer 
-     */
-    public function getIdColis()
-    {
-        return $this->idColis;
-    }
-
-    /**
-     * Set poidsColis
-     *
-     * @param float $poidsColis
-     * @return Colis
-     */
-    public function setPoidsColis($poidsColis)
-    {
-        $this->poidsColis = $poidsColis;
-    
-        return $this;
-    }
-
-    /**
-     * Get poidsColis
-     *
-     * @return float 
-     */
-    public function getPoidsColis()
-    {
-        return $this->poidsColis;
-    }
-
-    /**
-     * Set datePreparation
-     *
-     * @param \DateTime $datePreparation
-     * @return Colis
-     */
-    public function setDatePreparation($datePreparation)
-    {
-        $this->datePreparation = $datePreparation;
-    
-        return $this;
-    }
-
-    /**
-     * Get datePreparation
-     *
-     * @return \DateTime 
-     */
-    public function getDatePreparation()
-    {
-        return $this->datePreparation;
-    }
-
-    /**
-     * Set nbColis
-     *
-     * @param integer $nbColis
-     * @return Colis
-     */
-    public function setNbColis($nbColis)
-    {
-        $this->nbColis = $nbColis;
-    
-        return $this;
-    }
-
-    /**
-     * Get nbColis
-     *
-     * @return integer 
-     */
-    public function getNbColis()
-    {
-        return $this->nbColis;
-    }
-
-    /**
-     * Set type
-     *
-     * @param string $type
-     * @return Colis
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    
-        return $this;
-    }
-
-    /**
-     * Get type
-     *
-     * @return string 
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Add idLignes
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Lignes $idLignes
-     * @return Colis
-     */
-    public function addIdLigne(\VieilleSardine\CommandeBundle\Entity\Lignes $idLignes)
-    {
-        $this->idLignes[] = $idLignes;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idLignes
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Lignes $idLignes
-     */
-    public function removeIdLigne(\VieilleSardine\CommandeBundle\Entity\Lignes $idLignes)
-    {
-        $this->idLignes->removeElement($idLignes);
-    }
-
-    /**
-     * Get idLignes
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdLignes()
-    {
-        return $this->idLignes;
-    }
-
-    /**
-     * Add idCommande
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCommande
-     * @return Colis
-     */
-    public function addIdCommande(\VieilleSardine\CommandeBundle\Entity\Commande $idCommande)
-    {
-        $this->idCommande[] = $idCommande;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idCommande
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCommande
-     */
-    public function removeIdCommande(\VieilleSardine\CommandeBundle\Entity\Commande $idCommande)
-    {
-        $this->idCommande->removeElement($idCommande);
-    }
-
-    /**
-     * Get idCommande
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdCommande()
-    {
-        return $this->idCommande;
-    }
-
-    /**
-     * Add idLivraison
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison
-     * @return Colis
-     */
-    public function addIdLivraison(\VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison)
-    {
-        $this->idLivraison[] = $idLivraison;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idLivraison
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison
-     */
-    public function removeIdLivraison(\VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison)
-    {
-        $this->idLivraison->removeElement($idLivraison);
-    }
-
-    /**
-     * Get idLivraison
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdLivraison()
-    {
-        return $this->idLivraison;
-    }
-
-    /**
-     * Add idRetour
-     *
-     * @param \VieilleSardine\RetourBundle\Entity\Retour $idRetour
-     * @return Colis
-     */
-    public function addIdRetour(\VieilleSardine\RetourBundle\Entity\Retour $idRetour)
-    {
-        $this->idRetour[] = $idRetour;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idRetour
-     *
-     * @param \VieilleSardine\RetourBundle\Entity\Retour $idRetour
-     */
-    public function removeIdRetour(\VieilleSardine\RetourBundle\Entity\Retour $idRetour)
-    {
-        $this->idRetour->removeElement($idRetour);
-    }
-
-    /**
-     * Get idRetour
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdRetour()
-    {
-        return $this->idRetour;
-    }
 }

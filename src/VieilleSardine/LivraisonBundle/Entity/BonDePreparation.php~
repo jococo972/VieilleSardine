@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BonDePreparation
  *
  * @ORM\Table(name="bon_de_preparation")
- * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\BonDePreparationRepository")
+ * @ORM\Entity
  */
 class BonDePreparation
 {
@@ -38,7 +38,7 @@ class BonDePreparation
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Lignes", inversedBy="idBonPreparation")
+     * @ORM\ManyToMany(targetEntity="Lignes", inversedBy="idBonPreparation")
      * @ORM\JoinTable(name="bon_de_preparation_contient_lignes",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_bon_preparation", referencedColumnName="id_bon_preparation")
@@ -68,16 +68,6 @@ class BonDePreparation
     private $idPreparateur;
 
     /**
-     * @var \Emplacement
-     *
-     * @ORM\ManyToOne(targetEntity="VieilleSardine\StockBundle\Entity\Emplacement")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="emplacement", referencedColumnName="id_emplacement")
-     * })
-     */
-    private $emplacement;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -86,172 +76,4 @@ class BonDePreparation
         $this->idLivraison = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-
-    /**
-     * Get idBonPreparation
-     *
-     * @return integer 
-     */
-    public function getIdBonPreparation()
-    {
-        return $this->idBonPreparation;
-    }
-
-    /**
-     * Set numCommande
-     *
-     * @param integer $numCommande
-     * @return BonDePreparation
-     */
-    public function setNumCommande($numCommande)
-    {
-        $this->numCommande = $numCommande;
-    
-        return $this;
-    }
-
-    /**
-     * Get numCommande
-     *
-     * @return integer 
-     */
-    public function getNumCommande()
-    {
-        return $this->numCommande;
-    }
-
-    /**
-     * Set etatBonDePreparation
-     *
-     * @param string $etatBonDePreparation
-     * @return BonDePreparation
-     */
-    public function setEtatBonDePreparation($etatBonDePreparation)
-    {
-        $this->etatBonDePreparation = $etatBonDePreparation;
-    
-        return $this;
-    }
-
-    /**
-     * Get etatBonDePreparation
-     *
-     * @return string 
-     */
-    public function getEtatBonDePreparation()
-    {
-        return $this->etatBonDePreparation;
-    }
-
-    /**
-     * Add idLigne
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne
-     * @return BonDePreparation
-     */
-    public function addIdLigne(\VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne)
-    {
-        $this->idLigne[] = $idLigne;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idLigne
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne
-     */
-    public function removeIdLigne(\VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne)
-    {
-        $this->idLigne->removeElement($idLigne);
-    }
-
-    /**
-     * Get idLigne
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdLigne()
-    {
-        return $this->idLigne;
-    }
-
-    /**
-     * Add idLivraison
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison
-     * @return BonDePreparation
-     */
-    public function addIdLivraison(\VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison)
-    {
-        $this->idLivraison[] = $idLivraison;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idLivraison
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison
-     */
-    public function removeIdLivraison(\VieilleSardine\LivraisonBundle\Entity\Livraison $idLivraison)
-    {
-        $this->idLivraison->removeElement($idLivraison);
-    }
-
-    /**
-     * Get idLivraison
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdLivraison()
-    {
-        return $this->idLivraison;
-    }
-
-    /**
-     * Set idPreparateur
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Preparateur $idPreparateur
-     * @return BonDePreparation
-     */
-    public function setIdPreparateur(\VieilleSardine\LivraisonBundle\Entity\Preparateur $idPreparateur = null)
-    {
-        $this->idPreparateur = $idPreparateur;
-    
-        return $this;
-    }
-
-    /**
-     * Get idPreparateur
-     *
-     * @return \VieilleSardine\LivraisonBundle\Entity\Preparateur 
-     */
-    public function getIdPreparateur()
-    {
-        return $this->idPreparateur;
-    }
-
-    /**
-     * Set emplacement
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement
-     * @return BonDePreparation
-     */
-    public function setEmplacement(\VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement = null)
-    {
-        $this->emplacement = $emplacement;
-    
-        return $this;
-    }
-
-    /**
-     * Get emplacement
-     *
-     * @return \VieilleSardine\LivraisonBundle\Entity\Emplacement 
-     */
-    public function getEmplacement()
-    {
-        return $this->emplacement;
-    }
 }
