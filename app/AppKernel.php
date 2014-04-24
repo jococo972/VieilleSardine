@@ -24,6 +24,7 @@ class AppKernel extends Kernel {
             new VieilleSardine\PaiementBundle\VieilleSardinePaiementBundle(),
             new VieilleSardine\StockBundle\VieilleSardineStockBundle(),
             new VieilleSardine\RetourBundle\VieilleSardineRetourBundle(),
+            new VieilleSardine\CatalogueBundle\VieilleSardineCatalogueBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

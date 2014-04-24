@@ -1,34 +1,38 @@
+vieille_sardine_catalogue:
+    resource: "@VieilleSardineCatalogueBundle/Resources/config/routing.yml"
+    prefix:   /catalogue/
+
 vieille_sardine_retour:
     resource: "@VieilleSardineRetourBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /retour/
 
 vieille_sardine_stock:
     resource: "@VieilleSardineStockBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /stock/
 
 vieille_sardine_paiement:
     resource: "@VieilleSardinePaiementBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /paiment/
 
 vieille_sardine_produit:
     resource: "@VieilleSardineProduitBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /produit/
 
 vieille_sardine_livraison:
     resource: "@VieilleSardineLivraisonBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /livraison
 
 vieille_sardine_panier:
     resource: "@VieilleSardinePanierBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /panier
 
 vieille_sardine_user:
     resource: "@VieilleSardineUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user/
     
 vieille_sardine_commande:
     resource: "@VieilleSardineCommandeBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /commande/
     
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
