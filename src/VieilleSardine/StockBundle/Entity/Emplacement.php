@@ -35,7 +35,31 @@ class Emplacement
      */
     private $numEtagere;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Couloir", mappedBy="idEmplacement")
+     */
+    private $idCouloir;
 
+    /**
+     * @var \StockPhysique
+     *
+     * @ORM\ManyToOne(targetEntity="StockPhysique")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_stock", referencedColumnName="id_stock")
+     * })
+     */
+    private $idStock;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idCouloir = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
 
     /**
      * Get idEmplacement
@@ -91,5 +115,61 @@ class Emplacement
     public function getNumEtagere()
     {
         return $this->numEtagere;
+    }
+
+    /**
+     * Add idCouloir
+     *
+     * @param \VieilleSardine\StockBundle\Entity\Couloir $idCouloir
+     * @return Emplacement
+     */
+    public function addIdCouloir(\VieilleSardine\StockBundle\Entity\Couloir $idCouloir)
+    {
+        $this->idCouloir[] = $idCouloir;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idCouloir
+     *
+     * @param \VieilleSardine\StockBundle\Entity\Couloir $idCouloir
+     */
+    public function removeIdCouloir(\VieilleSardine\StockBundle\Entity\Couloir $idCouloir)
+    {
+        $this->idCouloir->removeElement($idCouloir);
+    }
+
+    /**
+     * Get idCouloir
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdCouloir()
+    {
+        return $this->idCouloir;
+    }
+
+    /**
+     * Set idStock
+     *
+     * @param \VieilleSardine\StockBundle\Entity\StockPhysique $idStock
+     * @return Emplacement
+     */
+    public function setIdStock(\VieilleSardine\StockBundle\Entity\StockPhysique $idStock = null)
+    {
+        $this->idStock = $idStock;
+    
+        return $this;
+    }
+
+    /**
+     * Get idStock
+     *
+     * @return \VieilleSardine\StockBundle\Entity\StockPhysique 
+     */
+    public function getIdStock()
+    {
+        return $this->idStock;
     }
 }

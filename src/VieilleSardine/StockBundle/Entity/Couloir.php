@@ -22,33 +22,28 @@ class Couloir
     private $idCouloir;
 
     /**
-     * @var integer
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="num_couloir", type="integer", nullable=false)
-     */
-    private $numCouloir;
-
-    /**
-     * @var \Emplacement
-     *
-     * @ORM\ManyToOne(targetEntity="Emplacement")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_emplacement", referencedColumnName="id_emplacement")
-     * })
+     * @ORM\ManyToMany(targetEntity="Emplacement", inversedBy="idCouloir")
+     * @ORM\JoinTable(name="couloir_contient_emplacements",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_couloir", referencedColumnName="id_couloir")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_emplacement", referencedColumnName="id_emplacement")
+     *   }
+     * )
      */
     private $idEmplacement;
 
     /**
-     * @var \StockPhysique
-     *
-     * @ORM\ManyToOne(targetEntity="StockPhysique")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_stock", referencedColumnName="id_stock")
-     * })
+     * Constructor
      */
-    private $idStock;
-
-
+    public function __construct()
+    {
+        $this->idEmplacement = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
 
     /**
      * Get idCouloir
@@ -61,71 +56,35 @@ class Couloir
     }
 
     /**
-     * Set numCouloir
-     *
-     * @param integer $numCouloir
-     * @return Couloir
-     */
-    public function setNumCouloir($numCouloir)
-    {
-        $this->numCouloir = $numCouloir;
-    
-        return $this;
-    }
-
-    /**
-     * Get numCouloir
-     *
-     * @return integer 
-     */
-    public function getNumCouloir()
-    {
-        return $this->numCouloir;
-    }
-
-    /**
-     * Set idEmplacement
+     * Add idEmplacement
      *
      * @param \VieilleSardine\StockBundle\Entity\Emplacement $idEmplacement
      * @return Couloir
      */
-    public function setIdEmplacement(\VieilleSardine\StockBundle\Entity\Emplacement $idEmplacement = null)
+    public function addIdEmplacement(\VieilleSardine\StockBundle\Entity\Emplacement $idEmplacement)
     {
-        $this->idEmplacement = $idEmplacement;
+        $this->idEmplacement[] = $idEmplacement;
     
         return $this;
+    }
+
+    /**
+     * Remove idEmplacement
+     *
+     * @param \VieilleSardine\StockBundle\Entity\Emplacement $idEmplacement
+     */
+    public function removeIdEmplacement(\VieilleSardine\StockBundle\Entity\Emplacement $idEmplacement)
+    {
+        $this->idEmplacement->removeElement($idEmplacement);
     }
 
     /**
      * Get idEmplacement
      *
-     * @return \VieilleSardine\StockBundle\Entity\Emplacement 
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getIdEmplacement()
     {
         return $this->idEmplacement;
-    }
-
-    /**
-     * Set idStock
-     *
-     * @param \VieilleSardine\StockBundle\Entity\StockPhysique $idStock
-     * @return Couloir
-     */
-    public function setIdStock(\VieilleSardine\StockBundle\Entity\StockPhysique $idStock = null)
-    {
-        $this->idStock = $idStock;
-    
-        return $this;
-    }
-
-    /**
-     * Get idStock
-     *
-     * @return \VieilleSardine\StockBundle\Entity\StockPhysique 
-     */
-    public function getIdStock()
-    {
-        return $this->idStock;
     }
 }

@@ -106,10 +106,10 @@ class StockPhysique
     /**
      * Set idProduit
      *
-     * @param \VieilleSardine\ProduitBundle\Entity\Produit $idProduit
+     * @param \VieilleSardine\StockBundle\Entity\Produit $idProduit
      * @return StockPhysique
      */
-    public function setIdProduit(\VieilleSardine\ProduitBundle\Entity\Produit $idProduit = null)
+    public function setIdProduit(\VieilleSardine\StockBundle\Entity\Produit $idProduit = null)
     {
         $this->idProduit = $idProduit;
     
@@ -119,7 +119,7 @@ class StockPhysique
     /**
      * Get idProduit
      *
-     * @return \VieilleSardine\ProduitBundle\Entity\Produit 
+     * @return \VieilleSardine\StockBundle\Entity\Produit 
      */
     public function getIdProduit()
     {
