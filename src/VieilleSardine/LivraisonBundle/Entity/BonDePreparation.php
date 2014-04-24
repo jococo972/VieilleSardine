@@ -68,16 +68,6 @@ class BonDePreparation
     private $idPreparateur;
 
     /**
-     * @var \Emplacement
-     *
-     * @ORM\ManyToOne(targetEntity="VieilleSardine\StockBundle\Entity\Emplacement")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="emplacement", referencedColumnName="id_emplacement")
-     * })
-     */
-    private $emplacement;
-
-    /**
      * Constructor
      */
     public function __construct()
@@ -230,28 +220,5 @@ class BonDePreparation
     public function getIdPreparateur()
     {
         return $this->idPreparateur;
-    }
-
-    /**
-     * Set emplacement
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement
-     * @return BonDePreparation
-     */
-    public function setEmplacement(\VieilleSardine\LivraisonBundle\Entity\Emplacement $emplacement = null)
-    {
-        $this->emplacement = $emplacement;
-    
-        return $this;
-    }
-
-    /**
-     * Get emplacement
-     *
-     * @return \VieilleSardine\LivraisonBundle\Entity\Emplacement 
-     */
-    public function getEmplacement()
-    {
-        return $this->emplacement;
     }
 }

@@ -29,6 +29,34 @@ class Coffret
     private $titre;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="poids", type="float", nullable=false)
+     */
+    private $poids;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="hauteur", type="float", nullable=false)
+     */
+    private $hauteur;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="longueur", type="float", nullable=false)
+     */
+    private $longueur;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="largeur", type="float", nullable=false)
+     */
+    private $largeur;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=false)
@@ -97,6 +125,98 @@ class Coffret
     public function getTitre()
     {
         return $this->titre;
+    }
+
+    /**
+     * Set poids
+     *
+     * @param float $poids
+     * @return Coffret
+     */
+    public function setPoids($poids)
+    {
+        $this->poids = $poids;
+    
+        return $this;
+    }
+
+    /**
+     * Get poids
+     *
+     * @return float 
+     */
+    public function getPoids()
+    {
+        return $this->poids;
+    }
+
+    /**
+     * Set hauteur
+     *
+     * @param float $hauteur
+     * @return Coffret
+     */
+    public function setHauteur($hauteur)
+    {
+        $this->hauteur = $hauteur;
+    
+        return $this;
+    }
+
+    /**
+     * Get hauteur
+     *
+     * @return float 
+     */
+    public function getHauteur()
+    {
+        return $this->hauteur;
+    }
+
+    /**
+     * Set longueur
+     *
+     * @param float $longueur
+     * @return Coffret
+     */
+    public function setLongueur($longueur)
+    {
+        $this->longueur = $longueur;
+    
+        return $this;
+    }
+
+    /**
+     * Get longueur
+     *
+     * @return float 
+     */
+    public function getLongueur()
+    {
+        return $this->longueur;
+    }
+
+    /**
+     * Set largeur
+     *
+     * @param float $largeur
+     * @return Coffret
+     */
+    public function setLargeur($largeur)
+    {
+        $this->largeur = $largeur;
+    
+        return $this;
+    }
+
+    /**
+     * Get largeur
+     *
+     * @return float 
+     */
+    public function getLargeur()
+    {
+        return $this->largeur;
     }
 
     /**

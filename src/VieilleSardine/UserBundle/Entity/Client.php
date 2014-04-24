@@ -80,7 +80,7 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_voie", type="string", length=30, nullable=false)
+     * @ORM\Column(name="nom_voie", type="string", length=255, nullable=false)
      */
     private $nomVoie;
 
