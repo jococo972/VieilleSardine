@@ -31,7 +31,7 @@ class Lignes
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="BonDePreparation", mappedBy="idLigne")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\LivraisonBundle\Entity\BonDePreparation", mappedBy="idLigne")
      */
     private $idBonPreparation;
 
