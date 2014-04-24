@@ -31,6 +31,13 @@ class Lignes
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\ManyToMany(targetEntity="BonDePreparation", mappedBy="idLigne")
+     */
+    private $idBonPreparation;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="VieilleSardine\LivraisonBundle\Entity\Colis", mappedBy="idLignes")
      */
     private $idColis;
@@ -64,6 +71,7 @@ class Lignes
      */
     public function __construct()
     {
+        $this->idBonPreparation = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idColis = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idPanier = new \Doctrine\Common\Collections\ArrayCollection();
@@ -101,6 +109,39 @@ class Lignes
     public function getQuantite()
     {
         return $this->quantite;
+    }
+
+    /**
+     * Add idBonPreparation
+     *
+     * @param \VieilleSardine\CommandeBundle\Entity\BonDePreparation $idBonPreparation
+     * @return Lignes
+     */
+    public function addIdBonPreparation(\VieilleSardine\CommandeBundle\Entity\BonDePreparation $idBonPreparation)
+    {
+        $this->idBonPreparation[] = $idBonPreparation;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idBonPreparation
+     *
+     * @param \VieilleSardine\CommandeBundle\Entity\BonDePreparation $idBonPreparation
+     */
+    public function removeIdBonPreparation(\VieilleSardine\CommandeBundle\Entity\BonDePreparation $idBonPreparation)
+    {
+        $this->idBonPreparation->removeElement($idBonPreparation);
+    }
+
+    /**
+     * Get idBonPreparation
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdBonPreparation()
+    {
+        return $this->idBonPreparation;
     }
 
     /**

@@ -54,4 +54,83 @@ class CommandeGroupee
         $this->idCmdSimple = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
+
+    /**
+     * Set nbCmdSimple
+     *
+     * @param integer $nbCmdSimple
+     * @return CommandeGroupee
+     */
+    public function setNbCmdSimple($nbCmdSimple)
+    {
+        $this->nbCmdSimple = $nbCmdSimple;
+    
+        return $this;
+    }
+
+    /**
+     * Get nbCmdSimple
+     *
+     * @return integer 
+     */
+    public function getNbCmdSimple()
+    {
+        return $this->nbCmdSimple;
+    }
+
+    /**
+     * Add idCmdSimple
+     *
+     * @param \VieilleSardine\CommandeBundle\Entity\CommandeSimple $idCmdSimple
+     * @return CommandeGroupee
+     */
+    public function addIdCmdSimple(\VieilleSardine\CommandeBundle\Entity\CommandeSimple $idCmdSimple)
+    {
+        $this->idCmdSimple[] = $idCmdSimple;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idCmdSimple
+     *
+     * @param \VieilleSardine\CommandeBundle\Entity\CommandeSimple $idCmdSimple
+     */
+    public function removeIdCmdSimple(\VieilleSardine\CommandeBundle\Entity\CommandeSimple $idCmdSimple)
+    {
+        $this->idCmdSimple->removeElement($idCmdSimple);
+    }
+
+    /**
+     * Get idCmdSimple
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdCmdSimple()
+    {
+        return $this->idCmdSimple;
+    }
+
+    /**
+     * Set idCmdGroupee
+     *
+     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCmdGroupee
+     * @return CommandeGroupee
+     */
+    public function setIdCmdGroupee(\VieilleSardine\CommandeBundle\Entity\Commande $idCmdGroupee)
+    {
+        $this->idCmdGroupee = $idCmdGroupee;
+    
+        return $this;
+    }
+
+    /**
+     * Get idCmdGroupee
+     *
+     * @return \VieilleSardine\CommandeBundle\Entity\Commande 
+     */
+    public function getIdCmdGroupee()
+    {
+        return $this->idCmdGroupee;
+    }
 }
