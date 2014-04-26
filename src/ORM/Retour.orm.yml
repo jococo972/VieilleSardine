@@ -10,10 +10,14 @@ Retour:
             column: id_retour
             generator:
                 strategy: IDENTITY
-        statut:
+        numero:
             type: string
             length: 20
             fixed: false
+            nullable: false
+        statut:
+            type: integer
+            unsigned: false
             nullable: false
         estValide:
             type: boolean
@@ -23,6 +27,19 @@ Retour:
             type: boolean
             nullable: false
             column: est_clos
+        date:
+            type: date
+            nullable: false
+        motif:
+            type: integer
+            unsigned: false
+            nullable: false
+        modalites:
+            type: boolean
+            nullable: false
+        draft:
+            type: boolean
+            nullable: false
     manyToMany:
         idColis:
             targetEntity: Colis
