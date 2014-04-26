@@ -24,7 +24,14 @@ class Retour
     /**
      * @var string
      *
-     * @ORM\Column(name="statut", type="string", length=20, nullable=false)
+     * @ORM\Column(name="numero", type="string", length=20, nullable=false)
+     */
+    private $numero;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="statut", type="integer", nullable=false)
      */
     private $statut;
 
@@ -43,9 +50,37 @@ class Retour
     private $estClos;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="motif", type="integer", nullable=false)
+     */
+    private $motif;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="modalites", type="boolean", nullable=false)
+     */
+    private $modalites;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="draft", type="boolean", nullable=false)
+     */
+    private $draft;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="VieilleSardine\LivraisonBundle\Entity\Colis", inversedBy="idRetour")
+     * @ORM\ManyToMany(targetEntity="Colis", inversedBy="idRetour")
      * @ORM\JoinTable(name="retour_concerne_colis",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_retour", referencedColumnName="id_retour")
@@ -60,7 +95,7 @@ class Retour
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="VieilleSardine\UserBundle\Entity\Client", inversedBy="idRetour")
+     * @ORM\ManyToMany(targetEntity="Client", inversedBy="idRetour")
      * @ORM\JoinTable(name="retour_par_client",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_retour", referencedColumnName="id_retour")

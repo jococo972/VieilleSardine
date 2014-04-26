@@ -24,7 +24,14 @@ class Retour
     /**
      * @var string
      *
-     * @ORM\Column(name="statut", type="string", length=20, nullable=false)
+     * @ORM\Column(name="numero", type="string", length=20, nullable=false)
+     */
+    private $numero;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="statut", type="integer", nullable=false)
      */
     private $statut;
 
@@ -41,6 +48,34 @@ class Retour
      * @ORM\Column(name="est_clos", type="boolean", nullable=false)
      */
     private $estClos;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="motif", type="integer", nullable=false)
+     */
+    private $motif;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="modalites", type="boolean", nullable=false)
+     */
+    private $modalites;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="draft", type="boolean", nullable=false)
+     */
+    private $draft;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -103,9 +138,32 @@ class Retour
     }
 
     /**
+     * Set numero
+     *
+     * @param string $numero
+     * @return Retour
+     */
+    public function setNumero($numero)
+    {
+        $this->numero = $numero;
+    
+        return $this;
+    }
+
+    /**
+     * Get numero
+     *
+     * @return string 
+     */
+    public function getNumero()
+    {
+        return $this->numero;
+    }
+
+    /**
      * Set statut
      *
-     * @param string $statut
+     * @param integer $statut
      * @return Retour
      */
     public function setStatut($statut)
@@ -118,7 +176,7 @@ class Retour
     /**
      * Get statut
      *
-     * @return string 
+     * @return integer 
      */
     public function getStatut()
     {
@@ -169,6 +227,98 @@ class Retour
     public function getEstClos()
     {
         return $this->estClos;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return Retour
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set motif
+     *
+     * @param integer $motif
+     * @return Retour
+     */
+    public function setMotif($motif)
+    {
+        $this->motif = $motif;
+    
+        return $this;
+    }
+
+    /**
+     * Get motif
+     *
+     * @return integer 
+     */
+    public function getMotif()
+    {
+        return $this->motif;
+    }
+
+    /**
+     * Set modalites
+     *
+     * @param boolean $modalites
+     * @return Retour
+     */
+    public function setModalites($modalites)
+    {
+        $this->modalites = $modalites;
+    
+        return $this;
+    }
+
+    /**
+     * Get modalites
+     *
+     * @return boolean 
+     */
+    public function getModalites()
+    {
+        return $this->modalites;
+    }
+
+    /**
+     * Set draft
+     *
+     * @param boolean $draft
+     * @return Retour
+     */
+    public function setDraft($draft)
+    {
+        $this->draft = $draft;
+    
+        return $this;
+    }
+
+    /**
+     * Get draft
+     *
+     * @return boolean 
+     */
+    public function getDraft()
+    {
+        return $this->draft;
     }
 
     /**
