@@ -99,20 +99,20 @@ class Produit
     private $reference;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var integer
      *
-     * @ORM\ManyToMany(targetEntity="Coffret", mappedBy="idProduit")
+     * @ORM\Column(name="quantite_vendue", type="integer", nullable=true)
      */
-    private $idCoffret;
+    private $quantiteVendue;
 
     /**
-     * Constructor
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer", nullable=true)
      */
-    public function __construct()
-    {
-        $this->idCoffret = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
+    private $note;
+
+
 
     /**
      * Get idProduit
@@ -378,35 +378,48 @@ class Produit
     }
 
     /**
-     * Add idCoffret
+     * Set quantiteVendue
      *
-     * @param \VieilleSardine\ProduitBundle\Entity\Coffret $idCoffret
+     * @param integer $quantiteVendue
      * @return Produit
      */
-    public function addIdCoffret(\VieilleSardine\ProduitBundle\Entity\Coffret $idCoffret)
+    public function setQuantiteVendue($quantiteVendue)
     {
-        $this->idCoffret[] = $idCoffret;
+        $this->quantiteVendue = $quantiteVendue;
     
         return $this;
     }
 
     /**
-     * Remove idCoffret
+     * Get quantiteVendue
      *
-     * @param \VieilleSardine\ProduitBundle\Entity\Coffret $idCoffret
+     * @return integer 
      */
-    public function removeIdCoffret(\VieilleSardine\ProduitBundle\Entity\Coffret $idCoffret)
+    public function getQuantiteVendue()
     {
-        $this->idCoffret->removeElement($idCoffret);
+        return $this->quantiteVendue;
     }
 
     /**
-     * Get idCoffret
+     * Set note
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @param integer $note
+     * @return Produit
      */
-    public function getIdCoffret()
+    public function setNote($note)
     {
-        return $this->idCoffret;
+        $this->note = $note;
+    
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer 
+     */
+    public function getNote()
+    {
+        return $this->note;
     }
 }

@@ -64,6 +64,34 @@ class Coffret
     private $description;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="prix_ht", type="float", nullable=false)
+     */
+    private $prixHt;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="prix_ttc", type="float", nullable=false)
+     */
+    private $prixTtc;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="tva", type="float", nullable=false)
+     */
+    private $tva;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="statut", type="boolean", nullable=false)
+     */
+    private $statut;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="nb_produit", type="integer", nullable=false)
@@ -71,26 +99,47 @@ class Coffret
     private $nbProduit;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="reference", type="string", length=10, nullable=false)
+     */
+    private $reference;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite_vendue", type="integer", nullable=true)
+     */
+    private $quantiteVendue;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="note", type="integer", nullable=true)
+     */
+    private $note;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Produit", inversedBy="idCoffret")
+     * @ORM\ManyToMany(targetEntity="Lignes", inversedBy="idCoffret")
      * @ORM\JoinTable(name="composition_coffret",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_coffret", referencedColumnName="id_coffret")
      *   },
      *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
+     *     @ORM\JoinColumn(name="id_ligne", referencedColumnName="id_ligne")
      *   }
      * )
      */
-    private $idProduit;
+    private $idLigne;
 
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->idProduit = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idLigne = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
 
@@ -243,6 +292,98 @@ class Coffret
     }
 
     /**
+     * Set prixHt
+     *
+     * @param float $prixHt
+     * @return Coffret
+     */
+    public function setPrixHt($prixHt)
+    {
+        $this->prixHt = $prixHt;
+    
+        return $this;
+    }
+
+    /**
+     * Get prixHt
+     *
+     * @return float 
+     */
+    public function getPrixHt()
+    {
+        return $this->prixHt;
+    }
+
+    /**
+     * Set prixTtc
+     *
+     * @param float $prixTtc
+     * @return Coffret
+     */
+    public function setPrixTtc($prixTtc)
+    {
+        $this->prixTtc = $prixTtc;
+    
+        return $this;
+    }
+
+    /**
+     * Get prixTtc
+     *
+     * @return float 
+     */
+    public function getPrixTtc()
+    {
+        return $this->prixTtc;
+    }
+
+    /**
+     * Set tva
+     *
+     * @param float $tva
+     * @return Coffret
+     */
+    public function setTva($tva)
+    {
+        $this->tva = $tva;
+    
+        return $this;
+    }
+
+    /**
+     * Get tva
+     *
+     * @return float 
+     */
+    public function getTva()
+    {
+        return $this->tva;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param boolean $statut
+     * @return Coffret
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return boolean 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
      * Set nbProduit
      *
      * @param integer $nbProduit
@@ -266,35 +407,104 @@ class Coffret
     }
 
     /**
-     * Add idProduit
+     * Set reference
      *
-     * @param \VieilleSardine\ProduitBundle\Entity\Produit $idProduit
+     * @param string $reference
      * @return Coffret
      */
-    public function addIdProduit(\VieilleSardine\ProduitBundle\Entity\Produit $idProduit)
+    public function setReference($reference)
     {
-        $this->idProduit[] = $idProduit;
+        $this->reference = $reference;
     
         return $this;
     }
 
     /**
-     * Remove idProduit
+     * Get reference
      *
-     * @param \VieilleSardine\ProduitBundle\Entity\Produit $idProduit
+     * @return string 
      */
-    public function removeIdProduit(\VieilleSardine\ProduitBundle\Entity\Produit $idProduit)
+    public function getReference()
     {
-        $this->idProduit->removeElement($idProduit);
+        return $this->reference;
     }
 
     /**
-     * Get idProduit
+     * Set quantiteVendue
+     *
+     * @param integer $quantiteVendue
+     * @return Coffret
+     */
+    public function setQuantiteVendue($quantiteVendue)
+    {
+        $this->quantiteVendue = $quantiteVendue;
+    
+        return $this;
+    }
+
+    /**
+     * Get quantiteVendue
+     *
+     * @return integer 
+     */
+    public function getQuantiteVendue()
+    {
+        return $this->quantiteVendue;
+    }
+
+    /**
+     * Set note
+     *
+     * @param integer $note
+     * @return Coffret
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return integer 
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Add idLigne
+     *
+     * @param \VieilleSardine\ProduitBundle\Entity\Lignes $idLigne
+     * @return Coffret
+     */
+    public function addIdLigne(\VieilleSardine\ProduitBundle\Entity\Lignes $idLigne)
+    {
+        $this->idLigne[] = $idLigne;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idLigne
+     *
+     * @param \VieilleSardine\ProduitBundle\Entity\Lignes $idLigne
+     */
+    public function removeIdLigne(\VieilleSardine\ProduitBundle\Entity\Lignes $idLigne)
+    {
+        $this->idLigne->removeElement($idLigne);
+    }
+
+    /**
+     * Get idLigne
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getIdProduit()
+    public function getIdLigne()
     {
-        return $this->idProduit;
+        return $this->idLigne;
     }
 }
