@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Livraison
  *
  * @ORM\Table(name="livraison")
- * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\LivraisonRepository")
+ * @ORM\Entity
  */
 class Livraison
 {
@@ -38,7 +38,7 @@ class Livraison
     /**
      * @var string
      *
-     * @ORM\Column(name="mode_livraison", type="string", nullable=false)
+     * @ORM\Column(name="mode_livraison", type="string", nullable=true)
      */
     private $modeLivraison;
 
@@ -107,7 +107,7 @@ class Livraison
     /**
      * @var \Commande
      *
-     * @ORM\ManyToOne(targetEntity="VieilleSardine\CommandeBundle\Entity\Commande")
+     * @ORM\ManyToOne(targetEntity="Commande")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_commande", referencedColumnName="id_commande")
      * })

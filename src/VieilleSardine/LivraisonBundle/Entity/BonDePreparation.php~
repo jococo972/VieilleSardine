@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BonDePreparation
  *
  * @ORM\Table(name="bon_de_preparation")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="VieilleSardine\LivraisonBundle\Entity\BonDePreparationRepository")
  */
 class BonDePreparation
 {
@@ -38,7 +38,7 @@ class BonDePreparation
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Lignes", inversedBy="idBonPreparation")
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\CommandeBundle\Entity\Lignes", inversedBy="idBonPreparation")
      * @ORM\JoinTable(name="bon_de_preparation_contient_lignes",
      *   joinColumns={
      *     @ORM\JoinColumn(name="id_bon_preparation", referencedColumnName="id_bon_preparation")

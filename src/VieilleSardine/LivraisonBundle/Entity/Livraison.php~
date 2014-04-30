@@ -38,7 +38,7 @@ class Livraison
     /**
      * @var string
      *
-     * @ORM\Column(name="mode_livraison", type="string", nullable=false)
+     * @ORM\Column(name="mode_livraison", type="string", nullable=true)
      */
     private $modeLivraison;
 

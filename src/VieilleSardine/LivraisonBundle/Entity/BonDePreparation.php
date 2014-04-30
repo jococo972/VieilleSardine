@@ -136,10 +136,10 @@ class BonDePreparation
     /**
      * Add idLigne
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne
+     * @param \VieilleSardine\CommandeBundle\Entity\Lignes $idLigne
      * @return BonDePreparation
      */
-    public function addIdLigne(\VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne)
+    public function addIdLigne(\VieilleSardine\CommandeBundle\Entity\Lignes $idLigne)
     {
         $this->idLigne[] = $idLigne;
     
@@ -149,9 +149,9 @@ class BonDePreparation
     /**
      * Remove idLigne
      *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne
+     * @param \VieilleSardine\CommandeBundle\Entity\Lignes $idLigne
      */
-    public function removeIdLigne(\VieilleSardine\LivraisonBundle\Entity\Lignes $idLigne)
+    public function removeIdLigne(\VieilleSardine\CommandeBundle\Entity\Lignes $idLigne)
     {
         $this->idLigne->removeElement($idLigne);
     }
