@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Lignes
  *
  * @ORM\Table(name="lignes")
- * @ORM\Entity(repositoryClass="VieilleSardine\CommandeBundle\Entity\LignesRepository")
+ * @ORM\Entity
  */
 class Lignes
 {
@@ -38,7 +38,7 @@ class Lignes
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="VieilleSardine\LivraisonBundle\Entity\Colis", mappedBy="idLignes")
+     * @ORM\ManyToMany(targetEntity="Colis", mappedBy="idLignes")
      */
     private $idColis;
 
@@ -52,14 +52,21 @@ class Lignes
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="VieilleSardine\PanierBundle\Entity\Panier", mappedBy="idLigne")
+     * @ORM\ManyToMany(targetEntity="Coffret", mappedBy="idLigne")
+     */
+    private $idCoffret;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Panier", mappedBy="idLigne")
      */
     private $idPanier;
 
     /**
      * @var \Produit
      *
-     * @ORM\ManyToOne(targetEntity="VieilleSardine\ProduitBundle\Entity\Produit")
+     * @ORM\ManyToOne(targetEntity="Produit")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_produit", referencedColumnName="id_produit")
      * })
@@ -74,195 +81,8 @@ class Lignes
         $this->idBonPreparation = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idColis = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idCoffret = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idPanier = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
-
-    /**
-     * Get idLigne
-     *
-     * @return integer 
-     */
-    public function getIdLigne()
-    {
-        return $this->idLigne;
-    }
-
-    /**
-     * Set quantite
-     *
-     * @param integer $quantite
-     * @return Lignes
-     */
-    public function setQuantite($quantite)
-    {
-        $this->quantite = $quantite;
-    
-        return $this;
-    }
-
-    /**
-     * Get quantite
-     *
-     * @return integer 
-     */
-    public function getQuantite()
-    {
-        return $this->quantite;
-    }
-
-    /**
-     * Add idBonPreparation
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\BonDePreparation $idBonPreparation
-     * @return Lignes
-     */
-    public function addIdBonPreparation(\VieilleSardine\CommandeBundle\Entity\BonDePreparation $idBonPreparation)
-    {
-        $this->idBonPreparation[] = $idBonPreparation;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idBonPreparation
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\BonDePreparation $idBonPreparation
-     */
-    public function removeIdBonPreparation(\VieilleSardine\CommandeBundle\Entity\BonDePreparation $idBonPreparation)
-    {
-        $this->idBonPreparation->removeElement($idBonPreparation);
-    }
-
-    /**
-     * Get idBonPreparation
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdBonPreparation()
-    {
-        return $this->idBonPreparation;
-    }
-
-    /**
-     * Add idColis
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
-     * @return Lignes
-     */
-    public function addIdColi(\VieilleSardine\LivraisonBundle\Entity\Colis $idColis)
-    {
-        $this->idColis[] = $idColis;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idColis
-     *
-     * @param \VieilleSardine\LivraisonBundle\Entity\Colis $idColis
-     */
-    public function removeIdColi(\VieilleSardine\LivraisonBundle\Entity\Colis $idColis)
-    {
-        $this->idColis->removeElement($idColis);
-    }
-
-    /**
-     * Get idColis
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdColis()
-    {
-        return $this->idColis;
-    }
-
-    /**
-     * Add idCommande
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCommande
-     * @return Lignes
-     */
-    public function addIdCommande(\VieilleSardine\CommandeBundle\Entity\Commande $idCommande)
-    {
-        $this->idCommande[] = $idCommande;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idCommande
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Commande $idCommande
-     */
-    public function removeIdCommande(\VieilleSardine\CommandeBundle\Entity\Commande $idCommande)
-    {
-        $this->idCommande->removeElement($idCommande);
-    }
-
-    /**
-     * Get idCommande
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdCommande()
-    {
-        return $this->idCommande;
-    }
-
-    /**
-     * Add idPanier
-     *
-     * @param \VieilleSardine\PanierBundle\Entity\Panier $idPanier
-     * @return Lignes
-     */
-    public function addIdPanier(\VieilleSardine\PanierBundle\Entity\Panier $idPanier)
-    {
-        $this->idPanier[] = $idPanier;
-    
-        return $this;
-    }
-
-    /**
-     * Remove idPanier
-     *
-     * @param \VieilleSardine\PanierBundle\Entity\Panier $idPanier
-     */
-    public function removeIdPanier(\VieilleSardine\PanierBundle\Entity\Panier $idPanier)
-    {
-        $this->idPanier->removeElement($idPanier);
-    }
-
-    /**
-     * Get idPanier
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getIdPanier()
-    {
-        return $this->idPanier;
-    }
-
-    /**
-     * Set idProduit
-     *
-     * @param \VieilleSardine\CommandeBundle\Entity\Produit $idProduit
-     * @return Lignes
-     */
-    public function setIdProduit(\VieilleSardine\CommandeBundle\Entity\Produit $idProduit = null)
-    {
-        $this->idProduit = $idProduit;
-    
-        return $this;
-    }
-
-    /**
-     * Get idProduit
-     *
-     * @return \VieilleSardine\CommandeBundle\Entity\Produit 
-     */
-    public function getIdProduit()
-    {
-        return $this->idProduit;
-    }
 }

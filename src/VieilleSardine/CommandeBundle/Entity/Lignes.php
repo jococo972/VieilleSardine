@@ -52,6 +52,13 @@ class Lignes
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
+     * @ORM\ManyToMany(targetEntity="VieilleSardine\ProduitBundle\Entity\Coffret", mappedBy="idLigne")
+     */
+    private $idCoffret;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
      * @ORM\ManyToMany(targetEntity="VieilleSardine\PanierBundle\Entity\Panier", mappedBy="idLigne")
      */
     private $idPanier;
@@ -74,6 +81,7 @@ class Lignes
         $this->idBonPreparation = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idColis = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idCommande = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->idCoffret = new \Doctrine\Common\Collections\ArrayCollection();
         $this->idPanier = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -208,6 +216,39 @@ class Lignes
     public function getIdCommande()
     {
         return $this->idCommande;
+    }
+
+    /**
+     * Add idCoffret
+     *
+     * @param \VieilleSardine\CommandeBundle\Entity\Coffret $idCoffret
+     * @return Lignes
+     */
+    public function addIdCoffret(\VieilleSardine\CommandeBundle\Entity\Coffret $idCoffret)
+    {
+        $this->idCoffret[] = $idCoffret;
+    
+        return $this;
+    }
+
+    /**
+     * Remove idCoffret
+     *
+     * @param \VieilleSardine\CommandeBundle\Entity\Coffret $idCoffret
+     */
+    public function removeIdCoffret(\VieilleSardine\CommandeBundle\Entity\Coffret $idCoffret)
+    {
+        $this->idCoffret->removeElement($idCoffret);
+    }
+
+    /**
+     * Get idCoffret
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIdCoffret()
+    {
+        return $this->idCoffret;
     }
 
     /**
