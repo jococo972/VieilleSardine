@@ -32,6 +32,17 @@ class CompteClient extends BaseUser
     public function __construct() {
         parent::__construct();
         $this->dateCreate = new \DateTime();
+        //OUR OWN LOGIC 
+    }
+
+    /**
+     * Get idCompteClient
+     *
+     * @return integer 
+     */
+    public function getIdCompteClient()
+    {
+        return $this->id;
     }
 
     /**

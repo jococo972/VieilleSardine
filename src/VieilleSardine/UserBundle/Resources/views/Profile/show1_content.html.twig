@@ -1,0 +1,102 @@
+{% extends "::principal_layout.html.twig" %}
+
+{% block body %}
+    {% javascripts '@VieilleSardineUserBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% stylesheets '@VieilleSardineUserBundle/Resources/public/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+<br><br><br><br><br>
+    <center>
+        <table> 
+            <tr>
+                <td>Nom d'utilisateur</td>
+                <td>Email  </td>
+                <td>Civilité  </td>
+                <td>Nom  </td>                    
+                <td>Prénom  </td>
+                <td>Numero voie  </td>
+                <td>Nom voie  </td>
+                <td>Code postal  </td>
+                <td>Ville  </td>
+                <td>Pays  </td>
+            </tr>
+            <tr>
+                    <td>
+                    {% if user is defined %} 
+                    {{user.username}}
+                    {% endif %}
+                    </td>
+                    
+                     <td>
+                    {% if user is defined %} 
+                    {{user.email}}
+                    {% endif %}
+                    </td>
+                    
+                     <td>
+                    {% if info is defined %} 
+                    {% if info.civilite == 3 %}                       
+                        Monsieur
+                    {% endif %}
+                    {% if info.civilite == 1 %}                       
+                        Mademoiselle
+                    {% endif %}
+                    {% if info.civilite == 2 %}                       
+                        Madame
+                    {% endif %}
+                    {% endif %}
+                    </td>
+                    
+                     <td>
+                    {% if info is defined %}
+                    {{info.nom}}
+                    {% endif %}
+                    </td>
+                    
+                    <td>
+                    {% if info is defined %}
+                    {{info.prenom}}
+                    {% endif %}
+                    </td>
+                    
+                    <td>
+                    {% if info is defined %}
+                    {{info.numeroVoie}}
+                    {% endif %}
+                    </td>
+                    
+                    <td>
+                    {% if info is defined %}
+                    {{info.nomVoie}}
+                    {% endif %}
+                    </td>
+                    
+                    <td>
+                    {% if info is defined %}
+                    {{info.codePostal}}
+                    {% endif %}
+                    </td>
+                    
+                     <td>
+                    {% if info is defined %}
+                    {{info.ville}}
+                    {% endif %}
+                    </td>
+                    
+                    <td>
+                    {% if info is defined %}
+                    {{info.pays}}
+                    {% endif %}
+                    </td>                                                 
+        </tr>
+        </table>
+    <div>
+    <button>
+        <a style="color: blue;" class="btn btn-info" href="{{ path('user_edit_personal_data') }}">Modifier Informations</a>
+    </button>
+    </div>
+    </center>
+{% endblock body %}
+    

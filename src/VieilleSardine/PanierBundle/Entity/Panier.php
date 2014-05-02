@@ -91,7 +91,7 @@ class Panier
     /**
      * Get idLigne
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \VieilleSardine\CommandeBundle\Entity\Lignes
      */
     public function getIdLigne()
     {

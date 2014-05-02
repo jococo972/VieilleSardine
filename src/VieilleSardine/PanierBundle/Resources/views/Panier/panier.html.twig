@@ -1,0 +1,57 @@
+{% extends "::principal_layout.html.twig" %}
+
+{% block body %}
+{% javascripts '@VieilleSardineUserBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% stylesheets '@VieilleSardineUserBundle/Resources/public/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+    
+{#<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>#}
+
+{#    {{ form_start(prod) }}#}
+<center>
+    <br>
+<fieldset>
+    <legend>Votre Panier</legend>
+    <br>
+<table>
+    <tr>
+    <th>Libellé</th>
+    <th>Quantités</th>
+    <th>Prix</th>
+    <th>Action</th>
+    </tr>
+    {% if prod is defined %}
+    {% for users in prod %}
+        <tr>
+            <td>
+                {% if users is defined %} 
+                {{ users.titre }} 
+                {% endif %}
+            </td> 
+            <td> <input type="number" value=""> </td> 
+            <td>
+                 {% if users is defined %}
+                 {{ users.prixTtc }} € 
+                 {% endif %}
+                 </td> 
+            <td><button id="btn"> supprimer </button> </td>
+        </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+</fieldset>
+</center>
+   {# <script>
+     $(function(){
+        $("#btn").click(function(){
+            $(this).parent().parent().hide();
+        }); 
+     });
+    </script>#}
+{#    {{ form_end(prod) }}#}
+{% endblock %}

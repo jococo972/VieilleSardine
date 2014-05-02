@@ -1,0 +1,211 @@
+{% extends "::principal_layout.html.twig" %}
+
+{% block body %}
+<!-- Optional theme -->
+{#<link rel="stylesheet" href="../../css/bootstrap-theme.min_1.css">
+{#<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">#}
+{#<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>#}
+<!-- Latest compiled and minified JavaScript -->
+{#<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>#}
+{#<script type="text/javascript" src="../../public/js/jquery-2.1.0.min.js"></script>#}
+{#<script type="text/javascript" src="../../public/js/jquery.validate.js"></script>#}
+{% javascripts '@VieilleSardineUserBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% stylesheets '@VieilleSardineUserBundle/Resources/public/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+<center>
+<br>
+<br>
+{#<fieldset>#}
+<h1>Vos données</h1>
+<table>
+{{ form_start(form, { 'attr': {'id': 'formuleID', 'class':'form-inline', 'role':"form"} }) }}
+    {{ form_errors(form) }}
+    <tr class="control-group">
+        <td class="control-label">{{ form_label(form.civilite) }}</td>
+        <td>{{ form_errors(form.civilite) }}
+        {{ form_widget(form.civilite) }}</td>
+    </tr>
+    <tr class="control-group">
+        <td class="control-label">{{ form_label(form.nom) }}</td>
+        <td>{{ form_errors(form.nom) }}
+        {{ form_widget(form.nom) }}</td>
+    </tr>
+    <tr>
+        <td class="control-label">{{ form_label(form.prenom) }}</td>
+        <td>{{ form_errors(form.prenom) }}
+        {{ form_widget(form.prenom) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.telPrincipal) }}</td>
+        <td>{{ form_errors(form.telPrincipal) }}
+        {{ form_widget(form.telPrincipal) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.telSecondaire) }}</td>
+        <td>{{ form_errors(form.telSecondaire) }}
+        {{ form_widget(form.telSecondaire) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.sexe) }}</td>
+        <td>{{ form_widget(form.sexe) }}{{ form_errors(form.sexe) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.numeroVoie) }}</td>
+        <td>{{ form_errors(form.numeroVoie) }}
+        {{ form_widget(form.numeroVoie) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.typeVoie) }}</td>
+        <td>{{ form_errors(form.typeVoie) }}
+        {{ form_widget(form.typeVoie) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.nomVoie) }}</td>
+        <td>{{ form_errors(form.nomVoie) }}
+        {{ form_widget(form.nomVoie) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.codePostal) }}</td>
+        <td>{{ form_errors(form.codePostal) }}
+        {{ form_widget(form.codePostal) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.ville) }}</td>
+        <td>{{ form_errors(form.ville) }}
+        {{ form_widget(form.ville) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.pays) }}</td>
+        <td>{{ form_errors(form.pays) }}
+        {{ form_widget(form.pays) }}</td>
+    </tr>
+    <tr>
+        <td>{{ form_label(form.clientALivrer) }}</td>
+        <td>{{ form_errors(form.clientALivrer) }}
+        {{ form_widget(form.clientALivrer) }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input class="btn btn-primary" type="submit" id="btn_submit"/>        
+        </td>
+{#        <td>&nbsp;</td>#}
+{#        <td>&nbsp;</td>#}
+        {#<td>
+            <a class="btn btn-info" href="{{ path('user_show_personal_data') }}"/>Retour</a>
+            
+        </td>#}
+{#        <td></td>#}
+    </tr>
+{{ form_end(form) }}
+</table>
+<br>
+<div id="test"></div>
+{#</fields  et>#}
+</center>
+<script>
+$(function(){  
+    $('#form_nom, #form_prenom,#form_typeVoie,#form_nomVoie,#form_ville,#form_pays').keyup(function() {
+        $(this).removeClass("error")
+        var inputVal = $(this).val();
+        var inputVal = $(this).val();
+        var characterReg = /^\s*[a-zA-Z0-9,\s]+\s*$/;
+        if(!characterReg.test(inputVal)) {
+            $(this).addClass("error")
+        }
+        var characterReg = /^([a-zA-Z0-9]{4,40})$/;
+        if(!characterReg.test(inputVal)) {
+            $(this).addClass("error")
+        }
+    });
+    
+    $('#form_typeVoie').keyup(function() {
+        $(this).removeClass("error")
+        var inputVal = $(this).val();
+        var inputVal = $(this).val();
+        var characterReg = /^\s*[a-zA-Z0-9,\s]+\s*$/;
+        if(!characterReg.test(inputVal)) {
+            $(this).addClass("error")
+        }
+        var characterReg = /^([a-zA-Z0-9]{3,10})$/;
+        if(!characterReg.test(inputVal)) {
+            $(this).addClass("error")
+        }
+    });
+    
+    $('#form_telPrincipal, #form_telSecondaire').keyup(function() {
+        $(this).removeClass("error")
+        var inputVal = $(this).val();
+        var numericReg = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;
+        if(!numericReg.test(inputVal)) {
+            $(this).addClass("error")
+        }
+        var characterReg = /^([a-zA-Z0-9]{10,10})$/;
+        if(!characterReg.test(inputVal)) {
+            $(this).addClass("error")
+        }
+    });
+    
+    $('#form_codePostal').keyup(function() {
+       $(this).removeClass("error")
+        var inputVal = $(this).val();
+        var numericReg = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;
+        if(!numericReg.test(inputVal)) {
+            $(this).addClass("error")
+        }
+        var characterReg = /^([a-zA-Z0-9]{5,5})$/;
+        if(!characterReg.test(inputVal)) {
+            $(this).addClass("error")
+        }
+    });
+    
+    $('#form_telSecondaire').blur(function() {
+        if($(this).val()===""){
+            $(this).removeClass("error");
+            $(this).val(0);
+        }
+    });
+    
+     $('#form_numeroVoie').keyup(function() {
+        $(this).removeClass("error")
+        var inputVal = $(this).val();
+        var numericReg = /^\d*[0-9](|.\d*[0-9]|,\d*[0-9])?$/;
+        if(!numericReg.test(inputVal)) {
+            $(this).addClass("error");
+        }
+        var characterReg = /^([a-zA-Z0-9]{0,10})$/;
+        if(!characterReg.test(inputVal)) {
+            $(this).addClass("error");
+        }
+        if($(this).val()===""){
+             $(this).addClass("error");
+        }
+    });
+    
+    $('#btn_submit').click(function() {
+        if($('input.error').length > 0){
+          alert('Formulaire Incorrect');
+          return false;
+        } else {
+            $('#test').html('<div class="valide">'+  
+                '<strong>Formulaire Validé!</strong></div>'); 
+        }
+      });
+      
+});
+</script>
+<style>
+.error
+{
+ border:3px solid red;
+}
+
+.valide
+{
+ color: green;
+}
+</style>
+{% endblock %}

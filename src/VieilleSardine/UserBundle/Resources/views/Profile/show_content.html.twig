@@ -1,6 +1,32 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{#{% extends "::principal_layout.html.twig" %}#}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-</div>
+{% block body %}
+    {% javascripts '@VieilleSardineUserBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% stylesheets '@VieilleSardineUserBundle/Resources/public/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+    <center>
+        <table>
+            <tr>
+                <td>Nom d'utilisateur : </td><td>
+                    {% if user is defined %} 
+                    {{user.username}}
+                    {% endif %}
+                    </td>
+            </tr>
+            <tr>
+                <td>Email : </td><td>
+                    {% if user is defined %} 
+                    {{user.email}}
+                    {% endif %}
+                    </td>
+            </tr>
+            <H1>Informations de connexion mise à jours</h1>
+        </table>
+    <div>   
+    </div>
+    </center>
+{% endblock body %}
+    

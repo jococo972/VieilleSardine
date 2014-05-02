@@ -1,0 +1,32 @@
+{% extends "::principal_layout.html.twig" %}
+{% block body %}
+<center>
+{#<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">#}
+
+<!-- Optional theme -->
+{#<link rel="stylesheet" href="../../css/bootstrap-theme.min.css">#}
+{#<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>#}
+<!-- Latest compiled and minified JavaScript -->
+{#<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>#}
+{% javascripts '@VieilleSardineUserBundle/Resources/public/js/*' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% stylesheets '@VieilleSardineUserBundle/Resources/public/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}    
+<br>
+<br>
+<center>
+   {# <fieldset>#}
+    <h3>Modifier ses informations de connexion</h3>
+<form action="{{ path('fos_user_change_password') }}" {{ form_enctype(form) }} method="POST" class="fos_user_change_password">
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'change_password.submit'|trans }}" />
+    </div>
+</form>
+{#</fieldset>#}
+    <br>
+    <hr>
+    <br>
+{% endblock %}

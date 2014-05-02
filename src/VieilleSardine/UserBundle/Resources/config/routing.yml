@@ -1,3 +1,11 @@
-
-
+user_edit_personal_data:
+    pattern:  /modifierDataPer
+    defaults: { _controller: VieilleSardineUserBundle:User:editPersonalInfo }
     
+user_show_personal_data:
+    pattern:  /showData
+    defaults: { _controller: VieilleSardineUserBundle:User:showInfo }
+    
+user_edit_connexion_data:
+    pattern:  /editConnexion
+    defaults: { _controller: VieilleSardineUserBundle:ChangePasswordUser:changePassword }
