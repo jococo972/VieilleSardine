@@ -136,7 +136,7 @@ class UserController extends Controller {
     }
     
     public function editConnexionInfoAction(Request $request) {
-        
+        //yann
         $user = $this->getUser();
         if (!is_object($user) || !$user instanceof CompteClient) {
             throw new AccessDeniedException('This user does not have access to this section.');
