@@ -21,7 +21,7 @@ class PanierController extends Controller
                       ->getManager()
                       ->getRepository('VieilleSardinePanierBundle:Panier');
         
-        $product = $repository->find($id);
+        $product = $repository->find(1);
         if(!$product){
              return $this->render('VieilleSardinePanierBundle:Panier:panier.html.twig');
         }else{
@@ -32,7 +32,7 @@ class PanierController extends Controller
         foreach ($ligne as $test){
             $prod =$test->getIdProduit();
             $variable[]=$prod;
-            $quant[$prod->getDescription()]=$test->getQuantite();
+            $quant[$prod->getIdProduit()]=$test;
         }
         
         $id=$user->getIdCompteClient();
