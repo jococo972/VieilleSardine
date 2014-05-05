@@ -9,3 +9,7 @@ user_show_personal_data:
 user_edit_connexion_data:
     pattern:  /editConnexion
     defaults: { _controller: VieilleSardineUserBundle:ChangePasswordUser:changePassword }
+    
+user_search_cities:
+    pattern:  /searchCities
+    defaults: { _controller: VieilleSardineUserBundle:SearchCities:SearchCities }
