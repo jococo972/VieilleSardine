@@ -9,7 +9,7 @@ use VieilleSardine\UserBundle\Entity\CompteClient;
 use VieilleSardine\PanierBundle\Entity\Panier;
 
 class UserController extends Controller {
-    
+    // coucou
     
     public function editPersonalInfoAction(Request $request) {
         
