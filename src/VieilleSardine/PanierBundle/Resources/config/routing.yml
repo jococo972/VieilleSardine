@@ -1,3 +1,19 @@
 vieille_sardine_panier:
     pattern:  /panier
     defaults: { _controller: VieilleSardinePanierBundle:Panier:index }
+
+vieille_sardine_panier_delete:
+    pattern:  /deleteLigne/{id}
+    defaults: { _controller: VieilleSardinePanierBundle:Panier:deleteLigne }
+    
+vieille_sardine_panier_info:
+    pattern:  /info
+    defaults: { _controller: VieilleSardinePanierBundle:Panier:infoSimple }
+
+vieille_sardine_panier_update:
+    pattern:  /updateLigne/{id}
+    defaults: { _controller: VieilleSardinePanierBundle:Panier:updateLigne }
+
+vieille_sardine_panier_test:
+    pattern:  /panier/{id}
+    defaults: { _controller: VieilleSardinePanierBundle:Panier:index }

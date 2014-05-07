@@ -7,17 +7,15 @@
 {% stylesheets '@VieilleSardineUserBundle/Resources/public/css/*' filter='cssrewrite' %}
     <link rel="stylesheet" href="{{ asset_url }}" />
 {% endstylesheets %}
-    
-{#<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<!-- Latest compiled and minified JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>#}
-
-{#    {{ form_start(prod) }}#}
 <center>
     <br>
 <fieldset>
     <legend>Votre Panier</legend>
     <br>
+{% if noPanier is not defined  %}
+{% if prod is defined %}
+{% if prod | length >0 %}
+    
 <table>
     <tr>
     <th>Libellé</th>
@@ -34,26 +32,39 @@
                 {{ users.titre }} 
                 {% endif %}
             </td> 
-            <td> <input type="number" value="{{des[users.idProduit].quantite}}"> </td> 
+            <td>
+                <form method="POST" action="{{ path('vieille_sardine_panier_update', { 'id': des[users.idProduit].idLigne }) }}">
+                    {{ form_widget(form[users.idProduit], {'attr' :{'class':'controle'} }) }}
+                    <input value="update" type="submit" class="btn_submit"/>
+                </form>
             <td>
                  {% if users is defined %}
                  {{ users.prixTtc }} € 
                  {% endif %}
                  </td> 
-            <td><button id="btn"> supprimer </button> </td>
+                 <td><a href="{{path('vieille_sardine_panier_delete', { 'id': des[users.idProduit].idLigne })}} " class="suprime" name=""> supprimer </a> </td>
         </tr>
         {% endif %}
     {% endfor %}
     {% endif %}
+    
+    <tr>
+        <td></td> <td></td> <td></td>
+        <td>
+    <a href="{{path('info_commande_simple')}}">Valider</a>
+        </td>
+    </tr>
 </table>
+    {% elseif prod | length == 0 %}
+        <h1>VOTRE PANIER EST VIDE</h1>
+    {% else %}
+{% endif %}
+    {% else %}
+        <h1>VOTRE PANIER EST VIDE</h1>
+{% endif %}
+{% else %}
+    <h1>ACTIVER VOTRE PANIER</h1>
+{% endif %}   
 </fieldset>
 </center>
-   {# <script>
-     $(function(){
-        $("#btn").click(function(){
-            $(this).parent().parent().hide();
-        }); 
-     });
-    </script>#}
-{#    {{ form_end(prod) }}#}
 {% endblock %}
