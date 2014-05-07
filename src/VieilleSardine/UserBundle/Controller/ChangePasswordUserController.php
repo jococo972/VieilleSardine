@@ -40,11 +40,11 @@ class ChangePasswordUserController extends Controller
             throw new AccessDeniedException('This user does not have access to this section.');
         }
         
-        $id=$user->getIdCompteClient();
-        $repository = $this->getDoctrine()
-                      ->getManager()
-                      ->getRepository('VieilleSardineUserBundle:Client');
-        $product = $repository->findOneByIdCompteClient($id);
+//        $id=$user->getIdCompteClient();
+//        $repository = $this->getDoctrine()
+//                      ->getManager()
+//                      ->getRepository('VieilleSardineUserBundle:Client');
+//        $product = $repository->findOneByIdCompteClient($id);
 
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->container->get('event_dispatcher');
@@ -59,8 +59,7 @@ class ChangePasswordUserController extends Controller
         /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
         $formFactory = $this->container->get('fos_user.change_password.form.factory');
 
-        $form = $formFactory->createForm()->add("username", "text")
-                ->add("email", "text");
+        $form = $formFactory->createForm();
                               
         $form->setData($user);
         
@@ -88,6 +87,6 @@ class ChangePasswordUserController extends Controller
             }
         }
         return $this->render('VieilleSardineUserBundle:Profile:edit_content_user.html.twig', 
-                array('form' => $form->createView(),'form1' => $form->createView(), 'info' => $product));
+                array('form' => $form->createView()));
     }
 }
